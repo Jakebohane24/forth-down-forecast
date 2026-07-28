@@ -1,24 +1,22 @@
-import numpy as np
-import pandas as pd
-import xgboost as xgb
-from sklearn.model_selection import KFold
-from sklearn.metrics import mean_squared_error, mean_absolute_error, log_loss
-import sqlite3
-import math
-from collections import Counter
 import src.processing as process
-from src.training import nfl_model
+from src.config import ModelConfig
+from src.evaluation import evaluate_model
+from src.training import NFLModel
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Rebuild every feature stage with:
     # process.build_features()
     #
     # Download fresh play-by-play data and rebuild with:
     # process.build_features(download=True, seasons=range(2015, 2026))
-    model = nfl_model(True)
+    config = ModelConfig(
+        use_market_history=True,
+        stacking_strategy="kfold",
+        market_history_features="all",
+    )
+    model = NFLModel(config)
     model.train()
-    model.evaluate('val')
-    #model.get_feature_importances(stage=1)
+    evaluate_model(model, "val")
+    # model.get_feature_importances(stage=1)
     model.get_feature_importances(stage=2)
-   

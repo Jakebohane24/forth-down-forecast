@@ -35,9 +35,8 @@ def data_collection_to_sql(seasons=range(2015, 2026), db_path=None):
     with get_db_connection(db_path) as conn:
         df.to_sql(staging_table, conn, if_exists="replace", index=False)
         conn.execute(f'DROP TABLE IF EXISTS "{RAW_PLAYS_TABLE}"')
-        conn.execute(
-            f'ALTER TABLE "{staging_table}" RENAME TO "{RAW_PLAYS_TABLE}"'
-        )
+        conn.execute(f'ALTER TABLE "{staging_table}" RENAME TO "{RAW_PLAYS_TABLE}"')
+
 
 def get_db_connection(db_path=None, *, read_only=False):
     """Create a consistently configured SQLite connection."""
@@ -62,12 +61,13 @@ def _drop_object(conn, name):
             raise RuntimeError(f"Cannot replace unsupported SQLite object: {name}")
         conn.execute(f'DROP {object_type} "{name}"')
 
+
 def cut_columns():
     conn = get_db_connection()
     cursor = conn.cursor()
-    
+
     cursor.execute("DROP VIEW IF EXISTS nfl_data_2")
-    
+
     query = """
     CREATE VIEW nfl_data_2 AS 
     SELECT 
@@ -145,18 +145,19 @@ def cut_columns():
         
     FROM nfl_data_1 
     """
-    
+
     cursor.execute(query)
     conn.commit()
     conn.close()
     print("cut columns")
-    
+
+
 def make_game_features():
     conn = get_db_connection()
     cursor = conn.cursor()
-    
+
     cursor.execute("DROP VIEW IF EXISTS nfl_data_3")
-    
+
     query = """
     CREATE VIEW nfl_data_3 AS 
     SELECT
@@ -332,16 +333,17 @@ def make_game_features():
     GROUP_CONCAT(CASE WHEN posteam_type = 'home' AND play_type IN ('pass','run') THEN defense_players END, '|') AS away_defense_lineups
     
     FROM nfl_data_2 GROUP BY game_id"""
-    
+
     cursor.execute(query)
     conn.commit()
     conn.close()
     print("make game features complete")
 
+
 def order_games():
     conn = get_db_connection()
     cursor = conn.cursor()
-    
+
     cursor.execute("DROP VIEW IF EXISTS nfl_data_4")
     query = """
     CREATE VIEW nfl_data_4 AS 
@@ -497,10 +499,11 @@ def order_games():
     conn.close()
     print("order games pipeline aligned")
 
+
 def make_rolling_features():
     conn = get_db_connection()
     cursor = conn.cursor()
-    
+
     cursor.execute("DROP VIEW IF EXISTS nfl_data_5")
     query = """
     CREATE VIEW nfl_data_5 AS
@@ -772,6 +775,7 @@ def calculate_shannon_entropy(lineup_history_string):
 
     return entropy
 
+
 def create_entropy():
     with get_db_connection(read_only=True) as conn:
         df = pd.read_sql(
@@ -796,9 +800,7 @@ def create_entropy():
     # 3. Build out the dataframe rows
     df["roll5_offense_entropy"] = offense_entropy
     df["roll5_defense_entropy"] = defense_entropy
-    df = df.drop(
-        columns=["roll5_team_offense_history", "roll5_team_defense_history"]
-    )
+    df = df.drop(columns=["roll5_team_offense_history", "roll5_team_defense_history"])
 
     with get_db_connection() as conn:
         df.to_sql("nfl_model_dataset_staging", conn, if_exists="replace", index=False)
@@ -829,6 +831,7 @@ def create_entropy():
             """
         )
     print("Lineup entropy features created.")
+
 
 def finalize_features():
     conn = get_db_connection()
@@ -1026,8 +1029,7 @@ def finalize_features():
     )
     cursor.execute(f"DROP VIEW {FINAL_FEATURE_VIEW}")
     cursor.execute(
-        f"ALTER TABLE {FINAL_FEATURE_VIEW}_staging "
-        f"RENAME TO {FINAL_FEATURE_VIEW}"
+        f"ALTER TABLE {FINAL_FEATURE_VIEW}_staging " f"RENAME TO {FINAL_FEATURE_VIEW}"
     )
     cursor.execute(
         f"CREATE UNIQUE INDEX idx_{FINAL_FEATURE_VIEW}_game_id "
@@ -1036,6 +1038,7 @@ def finalize_features():
     conn.commit()
     conn.close()
     print("Final model features materialized.")
+
 
 REQUIRED_MODEL_COLUMNS = {
     "game_id",
@@ -1067,8 +1070,7 @@ def validate_features(db_path=None):
             raise RuntimeError(f"Missing final feature view: {FINAL_FEATURE_VIEW}")
 
         columns = [
-            row[1]
-            for row in conn.execute(f"PRAGMA table_info({FINAL_FEATURE_VIEW})")
+            row[1] for row in conn.execute(f"PRAGMA table_info({FINAL_FEATURE_VIEW})")
         ]
         missing = sorted(REQUIRED_MODEL_COLUMNS.difference(columns))
         if missing:
@@ -1141,4 +1143,3 @@ def get_features(db_path=None):
     with get_db_connection(db_path, read_only=True) as conn:
         df = pd.read_sql(f"SELECT * FROM {FINAL_FEATURE_VIEW}", conn)
     return df.set_index("game_id")
-    

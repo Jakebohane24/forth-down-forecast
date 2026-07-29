@@ -25,6 +25,8 @@ CONFIDENCE_THRESHOLDS = [
     0.775,
     0.80,
 ]
+ODDS_FILTER_CONFIDENCE_THRESHOLDS = [0.60, 0.625, 0.65, 0.675]
+FAVORITE_PRICE_FLOORS = [None, -1000, -500, -400, -300, -250, -200, -150]
 
 
 def american_implied_probability(odds: pd.Series) -> pd.Series:
@@ -210,6 +212,22 @@ def build_report(frame: pd.DataFrame) -> dict:
             & (frame["model_market_edge"] >= 0),
         ),
     }
+    odds_filter_grid = {}
+    for confidence_threshold in ODDS_FILTER_CONFIDENCE_THRESHOLDS:
+        for price_floor in FAVORITE_PRICE_FLOORS:
+            key = (
+                f"confidence_{confidence_threshold:.3f}_no_price_floor"
+                if price_floor is None
+                else f"confidence_{confidence_threshold:.3f}_odds_gte_{price_floor}"
+            )
+            mask = frame["model_win_confidence"] >= confidence_threshold
+            if price_floor is not None:
+                mask &= frame["picked_odds"] >= price_floor
+            odds_filter_grid[key] = {
+                "confidence_threshold": confidence_threshold,
+                "minimum_american_odds": price_floor,
+                **evaluate_rule(frame, mask),
+            }
     return {
         "description": (
             "Moneyline trigger comparison on expanding-window test predictions "
@@ -226,6 +244,7 @@ def build_report(frame: pd.DataFrame) -> dict:
             "adequate bet count and yearly stability over the highest pooled ROI."
         ),
         "confidence_thresholds": confidence,
+        "confidence_and_odds_grid": odds_filter_grid,
         "alternative_rules": alternatives,
         "warnings": [
             "Closing odds differ from the planned 24-hours-before-kickoff odds.",

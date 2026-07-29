@@ -1,0 +1,1342 @@
+{
+  "description": "Moneyline trigger comparison on expanding-window test predictions for 2022\u20132025",
+  "sample": {
+    "games": 761,
+    "weeks": "6\u201318",
+    "odds": "nflverse closing moneylines",
+    "staking": "flat one-unit stakes"
+  },
+  "selection_policy": "Use 2022\u20132023 as development and 2024\u20132025 as validation; prefer adequate bet count and yearly stability over the highest pooled ROI.",
+  "confidence_thresholds": {
+    "0.500": {
+      "pooled_2022_2025": {
+        "bets": 761,
+        "wins": 494,
+        "win_rate": 0.6491458607095927,
+        "profit_units": -10.933664049195578,
+        "roi": -0.014367495465434399
+      },
+      "development_2022_2023": {
+        "bets": 381,
+        "wins": 238,
+        "win_rate": 0.6246719160104987,
+        "profit_units": -10.744160993385927,
+        "roi": -0.028199897620435503
+      },
+      "validation_2024_2025": {
+        "bets": 380,
+        "wins": 256,
+        "win_rate": 0.6736842105263158,
+        "profit_units": -0.18950305580964866,
+        "roi": -0.0004986922521306544
+      },
+      "same_games_market_favorite_control": {
+        "bets": 761,
+        "wins": 529,
+        "win_rate": 0.695137976346912,
+        "profit_units": 4.184550986001534,
+        "roi": 0.005498752938241176
+      },
+      "model_market_disagreements": 154,
+      "profitable_seasons": 1,
+      "worst_season_roi": -0.04325701564891413,
+      "by_season": {
+        "2022": {
+          "bets": 191,
+          "wins": 119,
+          "win_rate": 0.6230366492146597,
+          "profit_units": -8.262089988942598,
+          "roi": -0.04325701564891413
+        },
+        "2023": {
+          "bets": 190,
+          "wins": 119,
+          "win_rate": 0.6263157894736842,
+          "profit_units": -2.4820710044433256,
+          "roi": -0.013063531602333292
+        },
+        "2024": {
+          "bets": 190,
+          "wins": 131,
+          "win_rate": 0.6894736842105263,
+          "profit_units": 2.9722777184181806,
+          "roi": 0.015643566939043056
+        },
+        "2025": {
+          "bets": 190,
+          "wins": 125,
+          "win_rate": 0.6578947368421053,
+          "profit_units": -3.1617807742278305,
+          "roi": -0.01664095144330437
+        }
+      }
+    },
+    "0.550": {
+      "pooled_2022_2025": {
+        "bets": 578,
+        "wins": 394,
+        "win_rate": 0.6816608996539792,
+        "profit_units": -8.251381711922265,
+        "roi": -0.014275746906439906
+      },
+      "development_2022_2023": {
+        "bets": 278,
+        "wins": 182,
+        "win_rate": 0.6546762589928058,
+        "profit_units": -10.598941838271298,
+        "roi": -0.03812569006572409
+      },
+      "validation_2024_2025": {
+        "bets": 300,
+        "wins": 212,
+        "win_rate": 0.7066666666666667,
+        "profit_units": 2.347560126349033,
+        "roi": 0.007825200421163444
+      },
+      "same_games_market_favorite_control": {
+        "bets": 578,
+        "wins": 414,
+        "win_rate": 0.7162629757785467,
+        "profit_units": 4.374337816809367,
+        "roi": 0.007568058506590601
+      },
+      "model_market_disagreements": 83,
+      "profitable_seasons": 1,
+      "worst_season_roi": -0.057471382561415915,
+      "by_season": {
+        "2022": {
+          "bets": 146,
+          "wins": 97,
+          "win_rate": 0.6643835616438356,
+          "profit_units": -3.012719340164395,
+          "roi": -0.02063506397372873
+        },
+        "2023": {
+          "bets": 132,
+          "wins": 85,
+          "win_rate": 0.6439393939393939,
+          "profit_units": -7.586222498106901,
+          "roi": -0.057471382561415915
+        },
+        "2024": {
+          "bets": 150,
+          "wins": 110,
+          "win_rate": 0.7333333333333333,
+          "profit_units": 8.5541931157628,
+          "roi": 0.057027954105085335
+        },
+        "2025": {
+          "bets": 150,
+          "wins": 102,
+          "win_rate": 0.68,
+          "profit_units": -6.206632989413766,
+          "roi": -0.04137755326275844
+        }
+      }
+    },
+    "0.575": {
+      "pooled_2022_2025": {
+        "bets": 472,
+        "wins": 334,
+        "win_rate": 0.7076271186440678,
+        "profit_units": -0.07103191048598712,
+        "roi": -0.00015049133577539644
+      },
+      "development_2022_2023": {
+        "bets": 223,
+        "wins": 154,
+        "win_rate": 0.6905829596412556,
+        "profit_units": -1.6297587713720323,
+        "roi": -0.007308335297632432
+      },
+      "validation_2024_2025": {
+        "bets": 249,
+        "wins": 180,
+        "win_rate": 0.7228915662650602,
+        "profit_units": 1.5587268608860407,
+        "roi": 0.006259947232474059
+      },
+      "same_games_market_favorite_control": {
+        "bets": 472,
+        "wins": 343,
+        "win_rate": 0.7266949152542372,
+        "profit_units": 1.0717590460297757,
+        "roi": 0.0022706759449783384
+      },
+      "model_market_disagreements": 52,
+      "profitable_seasons": 1,
+      "worst_season_roi": -0.033536648519216,
+      "by_season": {
+        "2022": {
+          "bets": 124,
+          "wins": 85,
+          "win_rate": 0.6854838709677419,
+          "profit_units": -0.277016793485517,
+          "roi": -0.00223400639907675
+        },
+        "2023": {
+          "bets": 99,
+          "wins": 69,
+          "win_rate": 0.696969696969697,
+          "profit_units": -1.3527419778865144,
+          "roi": -0.013664060382692064
+        },
+        "2024": {
+          "bets": 125,
+          "wins": 93,
+          "win_rate": 0.744,
+          "profit_units": 5.717271277268829,
+          "roi": 0.04573817021815064
+        },
+        "2025": {
+          "bets": 124,
+          "wins": 87,
+          "win_rate": 0.7016129032258065,
+          "profit_units": -4.158544416382784,
+          "roi": -0.033536648519216
+        }
+      }
+    },
+    "0.600": {
+      "pooled_2022_2025": {
+        "bets": 351,
+        "wins": 261,
+        "win_rate": 0.7435897435897436,
+        "profit_units": 5.327795139975873,
+        "roi": 0.015178903532694793
+      },
+      "development_2022_2023": {
+        "bets": 158,
+        "wins": 117,
+        "win_rate": 0.740506329113924,
+        "profit_units": 2.7856546414225267,
+        "roi": 0.017630725578623586
+      },
+      "validation_2024_2025": {
+        "bets": 193,
+        "wins": 144,
+        "win_rate": 0.7461139896373057,
+        "profit_units": 2.542140498553349,
+        "roi": 0.013171712427737561
+      },
+      "same_games_market_favorite_control": {
+        "bets": 351,
+        "wins": 262,
+        "win_rate": 0.7464387464387464,
+        "profit_units": 0.22374693535623047,
+        "roi": 0.0006374556562855569
+      },
+      "model_market_disagreements": 24,
+      "profitable_seasons": 2,
+      "worst_season_roi": -0.03723120102206043,
+      "by_season": {
+        "2022": {
+          "bets": 92,
+          "wins": 69,
+          "win_rate": 0.75,
+          "profit_units": 5.2429139088785135,
+          "roi": 0.056988194661722974
+        },
+        "2023": {
+          "bets": 66,
+          "wins": 48,
+          "win_rate": 0.7272727272727273,
+          "profit_units": -2.457259267455988,
+          "roi": -0.03723120102206043
+        },
+        "2024": {
+          "bets": 94,
+          "wins": 72,
+          "win_rate": 0.7659574468085106,
+          "profit_units": 5.262250135804652,
+          "roi": 0.055981384423453746
+        },
+        "2025": {
+          "bets": 99,
+          "wins": 72,
+          "win_rate": 0.7272727272727273,
+          "profit_units": -2.720109637251302,
+          "roi": -0.02747585492173032
+        }
+      }
+    },
+    "0.625": {
+      "pooled_2022_2025": {
+        "bets": 239,
+        "wins": 186,
+        "win_rate": 0.7782426778242678,
+        "profit_units": 9.325967329018269,
+        "roi": 0.03902078380342372
+      },
+      "development_2022_2023": {
+        "bets": 104,
+        "wins": 79,
+        "win_rate": 0.7596153846153846,
+        "profit_units": 1.8561008669027839,
+        "roi": 0.017847123720219075
+      },
+      "validation_2024_2025": {
+        "bets": 135,
+        "wins": 107,
+        "win_rate": 0.7925925925925926,
+        "profit_units": 7.469866462115483,
+        "roi": 0.055332344163818395
+      },
+      "same_games_market_favorite_control": {
+        "bets": 239,
+        "wins": 183,
+        "win_rate": 0.7656903765690377,
+        "profit_units": -0.9909574388005191,
+        "roi": -0.004146265434311795
+      },
+      "model_market_disagreements": 15,
+      "profitable_seasons": 2,
+      "worst_season_roi": -0.08375699389743171,
+      "by_season": {
+        "2022": {
+          "bets": 71,
+          "wins": 55,
+          "win_rate": 0.7746478873239436,
+          "profit_units": 4.620081665518031,
+          "roi": 0.06507157275377508
+        },
+        "2023": {
+          "bets": 33,
+          "wins": 24,
+          "win_rate": 0.7272727272727273,
+          "profit_units": -2.7639807986152465,
+          "roi": -0.08375699389743171
+        },
+        "2024": {
+          "bets": 65,
+          "wins": 54,
+          "win_rate": 0.8307692307692308,
+          "profit_units": 8.88681763960516,
+          "roi": 0.13672027137854093
+        },
+        "2025": {
+          "bets": 70,
+          "wins": 53,
+          "win_rate": 0.7571428571428571,
+          "profit_units": -1.4169511774896772,
+          "roi": -0.020242159678423962
+        }
+      }
+    },
+    "0.650": {
+      "pooled_2022_2025": {
+        "bets": 146,
+        "wins": 118,
+        "win_rate": 0.8082191780821918,
+        "profit_units": 5.207620458171116,
+        "roi": 0.03566863327514463
+      },
+      "development_2022_2023": {
+        "bets": 49,
+        "wins": 41,
+        "win_rate": 0.8367346938775511,
+        "profit_units": 3.8786713310836527,
+        "roi": 0.0791565577772174
+      },
+      "validation_2024_2025": {
+        "bets": 97,
+        "wins": 77,
+        "win_rate": 0.7938144329896907,
+        "profit_units": 1.3289491270874638,
+        "roi": 0.013700506464819214
+      },
+      "same_games_market_favorite_control": {
+        "bets": 146,
+        "wins": 119,
+        "win_rate": 0.815068493150685,
+        "profit_units": 6.171539007494858,
+        "roi": 0.0422708151198278
+      },
+      "model_market_disagreements": 5,
+      "profitable_seasons": 3,
+      "worst_season_roi": -0.03905004034941939,
+      "by_season": {
+        "2022": {
+          "bets": 36,
+          "wins": 30,
+          "win_rate": 0.8333333333333334,
+          "profit_units": 3.4658416795321965,
+          "roi": 0.09627337998700546
+        },
+        "2023": {
+          "bets": 13,
+          "wins": 11,
+          "win_rate": 0.8461538461538461,
+          "profit_units": 0.41282965155145623,
+          "roi": 0.03175612704241971
+        },
+        "2024": {
+          "bets": 43,
+          "wins": 35,
+          "win_rate": 0.813953488372093,
+          "profit_units": 3.4376513059561105,
+          "roi": 0.07994537920828164
+        },
+        "2025": {
+          "bets": 54,
+          "wins": 42,
+          "win_rate": 0.7777777777777778,
+          "profit_units": -2.108702178868647,
+          "roi": -0.03905004034941939
+        }
+      }
+    },
+    "0.675": {
+      "pooled_2022_2025": {
+        "bets": 78,
+        "wins": 63,
+        "win_rate": 0.8076923076923077,
+        "profit_units": 0.8617172888520002,
+        "roi": 0.011047657549384618
+      },
+      "development_2022_2023": {
+        "bets": 19,
+        "wins": 16,
+        "win_rate": 0.8421052631578947,
+        "profit_units": 1.2934986166059534,
+        "roi": 0.06807887455820807
+      },
+      "validation_2024_2025": {
+        "bets": 59,
+        "wins": 47,
+        "win_rate": 0.7966101694915254,
+        "profit_units": -0.43178132775395317,
+        "roi": -0.007318327589050054
+      },
+      "same_games_market_favorite_control": {
+        "bets": 78,
+        "wins": 63,
+        "win_rate": 0.8076923076923077,
+        "profit_units": 0.3971412145198281,
+        "roi": 0.005091554032305488
+      },
+      "model_market_disagreements": 2,
+      "profitable_seasons": 3,
+      "worst_season_roi": -0.03630531982643716,
+      "by_season": {
+        "2022": {
+          "bets": 17,
+          "wins": 14,
+          "win_rate": 0.8235294117647058,
+          "profit_units": 0.9709877940951308,
+          "roi": 0.05711692906441946
+        },
+        "2023": {
+          "bets": 2,
+          "wins": 2,
+          "win_rate": 1.0,
+          "profit_units": 0.3225108225108225,
+          "roi": 0.16125541125541126
+        },
+        "2024": {
+          "bets": 21,
+          "wins": 17,
+          "win_rate": 0.8095238095238095,
+          "profit_units": 0.9478208256506586,
+          "roi": 0.045134325030983746
+        },
+        "2025": {
+          "bets": 38,
+          "wins": 30,
+          "win_rate": 0.7894736842105263,
+          "profit_units": -1.379602153404612,
+          "roi": -0.03630531982643716
+        }
+      }
+    },
+    "0.700": {
+      "pooled_2022_2025": {
+        "bets": 24,
+        "wins": 20,
+        "win_rate": 0.8333333333333334,
+        "profit_units": -0.4268955887864473,
+        "roi": -0.017787316199435303
+      },
+      "development_2022_2023": {
+        "bets": 3,
+        "wins": 2,
+        "win_rate": 0.6666666666666666,
+        "profit_units": -0.7269026927841581,
+        "roi": -0.24230089759471937
+      },
+      "validation_2024_2025": {
+        "bets": 21,
+        "wins": 18,
+        "win_rate": 0.8571428571428571,
+        "profit_units": 0.3000071039977107,
+        "roi": 0.014286052571319556
+      },
+      "same_games_market_favorite_control": {
+        "bets": 24,
+        "wins": 20,
+        "win_rate": 0.8333333333333334,
+        "profit_units": -0.4268955887864473,
+        "roi": -0.017787316199435303
+      },
+      "model_market_disagreements": 0,
+      "profitable_seasons": 1,
+      "worst_season_roi": -0.24230089759471937,
+      "by_season": {
+        "2022": {
+          "bets": 3,
+          "wins": 2,
+          "win_rate": 0.6666666666666666,
+          "profit_units": -0.7269026927841581,
+          "roi": -0.24230089759471937
+        },
+        "2023": {
+          "bets": 0,
+          "wins": 0,
+          "win_rate": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        "2024": {
+          "bets": 8,
+          "wins": 7,
+          "win_rate": 0.875,
+          "profit_units": 0.5992450979725467,
+          "roi": 0.07490563724656833
+        },
+        "2025": {
+          "bets": 13,
+          "wins": 11,
+          "win_rate": 0.8461538461538461,
+          "profit_units": -0.2992379939748361,
+          "roi": -0.023018307228833544
+        }
+      }
+    },
+    "0.725": {
+      "pooled_2022_2025": {
+        "bets": 5,
+        "wins": 4,
+        "win_rate": 0.8,
+        "profit_units": -0.16973684210526313,
+        "roi": -0.03394736842105263
+      },
+      "development_2022_2023": {
+        "bets": 0,
+        "wins": 0,
+        "win_rate": null,
+        "profit_units": 0.0,
+        "roi": null
+      },
+      "validation_2024_2025": {
+        "bets": 5,
+        "wins": 4,
+        "win_rate": 0.8,
+        "profit_units": -0.16973684210526313,
+        "roi": -0.03394736842105263
+      },
+      "same_games_market_favorite_control": {
+        "bets": 5,
+        "wins": 4,
+        "win_rate": 0.8,
+        "profit_units": -0.16973684210526313,
+        "roi": -0.03394736842105263
+      },
+      "model_market_disagreements": 0,
+      "profitable_seasons": 1,
+      "worst_season_roi": -0.2565789473684211,
+      "by_season": {
+        "2022": {
+          "bets": 0,
+          "wins": 0,
+          "win_rate": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        "2023": {
+          "bets": 0,
+          "wins": 0,
+          "win_rate": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        "2024": {
+          "bets": 3,
+          "wins": 2,
+          "win_rate": 0.6666666666666666,
+          "profit_units": -0.7697368421052632,
+          "roi": -0.2565789473684211
+        },
+        "2025": {
+          "bets": 2,
+          "wins": 2,
+          "win_rate": 1.0,
+          "profit_units": 0.6000000000000001,
+          "roi": 0.30000000000000004
+        }
+      }
+    },
+    "0.750": {
+      "pooled_2022_2025": {
+        "bets": 1,
+        "wins": 0,
+        "win_rate": 0.0,
+        "profit_units": -1.0,
+        "roi": -1.0
+      },
+      "development_2022_2023": {
+        "bets": 0,
+        "wins": 0,
+        "win_rate": null,
+        "profit_units": 0.0,
+        "roi": null
+      },
+      "validation_2024_2025": {
+        "bets": 1,
+        "wins": 0,
+        "win_rate": 0.0,
+        "profit_units": -1.0,
+        "roi": -1.0
+      },
+      "same_games_market_favorite_control": {
+        "bets": 1,
+        "wins": 0,
+        "win_rate": 0.0,
+        "profit_units": -1.0,
+        "roi": -1.0
+      },
+      "model_market_disagreements": 0,
+      "profitable_seasons": 0,
+      "worst_season_roi": -1.0,
+      "by_season": {
+        "2022": {
+          "bets": 0,
+          "wins": 0,
+          "win_rate": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        "2023": {
+          "bets": 0,
+          "wins": 0,
+          "win_rate": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        "2024": {
+          "bets": 1,
+          "wins": 0,
+          "win_rate": 0.0,
+          "profit_units": -1.0,
+          "roi": -1.0
+        },
+        "2025": {
+          "bets": 0,
+          "wins": 0,
+          "win_rate": null,
+          "profit_units": 0.0,
+          "roi": null
+        }
+      }
+    },
+    "0.775": {
+      "pooled_2022_2025": {
+        "bets": 0,
+        "wins": 0,
+        "win_rate": null,
+        "profit_units": 0.0,
+        "roi": null
+      },
+      "development_2022_2023": {
+        "bets": 0,
+        "wins": 0,
+        "win_rate": null,
+        "profit_units": 0.0,
+        "roi": null
+      },
+      "validation_2024_2025": {
+        "bets": 0,
+        "wins": 0,
+        "win_rate": null,
+        "profit_units": 0.0,
+        "roi": null
+      },
+      "same_games_market_favorite_control": {
+        "bets": 0,
+        "wins": 0,
+        "win_rate": null,
+        "profit_units": 0.0,
+        "roi": null
+      },
+      "model_market_disagreements": 0,
+      "profitable_seasons": 0,
+      "worst_season_roi": null,
+      "by_season": {
+        "2022": {
+          "bets": 0,
+          "wins": 0,
+          "win_rate": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        "2023": {
+          "bets": 0,
+          "wins": 0,
+          "win_rate": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        "2024": {
+          "bets": 0,
+          "wins": 0,
+          "win_rate": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        "2025": {
+          "bets": 0,
+          "wins": 0,
+          "win_rate": null,
+          "profit_units": 0.0,
+          "roi": null
+        }
+      }
+    },
+    "0.800": {
+      "pooled_2022_2025": {
+        "bets": 0,
+        "wins": 0,
+        "win_rate": null,
+        "profit_units": 0.0,
+        "roi": null
+      },
+      "development_2022_2023": {
+        "bets": 0,
+        "wins": 0,
+        "win_rate": null,
+        "profit_units": 0.0,
+        "roi": null
+      },
+      "validation_2024_2025": {
+        "bets": 0,
+        "wins": 0,
+        "win_rate": null,
+        "profit_units": 0.0,
+        "roi": null
+      },
+      "same_games_market_favorite_control": {
+        "bets": 0,
+        "wins": 0,
+        "win_rate": null,
+        "profit_units": 0.0,
+        "roi": null
+      },
+      "model_market_disagreements": 0,
+      "profitable_seasons": 0,
+      "worst_season_roi": null,
+      "by_season": {
+        "2022": {
+          "bets": 0,
+          "wins": 0,
+          "win_rate": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        "2023": {
+          "bets": 0,
+          "wins": 0,
+          "win_rate": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        "2024": {
+          "bets": 0,
+          "wins": 0,
+          "win_rate": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        "2025": {
+          "bets": 0,
+          "wins": 0,
+          "win_rate": null,
+          "profit_units": 0.0,
+          "roi": null
+        }
+      }
+    }
+  },
+  "alternative_rules": {
+    "all_model_picks": {
+      "pooled_2022_2025": {
+        "bets": 761,
+        "wins": 494,
+        "win_rate": 0.6491458607095927,
+        "profit_units": -10.933664049195578,
+        "roi": -0.014367495465434399
+      },
+      "development_2022_2023": {
+        "bets": 381,
+        "wins": 238,
+        "win_rate": 0.6246719160104987,
+        "profit_units": -10.744160993385927,
+        "roi": -0.028199897620435503
+      },
+      "validation_2024_2025": {
+        "bets": 380,
+        "wins": 256,
+        "win_rate": 0.6736842105263158,
+        "profit_units": -0.18950305580964866,
+        "roi": -0.0004986922521306544
+      },
+      "same_games_market_favorite_control": {
+        "bets": 761,
+        "wins": 529,
+        "win_rate": 0.695137976346912,
+        "profit_units": 4.184550986001534,
+        "roi": 0.005498752938241176
+      },
+      "model_market_disagreements": 154,
+      "profitable_seasons": 1,
+      "worst_season_roi": -0.04325701564891413,
+      "by_season": {
+        "2022": {
+          "bets": 191,
+          "wins": 119,
+          "win_rate": 0.6230366492146597,
+          "profit_units": -8.262089988942598,
+          "roi": -0.04325701564891413
+        },
+        "2023": {
+          "bets": 190,
+          "wins": 119,
+          "win_rate": 0.6263157894736842,
+          "profit_units": -2.4820710044433256,
+          "roi": -0.013063531602333292
+        },
+        "2024": {
+          "bets": 190,
+          "wins": 131,
+          "win_rate": 0.6894736842105263,
+          "profit_units": 2.9722777184181806,
+          "roi": 0.015643566939043056
+        },
+        "2025": {
+          "bets": 190,
+          "wins": 125,
+          "win_rate": 0.6578947368421053,
+          "profit_units": -3.1617807742278305,
+          "roi": -0.01664095144330437
+        }
+      }
+    },
+    "market_favorite_all": {
+      "pooled_2022_2025": {
+        "bets": 607,
+        "wins": 435,
+        "win_rate": 0.7166392092257001,
+        "profit_units": 5.9841759757032715,
+        "roi": 0.009858609515161897
+      },
+      "development_2022_2023": {
+        "bets": 301,
+        "wins": 210,
+        "win_rate": 0.6976744186046512,
+        "profit_units": 1.4375321283071965,
+        "roi": 0.004775854246867763
+      },
+      "validation_2024_2025": {
+        "bets": 306,
+        "wins": 225,
+        "win_rate": 0.7352941176470589,
+        "profit_units": 4.54664384739608,
+        "roi": 0.014858313226784575
+      },
+      "same_games_market_favorite_control": {
+        "bets": 607,
+        "wins": 434,
+        "win_rate": 0.71499176276771,
+        "profit_units": 4.031795023322319,
+        "roi": 0.006642166430514529
+      },
+      "model_market_disagreements": 0,
+      "profitable_seasons": 2,
+      "worst_season_roi": -0.06134344875349936,
+      "by_season": {
+        "2022": {
+          "bets": 154,
+          "wins": 106,
+          "win_rate": 0.6883116883116883,
+          "profit_units": -2.3120899889426,
+          "roi": -0.01501357135677013
+        },
+        "2023": {
+          "bets": 147,
+          "wins": 104,
+          "win_rate": 0.7074829931972789,
+          "profit_units": 3.749622117249798,
+          "roi": 0.0255076334506789
+        },
+        "2024": {
+          "bets": 155,
+          "wins": 120,
+          "win_rate": 0.7741935483870968,
+          "profit_units": 13.80950460917448,
+          "roi": 0.08909357812370633
+        },
+        "2025": {
+          "bets": 151,
+          "wins": 105,
+          "win_rate": 0.695364238410596,
+          "profit_units": -9.262860761778404,
+          "roi": -0.06134344875349936
+        }
+      }
+    },
+    "confidence_625_favorites": {
+      "pooled_2022_2025": {
+        "bets": 224,
+        "wins": 177,
+        "win_rate": 0.7901785714285714,
+        "profit_units": 4.753586376637315,
+        "roi": 0.02122136775284516
+      },
+      "development_2022_2023": {
+        "bets": 99,
+        "wins": 76,
+        "win_rate": 0.7676767676767676,
+        "profit_units": 0.23610086690278317,
+        "roi": 0.0023848572414422544
+      },
+      "validation_2024_2025": {
+        "bets": 125,
+        "wins": 101,
+        "win_rate": 0.808,
+        "profit_units": 4.5174855097345334,
+        "roi": 0.036139884077876265
+      },
+      "same_games_market_favorite_control": {
+        "bets": 224,
+        "wins": 177,
+        "win_rate": 0.7901785714285714,
+        "profit_units": 4.753586376637315,
+        "roi": 0.02122136775284516
+      },
+      "model_market_disagreements": 0,
+      "profitable_seasons": 2,
+      "worst_season_roi": -0.055124399956726446,
+      "by_season": {
+        "2022": {
+          "bets": 67,
+          "wins": 52,
+          "win_rate": 0.7761194029850746,
+          "profit_units": 2.000081665518031,
+          "roi": 0.02985196515698554
+        },
+        "2023": {
+          "bets": 32,
+          "wins": 24,
+          "win_rate": 0.75,
+          "profit_units": -1.7639807986152463,
+          "roi": -0.055124399956726446
+        },
+        "2024": {
+          "bets": 60,
+          "wins": 51,
+          "win_rate": 0.85,
+          "profit_units": 7.476817639605161,
+          "roi": 0.12461362732675269
+        },
+        "2025": {
+          "bets": 65,
+          "wins": 50,
+          "win_rate": 0.7692307692307693,
+          "profit_units": -2.9593321298706297,
+          "roi": -0.045528186613394306
+        }
+      }
+    },
+    "confidence_625_underdogs": {
+      "pooled_2022_2025": {
+        "bets": 15,
+        "wins": 9,
+        "win_rate": 0.6,
+        "profit_units": 4.572380952380953,
+        "roi": 0.30482539682539683
+      },
+      "development_2022_2023": {
+        "bets": 5,
+        "wins": 3,
+        "win_rate": 0.6,
+        "profit_units": 1.62,
+        "roi": 0.324
+      },
+      "validation_2024_2025": {
+        "bets": 10,
+        "wins": 6,
+        "win_rate": 0.6,
+        "profit_units": 2.9523809523809526,
+        "roi": 0.29523809523809524
+      },
+      "same_games_market_favorite_control": {
+        "bets": 15,
+        "wins": 6,
+        "win_rate": 0.4,
+        "profit_units": -5.744543815437835,
+        "roi": -0.38296958769585565
+      },
+      "model_market_disagreements": 15,
+      "profitable_seasons": 3,
+      "worst_season_roi": -1.0,
+      "by_season": {
+        "2022": {
+          "bets": 4,
+          "wins": 3,
+          "win_rate": 0.75,
+          "profit_units": 2.62,
+          "roi": 0.655
+        },
+        "2023": {
+          "bets": 1,
+          "wins": 0,
+          "win_rate": 0.0,
+          "profit_units": -1.0,
+          "roi": -1.0
+        },
+        "2024": {
+          "bets": 5,
+          "wins": 3,
+          "win_rate": 0.6,
+          "profit_units": 1.4100000000000001,
+          "roi": 0.28200000000000003
+        },
+        "2025": {
+          "bets": 5,
+          "wins": 3,
+          "win_rate": 0.6,
+          "profit_units": 1.5423809523809524,
+          "roi": 0.30847619047619046
+        }
+      }
+    },
+    "confidence_650_favorites": {
+      "pooled_2022_2025": {
+        "bets": 141,
+        "wins": 116,
+        "win_rate": 0.8226950354609929,
+        "profit_units": 6.205239505790164,
+        "roi": 0.04400879082120684
+      },
+      "development_2022_2023": {
+        "bets": 48,
+        "wins": 41,
+        "win_rate": 0.8541666666666666,
+        "profit_units": 4.878671331083653,
+        "roi": 0.10163898606424276
+      },
+      "validation_2024_2025": {
+        "bets": 93,
+        "wins": 75,
+        "win_rate": 0.8064516129032258,
+        "profit_units": 1.3265681747065106,
+        "roi": 0.014264173921575382
+      },
+      "same_games_market_favorite_control": {
+        "bets": 141,
+        "wins": 116,
+        "win_rate": 0.8226950354609929,
+        "profit_units": 6.205239505790164,
+        "roi": 0.04400879082120684
+      },
+      "model_market_disagreements": 0,
+      "profitable_seasons": 3,
+      "worst_season_roi": -0.03963621406249229,
+      "by_season": {
+        "2022": {
+          "bets": 36,
+          "wins": 30,
+          "win_rate": 0.8333333333333334,
+          "profit_units": 3.4658416795321965,
+          "roi": 0.09627337998700546
+        },
+        "2023": {
+          "bets": 12,
+          "wins": 11,
+          "win_rate": 0.9166666666666666,
+          "profit_units": 1.4128296515514562,
+          "roi": 0.11773580429595469
+        },
+        "2024": {
+          "bets": 41,
+          "wins": 34,
+          "win_rate": 0.8292682926829268,
+          "profit_units": 3.3876513059561106,
+          "roi": 0.08262564160868563
+        },
+        "2025": {
+          "bets": 52,
+          "wins": 41,
+          "win_rate": 0.7884615384615384,
+          "profit_units": -2.061083131249599,
+          "roi": -0.03963621406249229
+        }
+      }
+    },
+    "confidence_650_underdogs": {
+      "pooled_2022_2025": {
+        "bets": 5,
+        "wins": 2,
+        "win_rate": 0.4,
+        "profit_units": -0.9976190476190476,
+        "roi": -0.19952380952380952
+      },
+      "development_2022_2023": {
+        "bets": 1,
+        "wins": 0,
+        "win_rate": 0.0,
+        "profit_units": -1.0,
+        "roi": -1.0
+      },
+      "validation_2024_2025": {
+        "bets": 4,
+        "wins": 2,
+        "win_rate": 0.5,
+        "profit_units": 0.0023809523809523725,
+        "roi": 0.0005952380952380931
+      },
+      "same_games_market_favorite_control": {
+        "bets": 5,
+        "wins": 3,
+        "win_rate": 0.6,
+        "profit_units": -0.033700498295305525,
+        "roi": -0.006740099659061105
+      },
+      "model_market_disagreements": 5,
+      "profitable_seasons": 1,
+      "worst_season_roi": -1.0,
+      "by_season": {
+        "2022": {
+          "bets": 0,
+          "wins": 0,
+          "win_rate": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        "2023": {
+          "bets": 1,
+          "wins": 0,
+          "win_rate": 0.0,
+          "profit_units": -1.0,
+          "roi": -1.0
+        },
+        "2024": {
+          "bets": 2,
+          "wins": 1,
+          "win_rate": 0.5,
+          "profit_units": 0.050000000000000044,
+          "roi": 0.025000000000000022
+        },
+        "2025": {
+          "bets": 2,
+          "wins": 1,
+          "win_rate": 0.5,
+          "profit_units": -0.04761904761904767,
+          "roi": -0.023809523809523836
+        }
+      }
+    },
+    "positive_model_market_edge": {
+      "pooled_2022_2025": {
+        "bets": 262,
+        "wins": 127,
+        "win_rate": 0.4847328244274809,
+        "profit_units": -10.812225039046734,
+        "roi": -0.04126803450017837
+      },
+      "development_2022_2023": {
+        "bets": 133,
+        "wins": 59,
+        "win_rate": 0.44360902255639095,
+        "profit_units": -11.95495914441764,
+        "roi": -0.089886910860283
+      },
+      "validation_2024_2025": {
+        "bets": 129,
+        "wins": 68,
+        "win_rate": 0.5271317829457365,
+        "profit_units": 1.1427341053709075,
+        "roi": 0.008858403917603935
+      },
+      "same_games_market_favorite_control": {
+        "bets": 262,
+        "wins": 162,
+        "win_rate": 0.6183206106870229,
+        "profit_units": 4.305989996150378,
+        "roi": 0.016435076321184648
+      },
+      "model_market_disagreements": 154,
+      "profitable_seasons": 1,
+      "worst_season_roi": -0.15759499235954916,
+      "by_season": {
+        "2022": {
+          "bets": 67,
+          "wins": 28,
+          "win_rate": 0.417910447761194,
+          "profit_units": -10.558864488089794,
+          "roi": -0.15759499235954916
+        },
+        "2023": {
+          "bets": 66,
+          "wins": 31,
+          "win_rate": 0.4696969696969697,
+          "profit_units": -1.3960946563278445,
+          "roi": -0.021152949338300673
+        },
+        "2024": {
+          "bets": 65,
+          "wins": 32,
+          "win_rate": 0.49230769230769234,
+          "profit_units": -5.911516719558924,
+          "roi": -0.09094641107013729
+        },
+        "2025": {
+          "bets": 64,
+          "wins": 36,
+          "win_rate": 0.5625,
+          "profit_units": 7.054250824929829,
+          "roi": 0.11022266913952858
+        }
+      }
+    },
+    "model_market_edge_5_points": {
+      "pooled_2022_2025": {
+        "bets": 179,
+        "wins": 74,
+        "win_rate": 0.4134078212290503,
+        "profit_units": -16.322907443257474,
+        "roi": -0.09118942705730433
+      },
+      "development_2022_2023": {
+        "bets": 91,
+        "wins": 33,
+        "win_rate": 0.3626373626373626,
+        "profit_units": -14.534694240799954,
+        "roi": -0.15972191473406544
+      },
+      "validation_2024_2025": {
+        "bets": 88,
+        "wins": 41,
+        "win_rate": 0.4659090909090909,
+        "profit_units": -1.788213202457519,
+        "roi": -0.020320604573380897
+      },
+      "same_games_market_favorite_control": {
+        "bets": 179,
+        "wins": 109,
+        "win_rate": 0.6089385474860335,
+        "profit_units": -0.7208287785030514,
+        "roi": -0.004026976416218164
+      },
+      "model_market_disagreements": 148,
+      "profitable_seasons": 1,
+      "worst_season_roi": -0.19120786047967592,
+      "by_season": {
+        "2022": {
+          "bets": 45,
+          "wins": 17,
+          "win_rate": 0.37777777777777777,
+          "profit_units": -7.0909349367016645,
+          "roi": -0.15757633192670364
+        },
+        "2023": {
+          "bets": 46,
+          "wins": 16,
+          "win_rate": 0.34782608695652173,
+          "profit_units": -7.443759304098289,
+          "roi": -0.16182085443691932
+        },
+        "2024": {
+          "bets": 45,
+          "wins": 18,
+          "win_rate": 0.4,
+          "profit_units": -8.604353721585417,
+          "roi": -0.19120786047967592
+        },
+        "2025": {
+          "bets": 43,
+          "wins": 23,
+          "win_rate": 0.5348837209302325,
+          "profit_units": 6.816140519127896,
+          "roi": 0.158514895793672
+        }
+      }
+    },
+    "confidence_625_and_positive_edge": {
+      "pooled_2022_2025": {
+        "bets": 54,
+        "wins": 32,
+        "win_rate": 0.5925925925925926,
+        "profit_units": 1.36063031990578,
+        "roi": 0.025196857776032963
+      },
+      "development_2022_2023": {
+        "bets": 21,
+        "wins": 12,
+        "win_rate": 0.5714285714285714,
+        "profit_units": -0.2620989688936526,
+        "roi": -0.012480903280650123
+      },
+      "validation_2024_2025": {
+        "bets": 33,
+        "wins": 20,
+        "win_rate": 0.6060606060606061,
+        "profit_units": 1.6227292887994316,
+        "roi": 0.049173614812103986
+      },
+      "same_games_market_favorite_control": {
+        "bets": 54,
+        "wins": 29,
+        "win_rate": 0.5370370370370371,
+        "profit_units": -8.95629444791301,
+        "roi": -0.16585730459098166
+      },
+      "model_market_disagreements": 15,
+      "profitable_seasons": 2,
+      "worst_season_roi": -0.23915989159891599,
+      "by_season": {
+        "2022": {
+          "bets": 17,
+          "wins": 10,
+          "win_rate": 0.5882352941176471,
+          "profit_units": 0.6945405975020114,
+          "roi": 0.0408553292648242
+        },
+        "2023": {
+          "bets": 4,
+          "wins": 2,
+          "win_rate": 0.5,
+          "profit_units": -0.9566395663956639,
+          "roi": -0.23915989159891599
+        },
+        "2024": {
+          "bets": 18,
+          "wins": 12,
+          "win_rate": 0.6666666666666666,
+          "profit_units": 2.5505876113817862,
+          "roi": 0.14169931174343256
+        },
+        "2025": {
+          "bets": 15,
+          "wins": 8,
+          "win_rate": 0.5333333333333333,
+          "profit_units": -0.9278583225823537,
+          "roi": -0.061857221505490244
+        }
+      }
+    }
+  },
+  "warnings": [
+    "Closing odds differ from the planned 24-hours-before-kickoff odds.",
+    "Thresholds inspected here are retrospective and require prospective validation.",
+    "Model confidence is not guaranteed to be a calibrated probability."
+  ]
+}

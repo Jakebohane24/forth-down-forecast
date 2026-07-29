@@ -43,6 +43,7 @@ def betting_results(frame: pd.DataFrame, threshold: float) -> dict:
     eligible = frame.loc[
         frame["total_line"].notna()
         & (~frame["is_total_push"])
+        & (frame["totals_edge"].abs() > 0)
         & (frame["totals_edge"].abs() >= threshold)
     ].copy()
     eligible["won"] = eligible["model_over"] == eligible["actual_over"]

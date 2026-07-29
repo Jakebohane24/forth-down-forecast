@@ -187,7 +187,8 @@ function PredictionCard({
             className="signal-badge"
             title="Experimental moneyline signal"
           >
-            {game.predicted_winner} {formatOdds(game.moneyline_signal_odds)}
+            Signal indicates {game.predicted_winner}{" "}
+            {formatOdds(game.moneyline_signal_odds)}
           </span>
         )}
         {game.moneyline_signal && completed && (

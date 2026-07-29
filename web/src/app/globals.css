@@ -93,10 +93,8 @@ h1 em { color: var(--green); font-weight: 500; }
 .team-label { display: block; color: var(--muted); font-size: 9px; text-transform: uppercase; letter-spacing: .1em; }
 .team strong { font-size: 15px; }
 .moneyline { display: block; margin-top: 3px; color: var(--green); font-size: 9px; font-weight: 750; letter-spacing: .04em; }
-.score-block { text-align: right; }
-.score-block span { display: block; color: var(--muted); font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
-.score-block b { font-family: Georgia, serif; font-size: 29px; font-weight: 500; }
 .score-comparison { display: grid; grid-template-columns: repeat(2, minmax(54px, 1fr)); gap: 5px; min-width: 122px; }
+.pregame-comparison { grid-template-columns: 1fr; }
 .score-column { padding: 6px 7px; border: 1px solid var(--line); border-radius: 3px; text-align: center; }
 .score-column span { display: block; margin-bottom: 2px; color: var(--muted); font-size: 7px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
 .score-column b { font-family: Georgia, serif; font-size: 27px; font-weight: 500; line-height: 1; }

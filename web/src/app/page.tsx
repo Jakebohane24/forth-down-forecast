@@ -125,8 +125,11 @@ function PredictionCard({
               </div>
             </div>
           ) : (
-            <div className="score-block">
-              <b>{game.predicted_away_score}</b>
+            <div className="score-comparison pregame-comparison">
+              <div className="score-column predicted-score">
+                <span>Prediction</span>
+                <b>{game.predicted_away_score}</b>
+              </div>
             </div>
           )}
         </div>
@@ -152,8 +155,11 @@ function PredictionCard({
               </div>
             </div>
           ) : (
-            <div className="score-block">
-              <b>{game.predicted_home_score}</b>
+            <div className="score-comparison pregame-comparison">
+              <div className="score-column predicted-score">
+                <span>Prediction</span>
+                <b>{game.predicted_home_score}</b>
+              </div>
             </div>
           )}
         </div>

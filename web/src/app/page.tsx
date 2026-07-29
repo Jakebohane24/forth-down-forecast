@@ -187,22 +187,14 @@ export default async function Home({
             className="brand-mark"
             src="/brand-mark.svg"
             alt="Fourth Down Forecast"
-            width={36}
-            height={42}
+            width={40}
+            height={46}
             priority
           />
           <span className="brand-name">
-            Fourth Down
+            <span className="brand-ordinal">th</span> Down
             <small>Forecast</small>
           </span>
-          <Image
-            className="brand-mark brand-mark-right"
-            src="/brand-mark-athletic.svg"
-            alt="Alternative Fourth Down Forecast logo"
-            width={36}
-            height={42}
-            priority
-          />
         </Link>
         <nav>
           <Link className="active" href="/">Predictions</Link>

@@ -282,7 +282,7 @@ export default async function Home({
               <span className="overline">Weekly board</span>
               <h2>{selectedSeason} predictions</h2>
             </div>
-            <div className="week-controls">
+            <div className="board-controls">
               {selectedSeason < 2026 && (
                 <Link
                   className="view-toggle"
@@ -296,23 +296,25 @@ export default async function Home({
                   {pregamePreview ? "Show final results" : "Preview pregame"}
                 </Link>
               )}
-              <Link
-                aria-label="Previous week"
-                aria-disabled={selectedWeek === 6}
-                href={`/?season=${selectedSeason}&week=${previousWeek}${viewQuery}`}
-                scroll={false}
-              >
-                ←
-              </Link>
-              <span>Week {selectedWeek}</span>
-              <Link
-                aria-label="Next week"
-                aria-disabled={selectedWeek === 18}
-                href={`/?season=${selectedSeason}&week=${nextWeek}${viewQuery}`}
-                scroll={false}
-              >
-                →
-              </Link>
+              <div className="week-controls">
+                <Link
+                  aria-label="Previous week"
+                  aria-disabled={selectedWeek === 6}
+                  href={`/?season=${selectedSeason}&week=${previousWeek}${viewQuery}`}
+                  scroll={false}
+                >
+                  ←
+                </Link>
+                <span>Week {selectedWeek}</span>
+                <Link
+                  aria-label="Next week"
+                  aria-disabled={selectedWeek === 18}
+                  href={`/?season=${selectedSeason}&week=${nextWeek}${viewQuery}`}
+                  scroll={false}
+                >
+                  →
+                </Link>
+              </div>
             </div>
           </div>
           <form className="season-picker" action="/">

@@ -57,6 +57,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
 .hero { padding: 78px 0 56px; display: grid; grid-template-columns: 1.45fr 1fr; gap: 80px; align-items: end; }
 .overline, .eyebrow { color: var(--green); text-transform: uppercase; letter-spacing: .16em; font-size: 10px; font-weight: 850; }
 .hero h1, .method-hero h1 { margin: 14px 0 18px; max-width: 720px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(54px, 7vw, 90px); font-weight: 500; line-height: .93; letter-spacing: -.055em; }
+.hero h1 { line-height: .98; }
 h1 em { color: var(--green); font-weight: 500; }
 .hero-copy p, .method-hero p { max-width: 610px; color: var(--muted); font-size: 16px; line-height: 1.75; }
 .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); padding-top: 18px; gap: 18px; }

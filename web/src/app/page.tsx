@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 type Prediction = {
   game_id: string;
@@ -58,7 +59,16 @@ async function getSeasons(): Promise<number[]> {
 }
 
 function TeamMark({ team }: { team: string }) {
-  return <span className="team-mark">{team}</span>;
+  return (
+    <span className="team-mark">
+      <Image
+        src={`/team-logos/${team}.png`}
+        alt={`${team} team logo`}
+        width={34}
+        height={34}
+      />
+    </span>
+  );
 }
 
 function formatOdds(odds: number | null) {

@@ -7,6 +7,29 @@ const seasons = [
   { year: 2025, games: 1286, mae: 10.51, win: 65.8, roi: -2.0 },
 ];
 
+const featureGroups = [
+  {
+    title: "Efficiency",
+    detail:
+      "Passing EPA, rushing EPA, success rate, red-zone EPA, yards per pass, and yards per rush.",
+  },
+  {
+    title: "Volume & style",
+    detail:
+      "Pass and rush volume, pass rate over expectation, time to throw, formation usage, and personnel entropy.",
+  },
+  {
+    title: "Opponent context",
+    detail:
+      "The same rolling efficiency and volume measures allowed by each defense, plus pressure and blitz tendencies.",
+  },
+  {
+    title: "Game context",
+    detail:
+      "Home/away role, wind, divisional status, recent scoring, points allowed, and strictly lagged market history.",
+  },
+];
+
 export default function Methodology() {
   return (
     <>
@@ -53,6 +76,133 @@ export default function Methodology() {
           </div>
         </section>
 
+        <section className="technical-section">
+          <div className="section-heading">
+            <div>
+              <span className="overline">Feature engineering</span>
+              <h2>What the model sees</h2>
+            </div>
+          </div>
+          <p className="section-intro">
+            Every input is available before kickoff. Team form is calculated
+            from the previous five completed games in the same season; the
+            current game’s result never enters its own feature row.
+          </p>
+          <div className="feature-grid">
+            {featureGroups.map((group) => (
+              <article key={group.title}>
+                <h3>{group.title}</h3>
+                <p>{group.detail}</p>
+              </article>
+            ))}
+          </div>
+          <div className="technical-note">
+            <strong>Why predictions begin in Week 6</strong>
+            <p>
+              Version 1 requires five completed current-season games for both
+              teams. It does not silently carry prior-season form across roster
+              and coaching changes. An offseason-carryover approach would be a
+              separate model requiring its own backtest.
+            </p>
+          </div>
+        </section>
+
+        <section className="technical-section">
+          <div className="section-heading">
+            <div>
+              <span className="overline">Model architecture</span>
+              <h2>Two stages, one score forecast</h2>
+            </div>
+          </div>
+          <div className="detail-columns">
+            <article>
+              <span className="detail-number">Stage 01</span>
+              <h3>Predict game components</h3>
+              <p>
+                Fourteen XGBoost regressors estimate home and away passing EPA,
+                rushing EPA, yards per pass, yards per rush, pass plays, rush
+                plays, and defensive pressure rate.
+              </p>
+              <p>
+                Stage-one training predictions are generated out of fold using
+                five-fold shuffled K-fold stacking. This prevents a row from
+                being predicted by a model trained on that same row.
+              </p>
+            </article>
+            <article>
+              <span className="detail-number">Stage 02</span>
+              <h3>Translate components into points</h3>
+              <p>
+                Two additional XGBoost regressors combine the out-of-fold game
+                components with recent scoring, opponent scoring allowed, EPA,
+                touchdown and field-goal differentials, and lagged market form.
+              </p>
+              <p>
+                The outputs are expected home and away offensive points. The
+                displayed predicted score is produced from the subsequent
+                simulation rather than copied from a sportsbook line.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section className="technical-section training-panel">
+          <div>
+            <span className="overline">Training discipline</span>
+            <h2>How parameters are selected</h2>
+          </div>
+          <div className="training-list">
+            <article>
+              <strong>Chronological tuning</strong>
+              <p>
+                Hyperparameters are selected with TimeSeriesSplit so tuning
+                folds train on earlier games and validate on later games.
+              </p>
+            </article>
+            <article>
+              <strong>Expanding evaluation</strong>
+              <p>
+                Each historical season uses a newly fitted model containing
+                only seasons that had already finished. For example, the 2025
+                page uses a model trained through 2024.
+              </p>
+            </article>
+            <article>
+              <strong>Production refit</strong>
+              <p>
+                After model choices were frozen, the production artifact was
+                refitted on every completed season from 2018–2025. The next
+                genuinely prospective evaluation period is 2026.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section className="technical-section">
+          <div className="section-heading">
+            <div>
+              <span className="overline">Simulation & confidence</span>
+              <h2>From expected points to a winner</h2>
+            </div>
+          </div>
+          <div className="simulation-copy">
+            <p>
+              Expected offensive points are converted into touchdown and
+              field-goal scoring rates. Ten thousand seeded Poisson simulations
+              are run for each matchup, including a small non-offensive
+              touchdown component. Median simulated scores become the displayed
+              forecast.
+            </p>
+            <p>
+              “Model confidence” is the share of simulations won by the
+              predicted team. It is useful for ranking conviction, but it has
+              not been proven to be a perfectly calibrated probability. That
+              is why the site does not describe a 65% confidence value as a
+              literal 65% chance of winning.
+            </p>
+          </div>
+        </section>
+
         <section className="backtest">
           <div className="section-heading">
             <div><span className="overline">Expanding-window backtest</span><h2>Performance by season</h2></div>
@@ -85,6 +235,57 @@ export default function Methodology() {
             is not evidence of guaranteed future profit. The 2026 season will
             be tracked prospectively without changing the threshold.
           </p>
+        </section>
+
+        <section className="technical-section decision-section">
+          <div className="section-heading">
+            <div>
+              <span className="overline">Product decisions</span>
+              <h2>What did not make the cut</h2>
+            </div>
+          </div>
+          <div className="decision-grid">
+            <article>
+              <span>Removed</span>
+              <h3>Spread indicator</h3>
+              <p>
+                The four-point spread rule looked promising in 2024–2025 but
+                returned −5.43% across the full five-season rolling backtest.
+                It is preserved in research and excluded from the product.
+              </p>
+            </article>
+            <article>
+              <span>Not promoted</span>
+              <h3>Totals indicator</h3>
+              <p>
+                Every predeclared totals threshold lost during 2022–2023
+                development. A six-point pocket worked later, but failed the
+                stability requirement and was not added to the interface.
+              </p>
+            </article>
+            <article>
+              <span>Experimental</span>
+              <h3>Moneyline signal</h3>
+              <p>
+                A predicted winner is flagged at 62.5% model confidence. The
+                public 2022–2025 showcase returned +3.90% across 239 bets, but
+                the threshold was chosen retrospectively and must prove itself
+                prospectively in 2026.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section className="limitations">
+          <span className="overline">Read before interpreting</span>
+          <h2>Known limitations</h2>
+          <ul>
+            <li>Injuries and confirmed quarterback availability are not explicit model inputs.</li>
+            <li>Historical betting comparisons use closing lines; a live prediction may capture a different price.</li>
+            <li>NFL seasons are small samples, and a few underdog outcomes can materially change moneyline ROI.</li>
+            <li>The public 2022–2025 aggregate excludes the smaller 2021 training window; that result remains in the repository.</li>
+            <li>Historical performance, including profitable periods, does not guarantee future returns.</li>
+          </ul>
         </section>
       </main>
       <footer><span>Fourth Down Forecast</span><span>Experimental analysis—not financial advice.</span></footer>

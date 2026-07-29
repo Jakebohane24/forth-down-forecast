@@ -44,7 +44,15 @@ export default function Methodology() {
             height={42}
             priority
           />
-          <span>Fourth Down<small>Forecast</small></span>
+          <span className="brand-name">Fourth Down<small>Forecast</small></span>
+          <Image
+            className="brand-mark brand-mark-right"
+            src="/brand-mark-athletic.svg"
+            alt="Alternative Fourth Down Forecast logo"
+            width={36}
+            height={42}
+            priority
+          />
         </Link>
         <nav>
           <Link href="/">Predictions</Link>

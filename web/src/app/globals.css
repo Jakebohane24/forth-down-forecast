@@ -39,6 +39,7 @@ a { color: inherit; text-decoration: none; }
 .brand { display: flex; align-items: center; gap: 11px; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; line-height: 1.05; }
 .brand small { display: block; color: var(--green); font-size: 10px; letter-spacing: .2em; margin-top: 3px; }
 .brand-mark { width: 36px; height: 42px; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(16,24,22,.12)); }
+.brand-mark-right { margin-left: 2px; }
 nav { display: flex; gap: 32px; font-size: 13px; font-weight: 650; }
 nav a { color: var(--muted); position: relative; }
 nav a:hover, nav a.active { color: var(--ink); }
@@ -175,7 +176,7 @@ footer { max-width: 1180px; margin: 0 auto; padding: 25px 28px 35px; display: fl
 }
 
 @media (max-width: 520px) {
-  .brand > span:last-child { display: none; }
+  .brand-name { display: none; }
   nav { font-size: 11px; }
   .hero-stats { grid-template-columns: 1fr 1fr; }
   .section-heading { align-items: start; flex-direction: column; }

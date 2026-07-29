@@ -8,6 +8,7 @@ def test_default_model_configuration_is_explicit():
 
     assert config.use_market_history is True
     assert config.stacking_strategy == "kfold"
+    assert config.tuning_strategy == "timeseries"
     assert config.market_history_features == "all"
     assert config.validation_season == 2024
     assert config.test_season == 2025
@@ -25,6 +26,7 @@ def test_model_configuration_round_trip():
     "kwargs",
     [
         {"stacking_strategy": "random"},
+        {"tuning_strategy": "random"},
         {"market_history_features": "unknown"},
         {"oof_folds": 1},
         {"tuning_iterations": 0},

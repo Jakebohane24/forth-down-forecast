@@ -420,6 +420,16 @@ class NFLModel:
         X_test = self.df.loc[test_mask, feature_cols].copy()
         return X_train, X_val, X_test
 
+    def tuning_splitter(self):
+        """Return the configured cross-validation splitter for model tuning."""
+        if self.config.tuning_strategy == "kfold":
+            return KFold(
+                n_splits=self.config.tuning_folds,
+                shuffle=True,
+                random_state=self.config.random_state,
+            )
+        return TimeSeriesSplit(n_splits=self.config.tuning_folds)
+
     def train_stage_1(self):
 
         train_mask, val_mask, test_mask = self.train_val_test_masks()
@@ -518,7 +528,6 @@ class NFLModel:
                 "reg_alpha": [0, 0.1, 1.0, 5.0],
                 "reg_lambda": [1.0, 5.0, 10.0],
             }
-            tscv = TimeSeriesSplit(n_splits=self.config.tuning_folds)
             search = RandomizedSearchCV(
                 estimator=xgb.XGBRegressor(
                     random_state=self.config.random_state,
@@ -528,7 +537,7 @@ class NFLModel:
                 param_distributions=param_distributions,
                 n_iter=self.config.tuning_iterations,
                 scoring="neg_root_mean_squared_error",
-                cv=tscv,
+                cv=self.tuning_splitter(),
                 random_state=self.config.random_state,
                 n_jobs=1,
             )
@@ -701,7 +710,6 @@ class NFLModel:
             "reg_alpha": [0, 0.1, 1.0, 5.0],
             "reg_lambda": [1.0, 5.0, 10.0],
         }
-        tscv = TimeSeriesSplit(n_splits=self.config.tuning_folds)
         search = RandomizedSearchCV(
             estimator=xgb.XGBRegressor(
                 random_state=self.config.random_state,
@@ -711,7 +719,7 @@ class NFLModel:
             param_distributions=param_distributions,
             n_iter=self.config.tuning_iterations,
             scoring="neg_root_mean_squared_error",
-            cv=tscv,
+            cv=self.tuning_splitter(),
             random_state=self.config.random_state,
             n_jobs=1,
         )

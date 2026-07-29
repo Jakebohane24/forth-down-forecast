@@ -107,6 +107,7 @@ def run_backtest(
     first_test_season: int = 2021,
     last_test_season: int = 2025,
     stacking_strategy: str = "kfold",
+    tuning_strategy: str = "timeseries",
 ) -> dict:
     evaluation_config = EvaluationConfig()
     moneyline_confidence_threshold = 0.625
@@ -119,6 +120,7 @@ def run_backtest(
         training_seasons = tuple(range(2018, test_season))
         config = ModelConfig(
             stacking_strategy=stacking_strategy,
+            tuning_strategy=tuning_strategy,
             training_seasons=training_seasons,
             validation_season=test_season - 1,
             test_season=test_season,
@@ -165,12 +167,15 @@ def run_backtest(
     return {
         "description": (
             "Expanding-window backtest of the locked model architecture using "
-            f"{stacking_strategy} stage-one out-of-fold stacking"
+            f"{stacking_strategy} stage-one out-of-fold stacking and "
+            f"{tuning_strategy} hyperparameter cross-validation"
         ),
         "stacking_strategy": stacking_strategy,
+        "tuning_strategy": tuning_strategy,
         "methodology": (
             "Each test season is predicted by a newly tuned model trained only "
-            "on processed games from 2018 through the prior season."
+            "on processed games from 2018 through the prior season. "
+            f"Hyperparameters use {tuning_strategy} cross-validation."
         ),
         "caveat": (
             "Earlier test seasons use materially fewer training games. The "
@@ -204,11 +209,17 @@ def main() -> None:
         choices=["kfold", "timeseries"],
         default="kfold",
     )
+    parser.add_argument(
+        "--tuning-strategy",
+        choices=["kfold", "timeseries"],
+        default="timeseries",
+    )
     args = parser.parse_args()
     results = run_backtest(
         first_test_season=args.first_test_season,
         last_test_season=args.last_test_season,
         stacking_strategy=args.stacking_strategy,
+        tuning_strategy=args.tuning_strategy,
     )
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(results, indent=2) + "\n")

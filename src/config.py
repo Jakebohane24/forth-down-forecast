@@ -5,6 +5,7 @@ from typing import Literal
 
 
 StackingStrategy = Literal["kfold", "timeseries"]
+TuningStrategy = Literal["kfold", "timeseries"]
 MarketHistoryFeatures = Literal["corrected", "composite", "all"]
 
 
@@ -14,6 +15,7 @@ class ModelConfig:
 
     use_market_history: bool = True
     stacking_strategy: StackingStrategy = "kfold"
+    tuning_strategy: TuningStrategy = "timeseries"
     market_history_features: MarketHistoryFeatures = "all"
     random_state: int = 24
     oof_folds: int = 5
@@ -26,6 +28,8 @@ class ModelConfig:
     def __post_init__(self):
         if self.stacking_strategy not in {"kfold", "timeseries"}:
             raise ValueError("stacking_strategy must be 'kfold' or 'timeseries'")
+        if self.tuning_strategy not in {"kfold", "timeseries"}:
+            raise ValueError("tuning_strategy must be 'kfold' or 'timeseries'")
         if self.market_history_features not in {
             "corrected",
             "composite",

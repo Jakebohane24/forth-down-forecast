@@ -183,8 +183,11 @@ function PredictionCard({
           </span>
         )}
         {game.moneyline_signal && !completed && (
-          <span className="signal-badge">
-            Experimental signal · {formatOdds(game.moneyline_signal_odds)}
+          <span
+            className="signal-badge"
+            title="Experimental moneyline signal"
+          >
+            {game.predicted_winner} {formatOdds(game.moneyline_signal_odds)}
           </span>
         )}
         {game.moneyline_signal && completed && (

@@ -12,7 +12,7 @@ const featureGroups = [
   {
     title: "Efficiency",
     detail:
-      "Passing EPA, rushing EPA, success rate, red-zone EPA, yards per pass, and yards per rush.",
+      "Passing EPA, rushing EPA, success rate, yards per pass, and yards per rush.",
   },
   {
     title: "Volume & style",
@@ -27,7 +27,7 @@ const featureGroups = [
   {
     title: "Game context",
     detail:
-      "Home/away role, wind, divisional status, recent scoring, points allowed, and strictly lagged market history.",
+      "Separate home and away modeling, wind, recent scoring, points allowed, and strictly lagged market history.",
   },
 ];
 

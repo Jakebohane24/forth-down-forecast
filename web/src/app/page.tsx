@@ -103,10 +103,22 @@ function PredictionCard({ game, week }: { game: Prediction; week: number }) {
               ML {formatOdds(game.away_moneyline)}
             </small>
           </div>
-          <div className="score-block">
-            {completed && <span>Pred {game.predicted_away_score}</span>}
-            <b>{game.actual_away_score ?? game.predicted_away_score}</b>
-          </div>
+          {completed ? (
+            <div className="score-comparison">
+              <div className="score-column predicted-score">
+                <span>Prediction</span>
+                <b>{game.predicted_away_score}</b>
+              </div>
+              <div className="score-column final-score">
+                <span>Final</span>
+                <b>{game.actual_away_score}</b>
+              </div>
+            </div>
+          ) : (
+            <div className="score-block">
+              <b>{game.predicted_away_score}</b>
+            </div>
+          )}
         </div>
         <div className="at">@</div>
         <div className="team">
@@ -118,10 +130,22 @@ function PredictionCard({ game, week }: { game: Prediction; week: number }) {
               ML {formatOdds(game.home_moneyline)}
             </small>
           </div>
-          <div className="score-block">
-            {completed && <span>Pred {game.predicted_home_score}</span>}
-            <b>{game.actual_home_score ?? game.predicted_home_score}</b>
-          </div>
+          {completed ? (
+            <div className="score-comparison">
+              <div className="score-column predicted-score">
+                <span>Prediction</span>
+                <b>{game.predicted_home_score}</b>
+              </div>
+              <div className="score-column final-score">
+                <span>Final</span>
+                <b>{game.actual_home_score}</b>
+              </div>
+            </div>
+          ) : (
+            <div className="score-block">
+              <b>{game.predicted_home_score}</b>
+            </div>
+          )}
         </div>
       </div>
       <div className="prediction-footer">

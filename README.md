@@ -37,6 +37,12 @@ The current high-edge threshold is a model-versus-market difference of at
 least 4.0 points. It is an experimental indicator, not a proven betting
 recommendation.
 
+Retrospective spread and moneyline indicator results are recorded in
+`reports/betting_retrospective.json`. The moneyline experiment uses a 62.5%
+model-confidence threshold. Both thresholds were chosen after inspecting the
+2024 and 2025 results, so they must be tracked prospectively before being
+treated as reliable.
+
 ## Save and load
 
 ```python

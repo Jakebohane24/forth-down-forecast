@@ -1,0 +1,62 @@
+{
+  "description": "Retrospective betting-indicator results for the saved default model",
+  "important_note": "These thresholds were selected after reviewing 2024 and 2025. Results are promising but are not an unbiased estimate of future performance.",
+  "moneyline": {
+    "data_source": "nflverse schedules closing home/away moneylines",
+    "rule": "Bet the model-predicted winner when model win confidence is at least 0.625",
+    "threshold": 0.625,
+    "validation_2024": {
+      "bets": 65,
+      "wins": 54,
+      "win_rate": 0.8307692308,
+      "profit_units": 8.8868,
+      "roi": 0.13672
+    },
+    "test_2025": {
+      "bets": 68,
+      "wins": 52,
+      "win_rate": 0.7647058824,
+      "profit_units": 2.0061,
+      "roi": 0.0295
+    },
+    "combined": {
+      "bets": 133,
+      "wins": 106,
+      "win_rate": 0.7969924812,
+      "profit_units": 10.8929,
+      "roi": 0.0819
+    },
+    "same_games_market_favorite_control": {
+      "combined_roi_approx": 0.0063,
+      "model_market_agreement_2024": 0.9231,
+      "model_market_agreement_2025": 0.9265
+    },
+    "calibration_warning": "Treat the value as model win confidence, not a calibrated probability. Direct model-versus-market implied-probability edge performed poorly."
+  },
+  "spread": {
+    "assumed_price": -110,
+    "rule": "Bet the model side when absolute model-versus-market spread edge is at least 4.0 points",
+    "threshold_points": 4.0,
+    "validation_2024": {
+      "bets": 57,
+      "wins": 32,
+      "losses": 25,
+      "ats_rate": 0.5614035088,
+      "roi_approx": 0.0718
+    },
+    "test_2025": {
+      "bets": 59,
+      "wins": 32,
+      "losses": 27,
+      "ats_rate": 0.5423728814,
+      "roi_approx": 0.0354
+    },
+    "combined": {
+      "bets": 116,
+      "wins": 64,
+      "losses": 52,
+      "ats_rate": 0.5517241379,
+      "roi_approx": 0.0533
+    }
+  }
+}

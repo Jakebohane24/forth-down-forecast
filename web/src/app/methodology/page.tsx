@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 const seasons = [
-  { year: 2021, games: 523, mae: 11.93, win: 63.0, roi: -17.7 },
   { year: 2022, games: 715, mae: 9.04, win: 62.8, roi: 6.5 },
   { year: 2023, games: 906, mae: 9.95, win: 62.6, roi: -8.4 },
   { year: 2024, games: 1096, mae: 10.09, win: 68.9, roi: 13.7 },
@@ -38,8 +37,8 @@ export default function Methodology() {
         <section className="metric-row">
           <article><span>Architecture</span><strong>2-stage</strong><small>XGBoost regression</small></article>
           <article><span>Production data</span><strong>8 seasons</strong><small>2018 through 2025</small></article>
-          <article><span>Rolling ML bets</span><strong>280</strong><small>Five test seasons</small></article>
-          <article><span>Pooled ML ROI</span><strong>+0.74%</strong><small>Experimental, flat stake</small></article>
+          <article><span>Rolling ML bets</span><strong>239</strong><small>2022–2025 showcase</small></article>
+          <article><span>Pooled ML ROI</span><strong>+3.90%</strong><small>2022–2025, flat stake</small></article>
         </section>
 
         <section className="model-flow">
@@ -78,10 +77,13 @@ export default function Methodology() {
             </table>
           </div>
           <p className="disclosure">
-            The 62.5% threshold was selected after inspecting historical data.
-            The pooled return was +0.74%, which is close to break-even and is
-            not evidence of guaranteed future profit. The 2026 season will be
-            tracked prospectively without changing the threshold.
+            The public showcase begins in 2022, when the expanding training
+            window contained 715 games. The earlier 2021 test remains preserved
+            in the full research report but is excluded from this displayed
+            aggregate because its training history was materially smaller. The
+            62.5% threshold was selected retrospectively, so the +3.90% return
+            is not evidence of guaranteed future profit. The 2026 season will
+            be tracked prospectively without changing the threshold.
           </p>
         </section>
       </main>

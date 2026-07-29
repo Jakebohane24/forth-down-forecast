@@ -49,9 +49,11 @@ async function getSeasons(): Promise<number[]> {
     });
     if (!response.ok) throw new Error("Season API unavailable");
     const historical: number[] = await response.json();
-    return Array.from(new Set([2026, ...historical])).sort((a, b) => b - a);
+    return Array.from(
+      new Set([2026, ...historical.filter((season) => season >= 2022)]),
+    ).sort((a, b) => b - a);
   } catch {
-    return [2026, 2025, 2024, 2023, 2022, 2021];
+    return [2026, 2025, 2024, 2023, 2022];
   }
 }
 

@@ -2,10 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 
 const seasons = [
-  { year: 2022, games: 715, mae: 9.04, win: 62.8, roi: 6.5 },
-  { year: 2023, games: 906, mae: 9.95, win: 62.6, roi: -8.4 },
-  { year: 2024, games: 1096, mae: 10.09, win: 68.9, roi: 13.7 },
-  { year: 2025, games: 1286, mae: 10.51, win: 65.8, roi: -2.0 },
+  { year: 2022, games: 715, predicted: 71, mae: 9.04, win: 62.8, roi: 6.5 },
+  { year: 2023, games: 906, predicted: 33, mae: 9.95, win: 62.6, roi: -8.4 },
+  { year: 2024, games: 1096, predicted: 65, mae: 10.09, win: 68.9, roi: 13.7 },
+  { year: 2025, games: 1286, predicted: 70, mae: 10.51, win: 65.8, roi: -2.0 },
 ];
 
 const featureGroups = [
@@ -218,12 +218,13 @@ export default function Methodology() {
           </div>
           <div className="table-wrap">
             <table>
-              <thead><tr><th>Test season</th><th>Training games</th><th>Margin MAE</th><th>Winner accuracy</th><th>Moneyline ROI</th></tr></thead>
+              <thead><tr><th>Test season</th><th>Training games</th><th>Games predicted<br /><small>≥62.5% confidence</small></th><th>Margin MAE</th><th>Winner accuracy</th><th>Moneyline ROI</th></tr></thead>
               <tbody>
                 {seasons.map((row) => (
                   <tr key={row.year}>
                     <td><strong>{row.year}</strong></td>
                     <td>{row.games.toLocaleString()}</td>
+                    <td>{row.predicted}</td>
                     <td>{row.mae.toFixed(2)}</td>
                     <td>{row.win.toFixed(1)}%</td>
                     <td className={row.roi >= 0 ? "positive" : "negative"}>

@@ -131,6 +131,7 @@ h1 em { color: var(--green); font-weight: 500; }
 .table-wrap { overflow-x: auto; background: white; border: 1px solid var(--line); border-radius: 4px 18px 4px 4px; }
 table { width: 100%; border-collapse: collapse; font-size: 13px; }
 th { padding: 15px 20px; color: var(--muted); background: #eceee7; text-align: left; font-size: 9px; text-transform: uppercase; letter-spacing: .1em; }
+th small { display: inline-block; margin-top: 3px; font-size: 8px; letter-spacing: .06em; }
 td { padding: 18px 20px; border-top: 1px solid var(--line); }
 .positive { color: var(--green); font-weight: 800; }
 .negative { color: var(--red); font-weight: 800; }

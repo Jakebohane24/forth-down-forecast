@@ -62,3 +62,16 @@ class EvaluationConfig:
             raise ValueError("simulations must be positive")
         if self.high_edge_threshold < 0:
             raise ValueError("high_edge_threshold cannot be negative")
+
+
+@dataclass(frozen=True)
+class BettingConfig:
+    """Frozen thresholds used by the public prediction product."""
+
+    moneyline_confidence_threshold: float = 0.625
+
+    def __post_init__(self):
+        if not 0.5 <= self.moneyline_confidence_threshold <= 1:
+            raise ValueError(
+                "moneyline_confidence_threshold must be between 0.5 and 1"
+            )

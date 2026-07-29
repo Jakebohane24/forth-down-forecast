@@ -57,6 +57,8 @@ def test_weekly_prediction_adds_consensus_market_edge():
     assert result.loc["2026_01_MIA_BUF", "model_edge"] == (
         result.loc["2026_01_MIA_BUF", "pred_spread"] - 2.5
     )
+    assert result.loc["2026_01_MIA_BUF", "predicted_winner"] in {"BUF", "MIA"}
+    assert "moneyline_signal" in result
 
 
 def test_prediction_snapshot_refuses_to_overwrite(tmp_path):

@@ -1,6 +1,6 @@
 import pytest
 
-from src.config import EvaluationConfig, ModelConfig
+from src.config import BettingConfig, EvaluationConfig, ModelConfig
 
 
 def test_default_model_configuration_is_explicit():
@@ -38,3 +38,10 @@ def test_invalid_model_configuration_fails_fast(kwargs):
 def test_invalid_evaluation_configuration_fails_fast():
     with pytest.raises(ValueError):
         EvaluationConfig(simulations=0)
+
+
+def test_moneyline_threshold_is_a_probability():
+    assert BettingConfig().moneyline_confidence_threshold == 0.625
+
+    with pytest.raises(ValueError):
+        BettingConfig(moneyline_confidence_threshold=0.49)

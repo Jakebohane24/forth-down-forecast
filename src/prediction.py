@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from src.config import EvaluationConfig
+from src.config import BettingConfig, EvaluationConfig
 from src.evaluation import simulate_scores
 from src.market import MarketDataProvider, consensus_lines
 
@@ -23,9 +23,11 @@ class WeeklyPredictor:
         model,
         *,
         simulation_config: EvaluationConfig | None = None,
+        betting_config: BettingConfig | None = None,
     ):
         self.model = model
         self.simulation_config = simulation_config or EvaluationConfig()
+        self.betting_config = betting_config or BettingConfig()
 
     def predict(
         self,
@@ -50,6 +52,21 @@ class WeeklyPredictor:
         )
         result.index.name = "game_id"
         result["prediction_timestamp"] = datetime.now(UTC)
+        result["predicted_winner"] = result["home_team"].where(
+            result["pred_home_win"],
+            result["away_team"],
+        )
+        result["model_win_confidence"] = result["home_win_prob"].where(
+            result["pred_home_win"],
+            1 - result["home_win_prob"],
+        )
+        result["moneyline_signal"] = (
+            result["model_win_confidence"]
+            >= self.betting_config.moneyline_confidence_threshold
+        )
+        result["moneyline_signal_team"] = result["predicted_winner"].where(
+            result["moneyline_signal"]
+        )
 
         if market_provider is not None:
             lines = consensus_lines(
@@ -64,6 +81,10 @@ class WeeklyPredictor:
                     else "away" if pd.notna(edge) and edge < 0 else "none"
                 )
             )
+            result["moneyline_signal_odds"] = result["home_moneyline"].where(
+                result["pred_home_win"],
+                result["away_moneyline"],
+            ).where(result["moneyline_signal"])
 
         return result
 

@@ -74,6 +74,7 @@ h1 em { color: var(--green); font-weight: 500; }
 .section-heading h2 { margin: 7px 0 0; font-family: Georgia, serif; font-size: 34px; font-weight: 500; letter-spacing: -.025em; }
 .week-controls { display: flex; align-items: center; border: 1px solid rgba(255,255,255,.2); border-radius: 3px; }
 .week-controls > a { display: grid; place-items: center; width: 38px; height: 38px; color: white; }
+.week-controls > .view-toggle { width: auto; padding: 0 12px; color: var(--bright); font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: .07em; white-space: nowrap; }
 .week-controls > a[aria-disabled="true"] { opacity: .3; pointer-events: none; }
 .week-controls span { padding: 0 17px; font-size: 12px; font-weight: 750; text-transform: uppercase; letter-spacing: .08em; }
 .season-picker { display: flex; align-items: center; gap: 10px; margin: -7px 0 25px; }

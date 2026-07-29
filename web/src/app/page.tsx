@@ -76,9 +76,19 @@ function formatOdds(odds: number | null) {
   return odds > 0 ? `+${odds}` : `${odds}`;
 }
 
-function PredictionCard({ game, week }: { game: Prediction; week: number }) {
+function PredictionCard({
+  game,
+  week,
+  pregamePreview = false,
+}: {
+  game: Prediction;
+  week: number;
+  pregamePreview?: boolean;
+}) {
   const completed =
-    game.actual_home_score !== null && game.actual_away_score !== null;
+    !pregamePreview &&
+    game.actual_home_score !== null &&
+    game.actual_away_score !== null;
   return (
     <article
       className={`game-card ${
@@ -191,11 +201,13 @@ function PredictionCard({ game, week }: { game: Prediction; week: number }) {
 export default async function Home({
   searchParams,
 }: {
-  searchParams: Promise<{ season?: string; week?: string }>;
+  searchParams: Promise<{ season?: string; week?: string; view?: string }>;
 }) {
   const query = await searchParams;
   const selectedSeason = Number(query.season) || 2026;
   const selectedWeek = Math.min(18, Math.max(6, Number(query.week) || 6));
+  const pregamePreview = query.view === "pregame" && selectedSeason < 2026;
+  const viewQuery = pregamePreview ? "&view=pregame" : "";
   const [board, seasons] = await Promise.all([
     getPredictions(selectedSeason, selectedWeek),
     getSeasons(),
@@ -261,10 +273,23 @@ export default async function Home({
               <h2>{selectedSeason} predictions</h2>
             </div>
             <div className="week-controls">
+              {selectedSeason < 2026 && (
+                <Link
+                  className="view-toggle"
+                  href={
+                    pregamePreview
+                      ? `/?season=${selectedSeason}&week=${selectedWeek}`
+                      : `/?season=${selectedSeason}&week=${selectedWeek}&view=pregame`
+                  }
+                  scroll={false}
+                >
+                  {pregamePreview ? "Show final results" : "Preview pregame"}
+                </Link>
+              )}
               <Link
                 aria-label="Previous week"
                 aria-disabled={selectedWeek === 6}
-                href={`/?season=${selectedSeason}&week=${previousWeek}`}
+                href={`/?season=${selectedSeason}&week=${previousWeek}${viewQuery}`}
                 scroll={false}
               >
                 ←
@@ -273,7 +298,7 @@ export default async function Home({
               <Link
                 aria-label="Next week"
                 aria-disabled={selectedWeek === 18}
-                href={`/?season=${selectedSeason}&week=${nextWeek}`}
+                href={`/?season=${selectedSeason}&week=${nextWeek}${viewQuery}`}
                 scroll={false}
               >
                 →
@@ -290,6 +315,7 @@ export default async function Home({
               ))}
             </select>
             <input type="hidden" name="week" value={selectedWeek} />
+            {pregamePreview && <input type="hidden" name="view" value="pregame" />}
             <button type="submit">View season</button>
           </form>
 
@@ -300,6 +326,7 @@ export default async function Home({
                   key={game.game_id}
                   game={game}
                   week={selectedWeek}
+                  pregamePreview={pregamePreview}
                 />
               ))}
             </div>

@@ -1,0 +1,192 @@
+{
+  "description": "Expanding-window backtest of the locked model architecture",
+  "methodology": "Each test season is predicted by a newly tuned model trained only on processed games from 2018 through the prior season.",
+  "caveat": "Earlier test seasons use materially fewer training games. The 4.0-point spread and 62.5% moneyline-confidence thresholds were selected after inspecting later seasons and are not unbiased.",
+  "spread_price": -110,
+  "moneyline_source": "nflverse schedule closing moneylines",
+  "pooled_results": {
+    "spread_4_point": {
+      "bets": 323,
+      "wins": 160,
+      "losses": 163,
+      "win_rate": 0.4953560371517028,
+      "profit_units": -17.545454545454543,
+      "roi": -0.05432029271038558
+    },
+    "moneyline_62_5_confidence": {
+      "bets": 280,
+      "wins": 211,
+      "losses": 69,
+      "win_rate": 0.7535714285714286,
+      "profit_units": 2.0582655464696864,
+      "roi": 0.00735094838024888
+    }
+  },
+  "seasons": [
+    {
+      "test_season": 2021,
+      "training_seasons": [
+        2018,
+        2019,
+        2020
+      ],
+      "training_games": 523,
+      "test_games": 192,
+      "margin_mae": 11.932291666666666,
+      "margin_rmse": 15.076022629769874,
+      "win_accuracy": 0.6302083333333334,
+      "ats_accuracy": 0.48404255319148937,
+      "spread_4_point": {
+        "bets": 88,
+        "wins": 43,
+        "losses": 45,
+        "ats_rate": 0.48863636363636365,
+        "profit_units": -5.909090909090909,
+        "roi": -0.06714876033057851
+      },
+      "moneyline_62_5_confidence": {
+        "bets": 41,
+        "wins": 25,
+        "losses": 16,
+        "win_rate": 0.6097560975609756,
+        "profit_units": -7.267701782548581,
+        "roi": -0.17726101908655076,
+        "games_missing_odds": 0
+      }
+    },
+    {
+      "test_season": 2022,
+      "training_seasons": [
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "training_games": 715,
+      "test_games": 191,
+      "margin_mae": 9.041884816753926,
+      "margin_rmse": 11.900767716887382,
+      "win_accuracy": 0.6282722513089005,
+      "ats_accuracy": 0.5271739130434783,
+      "spread_4_point": {
+        "bets": 56,
+        "wins": 28,
+        "losses": 28,
+        "ats_rate": 0.5,
+        "profit_units": -2.5454545454545454,
+        "roi": -0.045454545454545456
+      },
+      "moneyline_62_5_confidence": {
+        "bets": 71,
+        "wins": 55,
+        "losses": 16,
+        "win_rate": 0.7746478873239436,
+        "profit_units": 4.620081665518031,
+        "roi": 0.06507157275377508,
+        "games_missing_odds": 0
+      }
+    },
+    {
+      "test_season": 2023,
+      "training_seasons": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022
+      ],
+      "training_games": 906,
+      "test_games": 190,
+      "margin_mae": 9.95,
+      "margin_rmse": 13.045719201089844,
+      "win_accuracy": 0.6263157894736842,
+      "ats_accuracy": 0.5082872928176796,
+      "spread_4_point": {
+        "bets": 63,
+        "wins": 31,
+        "losses": 32,
+        "ats_rate": 0.49206349206349204,
+        "profit_units": -3.8181818181818175,
+        "roi": -0.060606060606060594
+      },
+      "moneyline_62_5_confidence": {
+        "bets": 33,
+        "wins": 24,
+        "losses": 9,
+        "win_rate": 0.7272727272727273,
+        "profit_units": -2.7639807986152465,
+        "roi": -0.08375699389743171,
+        "games_missing_odds": 0
+      }
+    },
+    {
+      "test_season": 2024,
+      "training_seasons": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "training_games": 1096,
+      "test_games": 190,
+      "margin_mae": 10.092105263157896,
+      "margin_rmse": 13.134376350069429,
+      "win_accuracy": 0.6894736842105263,
+      "ats_accuracy": 0.5133689839572193,
+      "spread_4_point": {
+        "bets": 57,
+        "wins": 32,
+        "losses": 25,
+        "ats_rate": 0.5614035087719298,
+        "profit_units": 4.090909090909091,
+        "roi": 0.07177033492822966
+      },
+      "moneyline_62_5_confidence": {
+        "bets": 65,
+        "wins": 54,
+        "losses": 11,
+        "win_rate": 0.8307692307692308,
+        "profit_units": 8.88681763960516,
+        "roi": 0.13672027137854093,
+        "games_missing_odds": 0
+      }
+    },
+    {
+      "test_season": 2025,
+      "training_seasons": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "training_games": 1286,
+      "test_games": 190,
+      "margin_mae": 10.510526315789473,
+      "margin_rmse": 13.113873730157932,
+      "win_accuracy": 0.6578947368421053,
+      "ats_accuracy": 0.4973544973544973,
+      "spread_4_point": {
+        "bets": 59,
+        "wins": 26,
+        "losses": 33,
+        "ats_rate": 0.4406779661016949,
+        "profit_units": -9.363636363636363,
+        "roi": -0.15870570107858242
+      },
+      "moneyline_62_5_confidence": {
+        "bets": 70,
+        "wins": 53,
+        "losses": 17,
+        "win_rate": 0.7571428571428571,
+        "profit_units": -1.4169511774896772,
+        "roi": -0.020242159678423962,
+        "games_missing_odds": 0
+      }
+    }
+  ]
+}

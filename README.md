@@ -33,6 +33,10 @@ evaluate_model(model, "test")
 The locked regression baseline is stored in
 `reports/baseline_metrics.json`.
 
+The current high-edge threshold is a model-versus-market difference of at
+least 4.0 points. It is an experimental indicator, not a proven betting
+recommendation.
+
 ## Save and load
 
 ```python

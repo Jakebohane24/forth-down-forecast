@@ -55,7 +55,7 @@ class ModelConfig:
 class EvaluationConfig:
     simulations: int = 10_000
     random_state: int = 24
-    high_edge_threshold: float = 1.5
+    high_edge_threshold: float = 4.0
 
     def __post_init__(self):
         if self.simulations < 1:

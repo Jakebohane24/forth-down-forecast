@@ -1,0 +1,1140 @@
+{
+  "description": "Expanding-window evaluation of the locked score model against nflverse closing game totals",
+  "assumed_price": -110,
+  "edge_definition": "predicted total minus closing market total",
+  "thresholds_predeclared": [
+    0.0,
+    2.0,
+    3.0,
+    4.0,
+    5.0,
+    6.0
+  ],
+  "decision_rule": "Choose a threshold only if it is profitable and reasonably stable in 2022–2023 development, then require it to remain profitable in 2024–2025 validation.",
+  "conclusion": "No totals betting threshold qualifies. Development was unprofitable at every predeclared threshold. The six-point threshold was profitable in 2024–2025 but lost in both development seasons, so it is not a validated product signal.",
+  "development": {
+    "seasons": [
+      2022,
+      2023
+    ],
+    "forecast": {
+      "games": 381,
+      "total_mae": 11.043307086614174,
+      "total_rmse": 13.888452311598602,
+      "mean_bias_predicted_minus_actual": 1.9225721784776904,
+      "correlation": 0.14248118375516347,
+      "within_3_points": 0.1968503937007874,
+      "within_7_points": 0.3910761154855643,
+      "within_10_points": 0.5564304461942258,
+      "market_total_mae": 10.299212598425196
+    },
+    "thresholds": {
+      "0.0": {
+        "edge_threshold": 0.0,
+        "bets": 378,
+        "wins": 178,
+        "losses": 200,
+        "accuracy": 0.4708994708994709,
+        "profit_units": -38.18181818181818,
+        "roi": -0.10101010101010101,
+        "overs": {
+          "bets": 276,
+          "wins": 126,
+          "accuracy": 0.45652173913043476,
+          "profit_units": -35.45454545454545,
+          "roi": -0.12845849802371542
+        },
+        "unders": {
+          "bets": 102,
+          "wins": 52,
+          "accuracy": 0.5098039215686274,
+          "profit_units": -2.7272727272727266,
+          "roi": -0.026737967914438495
+        }
+      },
+      "2.0": {
+        "edge_threshold": 2.0,
+        "bets": 253,
+        "wins": 122,
+        "losses": 131,
+        "accuracy": 0.48221343873517786,
+        "profit_units": -20.090909090909097,
+        "roi": -0.07941070786920591,
+        "overs": {
+          "bets": 205,
+          "wins": 96,
+          "accuracy": 0.4682926829268293,
+          "profit_units": -21.727272727272727,
+          "roi": -0.10598669623059867
+        },
+        "unders": {
+          "bets": 48,
+          "wins": 26,
+          "accuracy": 0.5416666666666666,
+          "profit_units": 1.6363636363636367,
+          "roi": 0.034090909090909095
+        }
+      },
+      "3.0": {
+        "edge_threshold": 3.0,
+        "bets": 205,
+        "wins": 106,
+        "losses": 99,
+        "accuracy": 0.5170731707317073,
+        "profit_units": -2.6363636363636385,
+        "roi": -0.01286031042128604,
+        "overs": {
+          "bets": 173,
+          "wins": 86,
+          "accuracy": 0.49710982658959535,
+          "profit_units": -8.818181818181817,
+          "roi": -0.05097214923804518
+        },
+        "unders": {
+          "bets": 32,
+          "wins": 20,
+          "accuracy": 0.625,
+          "profit_units": 6.181818181818182,
+          "roi": 0.19318181818181818
+        }
+      },
+      "4.0": {
+        "edge_threshold": 4.0,
+        "bets": 150,
+        "wins": 69,
+        "losses": 81,
+        "accuracy": 0.46,
+        "profit_units": -18.27272727272727,
+        "roi": -0.1218181818181818,
+        "overs": {
+          "bets": 130,
+          "wins": 59,
+          "accuracy": 0.45384615384615384,
+          "profit_units": -17.36363636363636,
+          "roi": -0.13356643356643352
+        },
+        "unders": {
+          "bets": 20,
+          "wins": 10,
+          "accuracy": 0.5,
+          "profit_units": -0.9090909090909093,
+          "roi": -0.04545454545454546
+        }
+      },
+      "5.0": {
+        "edge_threshold": 5.0,
+        "bets": 102,
+        "wins": 48,
+        "losses": 54,
+        "accuracy": 0.47058823529411764,
+        "profit_units": -10.363636363636367,
+        "roi": -0.10160427807486634,
+        "overs": {
+          "bets": 94,
+          "wins": 43,
+          "accuracy": 0.4574468085106383,
+          "profit_units": -11.90909090909091,
+          "roi": -0.12669245647969055
+        },
+        "unders": {
+          "bets": 8,
+          "wins": 5,
+          "accuracy": 0.625,
+          "profit_units": 1.5454545454545452,
+          "roi": 0.19318181818181815
+        }
+      },
+      "6.0": {
+        "edge_threshold": 6.0,
+        "bets": 74,
+        "wins": 36,
+        "losses": 38,
+        "accuracy": 0.4864864864864865,
+        "profit_units": -5.2727272727272725,
+        "roi": -0.07125307125307125,
+        "overs": {
+          "bets": 70,
+          "wins": 32,
+          "accuracy": 0.45714285714285713,
+          "profit_units": -8.909090909090908,
+          "roi": -0.12727272727272726
+        },
+        "unders": {
+          "bets": 4,
+          "wins": 4,
+          "accuracy": 1.0,
+          "profit_units": 3.6363636363636362,
+          "roi": 0.9090909090909091
+        }
+      }
+    }
+  },
+  "validation": {
+    "seasons": [
+      2024,
+      2025
+    ],
+    "forecast": {
+      "games": 380,
+      "total_mae": 10.465789473684211,
+      "total_rmse": 13.403652290955705,
+      "mean_bias_predicted_minus_actual": -0.19210526315789472,
+      "correlation": 0.1982336763107413,
+      "within_3_points": 0.19736842105263158,
+      "within_7_points": 0.45526315789473687,
+      "within_10_points": 0.5605263157894737,
+      "market_total_mae": 10.08421052631579
+    },
+    "thresholds": {
+      "0.0": {
+        "edge_threshold": 0.0,
+        "bets": 377,
+        "wins": 190,
+        "losses": 187,
+        "accuracy": 0.5039787798408488,
+        "profit_units": -14.272727272727272,
+        "roi": -0.037858693031106824,
+        "overs": {
+          "bets": 235,
+          "wins": 127,
+          "accuracy": 0.5404255319148936,
+          "profit_units": 7.454545454545455,
+          "roi": 0.03172147001934236
+        },
+        "unders": {
+          "bets": 142,
+          "wins": 63,
+          "accuracy": 0.44366197183098594,
+          "profit_units": -21.727272727272727,
+          "roi": -0.1530089628681178
+        }
+      },
+      "2.0": {
+        "edge_threshold": 2.0,
+        "bets": 233,
+        "wins": 118,
+        "losses": 115,
+        "accuracy": 0.5064377682403434,
+        "profit_units": -7.72727272727273,
+        "roi": -0.033164260632071806,
+        "overs": {
+          "bets": 163,
+          "wins": 88,
+          "accuracy": 0.5398773006134969,
+          "profit_units": 5.0,
+          "roi": 0.03067484662576687
+        },
+        "unders": {
+          "bets": 70,
+          "wins": 30,
+          "accuracy": 0.42857142857142855,
+          "profit_units": -12.727272727272728,
+          "roi": -0.18181818181818182
+        }
+      },
+      "3.0": {
+        "edge_threshold": 3.0,
+        "bets": 167,
+        "wins": 79,
+        "losses": 88,
+        "accuracy": 0.47305389221556887,
+        "profit_units": -16.181818181818173,
+        "roi": -0.09689711486118667,
+        "overs": {
+          "bets": 121,
+          "wins": 61,
+          "accuracy": 0.5041322314049587,
+          "profit_units": -4.545454545454544,
+          "roi": -0.03756574004507888
+        },
+        "unders": {
+          "bets": 46,
+          "wins": 18,
+          "accuracy": 0.391304347826087,
+          "profit_units": -11.636363636363635,
+          "roi": -0.25296442687747034
+        }
+      },
+      "4.0": {
+        "edge_threshold": 4.0,
+        "bets": 121,
+        "wins": 58,
+        "losses": 63,
+        "accuracy": 0.4793388429752066,
+        "profit_units": -10.272727272727272,
+        "roi": -0.08489857250187828,
+        "overs": {
+          "bets": 88,
+          "wins": 47,
+          "accuracy": 0.5340909090909091,
+          "profit_units": 1.7272727272727266,
+          "roi": 0.019628099173553713
+        },
+        "unders": {
+          "bets": 33,
+          "wins": 11,
+          "accuracy": 0.3333333333333333,
+          "profit_units": -12.0,
+          "roi": -0.36363636363636365
+        }
+      },
+      "5.0": {
+        "edge_threshold": 5.0,
+        "bets": 83,
+        "wins": 43,
+        "losses": 40,
+        "accuracy": 0.5180722891566265,
+        "profit_units": -0.9090909090909088,
+        "roi": -0.010952902519167576,
+        "overs": {
+          "bets": 62,
+          "wins": 36,
+          "accuracy": 0.5806451612903226,
+          "profit_units": 6.727272727272727,
+          "roi": 0.10850439882697946
+        },
+        "unders": {
+          "bets": 21,
+          "wins": 7,
+          "accuracy": 0.3333333333333333,
+          "profit_units": -7.636363636363636,
+          "roi": -0.3636363636363636
+        }
+      },
+      "6.0": {
+        "edge_threshold": 6.0,
+        "bets": 44,
+        "wins": 27,
+        "losses": 17,
+        "accuracy": 0.6136363636363636,
+        "profit_units": 7.545454545454545,
+        "roi": 0.1714876033057851,
+        "overs": {
+          "bets": 34,
+          "wins": 22,
+          "accuracy": 0.6470588235294118,
+          "profit_units": 7.999999999999999,
+          "roi": 0.2352941176470588
+        },
+        "unders": {
+          "bets": 10,
+          "wins": 5,
+          "accuracy": 0.5,
+          "profit_units": -0.4545454545454547,
+          "roi": -0.04545454545454547
+        }
+      }
+    }
+  },
+  "pooled": {
+    "seasons": [
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "forecast": {
+      "games": 761,
+      "total_mae": 10.754927726675428,
+      "total_rmse": 13.648523527508246,
+      "mean_bias_predicted_minus_actual": 0.866622864651774,
+      "correlation": 0.1780818101341969,
+      "within_3_points": 0.19710906701708278,
+      "within_7_points": 0.4231274638633377,
+      "within_10_points": 0.5584756898817346,
+      "market_total_mae": 10.19185282522996
+    },
+    "thresholds": {
+      "0.0": {
+        "edge_threshold": 0.0,
+        "bets": 755,
+        "wins": 368,
+        "losses": 387,
+        "accuracy": 0.48741721854304637,
+        "profit_units": -52.454545454545446,
+        "roi": -0.0694762191450933,
+        "overs": {
+          "bets": 511,
+          "wins": 253,
+          "accuracy": 0.49510763209393344,
+          "profit_units": -28.0,
+          "roi": -0.0547945205479452
+        },
+        "unders": {
+          "bets": 244,
+          "wins": 115,
+          "accuracy": 0.4713114754098361,
+          "profit_units": -24.454545454545446,
+          "roi": -0.10022354694485838
+        }
+      },
+      "2.0": {
+        "edge_threshold": 2.0,
+        "bets": 486,
+        "wins": 240,
+        "losses": 246,
+        "accuracy": 0.49382716049382713,
+        "profit_units": -27.818181818181817,
+        "roi": -0.057239057239057235,
+        "overs": {
+          "bets": 368,
+          "wins": 184,
+          "accuracy": 0.5,
+          "profit_units": -16.727272727272727,
+          "roi": -0.045454545454545456
+        },
+        "unders": {
+          "bets": 118,
+          "wins": 56,
+          "accuracy": 0.4745762711864407,
+          "profit_units": -11.090909090909092,
+          "roi": -0.09399075500770417
+        }
+      },
+      "3.0": {
+        "edge_threshold": 3.0,
+        "bets": 372,
+        "wins": 185,
+        "losses": 187,
+        "accuracy": 0.49731182795698925,
+        "profit_units": -18.818181818181813,
+        "roi": -0.0505865102639296,
+        "overs": {
+          "bets": 294,
+          "wins": 147,
+          "accuracy": 0.5,
+          "profit_units": -13.363636363636365,
+          "roi": -0.04545454545454546
+        },
+        "unders": {
+          "bets": 78,
+          "wins": 38,
+          "accuracy": 0.48717948717948717,
+          "profit_units": -5.454545454545455,
+          "roi": -0.06993006993006994
+        }
+      },
+      "4.0": {
+        "edge_threshold": 4.0,
+        "bets": 271,
+        "wins": 127,
+        "losses": 144,
+        "accuracy": 0.46863468634686345,
+        "profit_units": -28.545454545454543,
+        "roi": -0.10533378061053338,
+        "overs": {
+          "bets": 218,
+          "wins": 106,
+          "accuracy": 0.48623853211009177,
+          "profit_units": -15.636363636363631,
+          "roi": -0.07172643869891573
+        },
+        "unders": {
+          "bets": 53,
+          "wins": 21,
+          "accuracy": 0.39622641509433965,
+          "profit_units": -12.909090909090908,
+          "roi": -0.24356775300171524
+        }
+      },
+      "5.0": {
+        "edge_threshold": 5.0,
+        "bets": 185,
+        "wins": 91,
+        "losses": 94,
+        "accuracy": 0.4918918918918919,
+        "profit_units": -11.272727272727275,
+        "roi": -0.06093366093366095,
+        "overs": {
+          "bets": 156,
+          "wins": 79,
+          "accuracy": 0.5064102564102564,
+          "profit_units": -5.181818181818183,
+          "roi": -0.03321678321678323
+        },
+        "unders": {
+          "bets": 29,
+          "wins": 12,
+          "accuracy": 0.41379310344827586,
+          "profit_units": -6.090909090909091,
+          "roi": -0.21003134796238243
+        }
+      },
+      "6.0": {
+        "edge_threshold": 6.0,
+        "bets": 118,
+        "wins": 63,
+        "losses": 55,
+        "accuracy": 0.5338983050847458,
+        "profit_units": 2.2727272727272743,
+        "roi": 0.019260400616332832,
+        "overs": {
+          "bets": 104,
+          "wins": 54,
+          "accuracy": 0.5192307692307693,
+          "profit_units": -0.9090909090909065,
+          "roi": -0.008741258741258716
+        },
+        "unders": {
+          "bets": 14,
+          "wins": 9,
+          "accuracy": 0.6428571428571429,
+          "profit_units": 3.1818181818181817,
+          "roi": 0.22727272727272727
+        }
+      }
+    }
+  },
+  "seasons": [
+    {
+      "test_season": 2022,
+      "training_seasons": [
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "training_games": 715,
+      "forecast": {
+        "games": 191,
+        "total_mae": 11.201570680628272,
+        "total_rmse": 13.873351984576695,
+        "mean_bias_predicted_minus_actual": 2.196335078534031,
+        "correlation": 0.09590864882681562,
+        "within_3_points": 0.16753926701570682,
+        "within_7_points": 0.38219895287958117,
+        "within_10_points": 0.5602094240837696,
+        "market_total_mae": 10.091623036649215
+      },
+      "thresholds": {
+        "0.0": {
+          "edge_threshold": 0.0,
+          "bets": 189,
+          "wins": 81,
+          "losses": 108,
+          "accuracy": 0.42857142857142855,
+          "profit_units": -34.36363636363636,
+          "roi": -0.1818181818181818,
+          "overs": {
+            "bets": 136,
+            "wins": 57,
+            "accuracy": 0.41911764705882354,
+            "profit_units": -27.18181818181818,
+            "roi": -0.1998663101604278
+          },
+          "unders": {
+            "bets": 53,
+            "wins": 24,
+            "accuracy": 0.4528301886792453,
+            "profit_units": -7.1818181818181825,
+            "roi": -0.13550600343053174
+          }
+        },
+        "2.0": {
+          "edge_threshold": 2.0,
+          "bets": 127,
+          "wins": 50,
+          "losses": 77,
+          "accuracy": 0.3937007874015748,
+          "profit_units": -31.54545454545454,
+          "roi": -0.24838940586972078,
+          "overs": {
+            "bets": 101,
+            "wins": 39,
+            "accuracy": 0.38613861386138615,
+            "profit_units": -26.545454545454543,
+            "roi": -0.2628262826282628
+          },
+          "unders": {
+            "bets": 26,
+            "wins": 11,
+            "accuracy": 0.4230769230769231,
+            "profit_units": -5.0,
+            "roi": -0.19230769230769232
+          }
+        },
+        "3.0": {
+          "edge_threshold": 3.0,
+          "bets": 103,
+          "wins": 45,
+          "losses": 58,
+          "accuracy": 0.4368932038834951,
+          "profit_units": -17.090909090909086,
+          "roi": -0.1659311562224183,
+          "overs": {
+            "bets": 86,
+            "wins": 37,
+            "accuracy": 0.43023255813953487,
+            "profit_units": -15.363636363636363,
+            "roi": -0.17864693446088795
+          },
+          "unders": {
+            "bets": 17,
+            "wins": 8,
+            "accuracy": 0.47058823529411764,
+            "profit_units": -1.727272727272727,
+            "roi": -0.1016042780748663
+          }
+        },
+        "4.0": {
+          "edge_threshold": 4.0,
+          "bets": 79,
+          "wins": 32,
+          "losses": 47,
+          "accuracy": 0.4050632911392405,
+          "profit_units": -17.909090909090907,
+          "roi": -0.22669735327963172,
+          "overs": {
+            "bets": 69,
+            "wins": 29,
+            "accuracy": 0.42028985507246375,
+            "profit_units": -13.636363636363637,
+            "roi": -0.1976284584980237
+          },
+          "unders": {
+            "bets": 10,
+            "wins": 3,
+            "accuracy": 0.3,
+            "profit_units": -4.2727272727272725,
+            "roi": -0.42727272727272725
+          }
+        },
+        "5.0": {
+          "edge_threshold": 5.0,
+          "bets": 49,
+          "wins": 22,
+          "losses": 27,
+          "accuracy": 0.4489795918367347,
+          "profit_units": -7.0,
+          "roi": -0.14285714285714285,
+          "overs": {
+            "bets": 45,
+            "wins": 19,
+            "accuracy": 0.4222222222222222,
+            "profit_units": -8.727272727272727,
+            "roi": -0.1939393939393939
+          },
+          "unders": {
+            "bets": 4,
+            "wins": 3,
+            "accuracy": 0.75,
+            "profit_units": 1.727272727272727,
+            "roi": 0.43181818181818177
+          }
+        },
+        "6.0": {
+          "edge_threshold": 6.0,
+          "bets": 38,
+          "wins": 18,
+          "losses": 20,
+          "accuracy": 0.47368421052631576,
+          "profit_units": -3.6363636363636367,
+          "roi": -0.09569377990430623,
+          "overs": {
+            "bets": 36,
+            "wins": 16,
+            "accuracy": 0.4444444444444444,
+            "profit_units": -5.454545454545454,
+            "roi": -0.1515151515151515
+          },
+          "unders": {
+            "bets": 2,
+            "wins": 2,
+            "accuracy": 1.0,
+            "profit_units": 1.8181818181818181,
+            "roi": 0.9090909090909091
+          }
+        }
+      }
+    },
+    {
+      "test_season": 2023,
+      "training_seasons": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022
+      ],
+      "training_games": 906,
+      "forecast": {
+        "games": 190,
+        "total_mae": 10.884210526315789,
+        "total_rmse": 13.903615584292794,
+        "mean_bias_predicted_minus_actual": 1.6473684210526316,
+        "correlation": 0.1953268765360842,
+        "within_3_points": 0.22631578947368422,
+        "within_7_points": 0.4,
+        "within_10_points": 0.5526315789473685,
+        "market_total_mae": 10.507894736842106
+      },
+      "thresholds": {
+        "0.0": {
+          "edge_threshold": 0.0,
+          "bets": 189,
+          "wins": 97,
+          "losses": 92,
+          "accuracy": 0.5132275132275133,
+          "profit_units": -3.8181818181818157,
+          "roi": -0.02020202020202019,
+          "overs": {
+            "bets": 140,
+            "wins": 69,
+            "accuracy": 0.4928571428571429,
+            "profit_units": -8.272727272727273,
+            "roi": -0.0590909090909091
+          },
+          "unders": {
+            "bets": 49,
+            "wins": 28,
+            "accuracy": 0.5714285714285714,
+            "profit_units": 4.454545454545454,
+            "roi": 0.0909090909090909
+          }
+        },
+        "2.0": {
+          "edge_threshold": 2.0,
+          "bets": 126,
+          "wins": 72,
+          "losses": 54,
+          "accuracy": 0.5714285714285714,
+          "profit_units": 11.454545454545451,
+          "roi": 0.09090909090909088,
+          "overs": {
+            "bets": 104,
+            "wins": 57,
+            "accuracy": 0.5480769230769231,
+            "profit_units": 4.818181818181819,
+            "roi": 0.04632867132867134
+          },
+          "unders": {
+            "bets": 22,
+            "wins": 15,
+            "accuracy": 0.6818181818181818,
+            "profit_units": 6.636363636363637,
+            "roi": 0.30165289256198347
+          }
+        },
+        "3.0": {
+          "edge_threshold": 3.0,
+          "bets": 102,
+          "wins": 61,
+          "losses": 41,
+          "accuracy": 0.5980392156862745,
+          "profit_units": 14.454545454545451,
+          "roi": 0.14171122994652405,
+          "overs": {
+            "bets": 87,
+            "wins": 49,
+            "accuracy": 0.5632183908045977,
+            "profit_units": 6.545454545454546,
+            "roi": 0.07523510971786834
+          },
+          "unders": {
+            "bets": 15,
+            "wins": 12,
+            "accuracy": 0.8,
+            "profit_units": 7.909090909090909,
+            "roi": 0.5272727272727272
+          }
+        },
+        "4.0": {
+          "edge_threshold": 4.0,
+          "bets": 71,
+          "wins": 37,
+          "losses": 34,
+          "accuracy": 0.5211267605633803,
+          "profit_units": -0.3636363636363634,
+          "roi": -0.005121638924455823,
+          "overs": {
+            "bets": 61,
+            "wins": 30,
+            "accuracy": 0.4918032786885246,
+            "profit_units": -3.7272727272727257,
+            "roi": -0.06110283159463485
+          },
+          "unders": {
+            "bets": 10,
+            "wins": 7,
+            "accuracy": 0.7,
+            "profit_units": 3.3636363636363633,
+            "roi": 0.3363636363636363
+          }
+        },
+        "5.0": {
+          "edge_threshold": 5.0,
+          "bets": 53,
+          "wins": 26,
+          "losses": 27,
+          "accuracy": 0.49056603773584906,
+          "profit_units": -3.3636363636363633,
+          "roi": -0.0634648370497427,
+          "overs": {
+            "bets": 49,
+            "wins": 24,
+            "accuracy": 0.4897959183673469,
+            "profit_units": -3.1818181818181817,
+            "roi": -0.06493506493506493
+          },
+          "unders": {
+            "bets": 4,
+            "wins": 2,
+            "accuracy": 0.5,
+            "profit_units": -0.18181818181818177,
+            "roi": -0.04545454545454544
+          }
+        },
+        "6.0": {
+          "edge_threshold": 6.0,
+          "bets": 36,
+          "wins": 18,
+          "losses": 18,
+          "accuracy": 0.5,
+          "profit_units": -1.6363636363636371,
+          "roi": -0.04545454545454548,
+          "overs": {
+            "bets": 34,
+            "wins": 16,
+            "accuracy": 0.47058823529411764,
+            "profit_units": -3.454545454545454,
+            "roi": -0.1016042780748663
+          },
+          "unders": {
+            "bets": 2,
+            "wins": 2,
+            "accuracy": 1.0,
+            "profit_units": 1.8181818181818181,
+            "roi": 0.9090909090909091
+          }
+        }
+      }
+    },
+    {
+      "test_season": 2024,
+      "training_seasons": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "training_games": 1096,
+      "forecast": {
+        "games": 190,
+        "total_mae": 9.994736842105263,
+        "total_rmse": 13.128113665757645,
+        "mean_bias_predicted_minus_actual": -0.5789473684210527,
+        "correlation": 0.1785103791102362,
+        "within_3_points": 0.23157894736842105,
+        "within_7_points": 0.4842105263157895,
+        "within_10_points": 0.5947368421052631,
+        "market_total_mae": 9.847368421052632
+      },
+      "thresholds": {
+        "0.0": {
+          "edge_threshold": 0.0,
+          "bets": 187,
+          "wins": 99,
+          "losses": 88,
+          "accuracy": 0.5294117647058824,
+          "profit_units": 2.0000000000000027,
+          "roi": 0.010695187165775416,
+          "overs": {
+            "bets": 126,
+            "wins": 72,
+            "accuracy": 0.5714285714285714,
+            "profit_units": 11.454545454545451,
+            "roi": 0.09090909090909088
+          },
+          "unders": {
+            "bets": 61,
+            "wins": 27,
+            "accuracy": 0.4426229508196721,
+            "profit_units": -9.454545454545455,
+            "roi": -0.1549925484351714
+          }
+        },
+        "2.0": {
+          "edge_threshold": 2.0,
+          "bets": 110,
+          "wins": 63,
+          "losses": 47,
+          "accuracy": 0.5727272727272728,
+          "profit_units": 10.27272727272727,
+          "roi": 0.09338842975206608,
+          "overs": {
+            "bets": 83,
+            "wins": 51,
+            "accuracy": 0.6144578313253012,
+            "profit_units": 14.363636363636362,
+            "roi": 0.17305585980284774
+          },
+          "unders": {
+            "bets": 27,
+            "wins": 12,
+            "accuracy": 0.4444444444444444,
+            "profit_units": -4.090909090909091,
+            "roi": -0.15151515151515152
+          }
+        },
+        "3.0": {
+          "edge_threshold": 3.0,
+          "bets": 72,
+          "wins": 39,
+          "losses": 33,
+          "accuracy": 0.5416666666666666,
+          "profit_units": 2.454545454545456,
+          "roi": 0.03409090909090911,
+          "overs": {
+            "bets": 53,
+            "wins": 32,
+            "accuracy": 0.6037735849056604,
+            "profit_units": 8.09090909090909,
+            "roi": 0.15265866209262433
+          },
+          "unders": {
+            "bets": 19,
+            "wins": 7,
+            "accuracy": 0.3684210526315789,
+            "profit_units": -5.636363636363637,
+            "roi": -0.2966507177033493
+          }
+        },
+        "4.0": {
+          "edge_threshold": 4.0,
+          "bets": 50,
+          "wins": 27,
+          "losses": 23,
+          "accuracy": 0.54,
+          "profit_units": 1.545454545454545,
+          "roi": 0.0309090909090909,
+          "overs": {
+            "bets": 38,
+            "wins": 23,
+            "accuracy": 0.6052631578947368,
+            "profit_units": 5.909090909090909,
+            "roi": 0.15550239234449761
+          },
+          "unders": {
+            "bets": 12,
+            "wins": 4,
+            "accuracy": 0.3333333333333333,
+            "profit_units": -4.363636363636363,
+            "roi": -0.3636363636363636
+          }
+        },
+        "5.0": {
+          "edge_threshold": 5.0,
+          "bets": 32,
+          "wins": 19,
+          "losses": 13,
+          "accuracy": 0.59375,
+          "profit_units": 4.2727272727272725,
+          "roi": 0.13352272727272727,
+          "overs": {
+            "bets": 25,
+            "wins": 16,
+            "accuracy": 0.64,
+            "profit_units": 5.545454545454544,
+            "roi": 0.22181818181818178
+          },
+          "unders": {
+            "bets": 7,
+            "wins": 3,
+            "accuracy": 0.42857142857142855,
+            "profit_units": -1.2727272727272727,
+            "roi": -0.18181818181818182
+          }
+        },
+        "6.0": {
+          "edge_threshold": 6.0,
+          "bets": 20,
+          "wins": 12,
+          "losses": 8,
+          "accuracy": 0.6,
+          "profit_units": 2.909090909090909,
+          "roi": 0.14545454545454545,
+          "overs": {
+            "bets": 16,
+            "wins": 10,
+            "accuracy": 0.625,
+            "profit_units": 3.0909090909090904,
+            "roi": 0.19318181818181815
+          },
+          "unders": {
+            "bets": 4,
+            "wins": 2,
+            "accuracy": 0.5,
+            "profit_units": -0.18181818181818188,
+            "roi": -0.04545454545454547
+          }
+        }
+      }
+    },
+    {
+      "test_season": 2025,
+      "training_seasons": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "training_games": 1286,
+      "forecast": {
+        "games": 190,
+        "total_mae": 10.936842105263159,
+        "total_rmse": 13.673639641757113,
+        "mean_bias_predicted_minus_actual": 0.19473684210526315,
+        "correlation": 0.2161153015619817,
+        "within_3_points": 0.1631578947368421,
+        "within_7_points": 0.4263157894736842,
+        "within_10_points": 0.5263157894736842,
+        "market_total_mae": 10.321052631578947
+      },
+      "thresholds": {
+        "0.0": {
+          "edge_threshold": 0.0,
+          "bets": 190,
+          "wins": 91,
+          "losses": 99,
+          "accuracy": 0.4789473684210526,
+          "profit_units": -16.272727272727273,
+          "roi": -0.08564593301435407,
+          "overs": {
+            "bets": 109,
+            "wins": 55,
+            "accuracy": 0.5045871559633027,
+            "profit_units": -3.999999999999999,
+            "roi": -0.03669724770642201
+          },
+          "unders": {
+            "bets": 81,
+            "wins": 36,
+            "accuracy": 0.4444444444444444,
+            "profit_units": -12.272727272727272,
+            "roi": -0.1515151515151515
+          }
+        },
+        "2.0": {
+          "edge_threshold": 2.0,
+          "bets": 123,
+          "wins": 55,
+          "losses": 68,
+          "accuracy": 0.44715447154471544,
+          "profit_units": -18.0,
+          "roi": -0.14634146341463414,
+          "overs": {
+            "bets": 80,
+            "wins": 37,
+            "accuracy": 0.4625,
+            "profit_units": -9.363636363636363,
+            "roi": -0.11704545454545454
+          },
+          "unders": {
+            "bets": 43,
+            "wins": 18,
+            "accuracy": 0.4186046511627907,
+            "profit_units": -8.636363636363637,
+            "roi": -0.20084566596194503
+          }
+        },
+        "3.0": {
+          "edge_threshold": 3.0,
+          "bets": 95,
+          "wins": 40,
+          "losses": 55,
+          "accuracy": 0.42105263157894735,
+          "profit_units": -18.636363636363633,
+          "roi": -0.19617224880382772,
+          "overs": {
+            "bets": 68,
+            "wins": 29,
+            "accuracy": 0.4264705882352941,
+            "profit_units": -12.636363636363638,
+            "roi": -0.18582887700534761
+          },
+          "unders": {
+            "bets": 27,
+            "wins": 11,
+            "accuracy": 0.4074074074074074,
+            "profit_units": -6.0,
+            "roi": -0.2222222222222222
+          }
+        },
+        "4.0": {
+          "edge_threshold": 4.0,
+          "bets": 71,
+          "wins": 31,
+          "losses": 40,
+          "accuracy": 0.43661971830985913,
+          "profit_units": -11.818181818181818,
+          "roi": -0.16645326504481434,
+          "overs": {
+            "bets": 50,
+            "wins": 24,
+            "accuracy": 0.48,
+            "profit_units": -4.181818181818181,
+            "roi": -0.08363636363636362
+          },
+          "unders": {
+            "bets": 21,
+            "wins": 7,
+            "accuracy": 0.3333333333333333,
+            "profit_units": -7.636363636363636,
+            "roi": -0.3636363636363636
+          }
+        },
+        "5.0": {
+          "edge_threshold": 5.0,
+          "bets": 51,
+          "wins": 24,
+          "losses": 27,
+          "accuracy": 0.47058823529411764,
+          "profit_units": -5.181818181818181,
+          "roi": -0.10160427807486629,
+          "overs": {
+            "bets": 37,
+            "wins": 20,
+            "accuracy": 0.5405405405405406,
+            "profit_units": 1.181818181818182,
+            "roi": 0.03194103194103195
+          },
+          "unders": {
+            "bets": 14,
+            "wins": 4,
+            "accuracy": 0.2857142857142857,
+            "profit_units": -6.363636363636363,
+            "roi": -0.45454545454545453
+          }
+        },
+        "6.0": {
+          "edge_threshold": 6.0,
+          "bets": 24,
+          "wins": 15,
+          "losses": 9,
+          "accuracy": 0.625,
+          "profit_units": 4.636363636363637,
+          "roi": 0.1931818181818182,
+          "overs": {
+            "bets": 18,
+            "wins": 12,
+            "accuracy": 0.6666666666666666,
+            "profit_units": 4.909090909090909,
+            "roi": 0.2727272727272727
+          },
+          "unders": {
+            "bets": 6,
+            "wins": 3,
+            "accuracy": 0.5,
+            "profit_units": -0.2727272727272728,
+            "roi": -0.04545454545454547
+          }
+        }
+      }
+    }
+  ]
+}

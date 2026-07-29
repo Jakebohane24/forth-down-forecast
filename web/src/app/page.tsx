@@ -265,6 +265,7 @@ export default async function Home({
                 aria-label="Previous week"
                 aria-disabled={selectedWeek === 6}
                 href={`/?season=${selectedSeason}&week=${previousWeek}`}
+                scroll={false}
               >
                 ←
               </Link>
@@ -273,6 +274,7 @@ export default async function Home({
                 aria-label="Next week"
                 aria-disabled={selectedWeek === 18}
                 href={`/?season=${selectedSeason}&week=${nextWeek}`}
+                scroll={false}
               >
                 →
               </Link>

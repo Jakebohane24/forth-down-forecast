@@ -58,7 +58,25 @@ def test_weekly_prediction_adds_consensus_market_edge():
         result.loc["2026_01_MIA_BUF", "pred_spread"] - 2.5
     )
     assert result.loc["2026_01_MIA_BUF", "predicted_winner"] in {"BUF", "MIA"}
-    assert "moneyline_signal" in result
+    row = result.loc["2026_01_MIA_BUF"]
+    selected_odds = (
+        row["home_moneyline"]
+        if row["predicted_winner"] == row["home_team"]
+        else row["away_moneyline"]
+    )
+    assert row["moneyline_signal"] == (
+        row["model_win_confidence"] >= 0.625 and selected_odds >= -300
+    )
+
+    extreme_favorite_lines = lines.assign(
+        home_moneyline=-470,
+        away_moneyline=-470,
+    )
+    extreme_result = predictor.predict(
+        features,
+        market_provider=StaticMarketDataProvider(extreme_favorite_lines),
+    )
+    assert not extreme_result.loc["2026_01_MIA_BUF", "moneyline_signal"]
 
 
 def test_prediction_snapshot_refuses_to_overwrite(tmp_path):

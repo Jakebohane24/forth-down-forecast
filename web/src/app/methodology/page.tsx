@@ -2,10 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 
 const seasons = [
-  { year: 2022, games: 715, predicted: 71, mae: 9.04, win: 62.8, roi: 6.5 },
-  { year: 2023, games: 906, predicted: 33, mae: 9.95, win: 62.6, roi: -8.4 },
-  { year: 2024, games: 1096, predicted: 65, mae: 10.09, win: 68.9, roi: 13.7 },
-  { year: 2025, games: 1286, predicted: 70, mae: 10.51, win: 65.8, roi: -2.0 },
+  { year: 2022, games: 715, predicted: 37, mae: 9.04, win: 62.8, roi: 8.8 },
+  { year: 2023, games: 906, predicted: 11, mae: 9.95, win: 62.6, roi: 6.5 },
+  { year: 2024, games: 1096, predicted: 32, mae: 10.09, win: 68.9, roi: 25.6 },
+  { year: 2025, games: 1286, predicted: 24, mae: 10.51, win: 65.8, roi: 4.7 },
 ];
 
 const featureGroups = [
@@ -68,8 +68,8 @@ export default function Methodology() {
         <section className="metric-row">
           <article><span>Architecture</span><strong>2-stage</strong><small>XGBoost regression</small></article>
           <article><span>Production data</span><strong>8 seasons</strong><small>2018 through 2025</small></article>
-          <article><span>Rolling ML bets</span><strong>239</strong><small>2022–2025 showcase</small></article>
-          <article><span>Pooled ML ROI</span><strong>+3.90%</strong><small>2022–2025, flat stake</small></article>
+          <article><span>Rolling ML signals</span><strong>104</strong><small>2022–2025 showcase</small></article>
+          <article><span>Pooled ML ROI</span><strong>+12.78%</strong><small>2022–2025, flat stake</small></article>
         </section>
 
         <section className="model-flow">
@@ -228,7 +228,8 @@ export default function Methodology() {
                 within its validation folds.
               </p>
               <p>
-                Replacing this step with shuffled K-fold reduced 2022–2025
+                In the controlled confidence-only research comparison,
+                replacing this step with shuffled K-fold reduced 2022–2025
                 moneyline ROI from 3.90% to 0.16% and slightly reduced winner
                 accuracy, despite improving margin MAE by only 0.05 points.
               </p>
@@ -240,12 +241,12 @@ export default function Methodology() {
               We also replaced stage-one K-fold stacking with chronological
               splits while leaving the outer seasonal tests untouched. The
               chronological version produced 64.13% winner accuracy and 2.00%
-              moneyline ROI; K-fold produced 65.05% and 3.90%. Because every
-              reported season remained completely outside its model’s training
-              data, this is evidence of better independent-season performance,
-              not proof that the internal leakage is harmless. The limitation
-              is disclosed and the 2026 predictions remain the prospective
-              test.
+              ROI under the confidence-only research rule; K-fold produced
+              65.05% and 3.90%. Because every reported season remained
+              completely outside its model’s training data, this is evidence
+              of better independent-season performance, not proof that the
+              internal leakage is harmless. The limitation is disclosed and
+              the 2026 predictions remain the prospective test.
             </p>
           </div>
         </section>
@@ -282,7 +283,7 @@ export default function Methodology() {
           </div>
           <div className="table-wrap">
             <table>
-              <thead><tr><th>Test season</th><th>Training games</th><th>Games predicted<br /><small>≥62.5% confidence</small></th><th>Margin MAE</th><th>Winner accuracy</th><th>Moneyline ROI</th></tr></thead>
+              <thead><tr><th>Test season</th><th>Training games</th><th>Official signals<br /><small>≥62.5% and odds ≥−300</small></th><th>Margin MAE</th><th>Winner accuracy</th><th>Moneyline ROI</th></tr></thead>
               <tbody>
                 {seasons.map((row) => (
                   <tr key={row.year}>
@@ -304,9 +305,10 @@ export default function Methodology() {
             window contained 715 games. The earlier 2021 test remains preserved
             in the full research report but is excluded from this displayed
             aggregate because its training history was materially smaller. The
-            62.5% threshold was selected retrospectively, so the +3.90% return
-            is not evidence of guaranteed future profit. The 2026 season will
-            be tracked prospectively without changing the threshold.
+            combined 62.5% confidence and −300 price floor was selected
+            retrospectively, so the +12.78% return is not evidence of
+            guaranteed future profit. The 2026 season will be tracked
+            prospectively without changing either condition.
           </p>
         </section>
 
@@ -340,10 +342,11 @@ export default function Methodology() {
               <span>Experimental</span>
               <h3>Moneyline signal</h3>
               <p>
-                A predicted winner is flagged at 62.5% model confidence. The
-                public 2022–2025 showcase returned +3.90% across 239 bets, but
-                the threshold was chosen retrospectively and must prove itself
-                prospectively in 2026.
+                A predicted winner is flagged only at 62.5% model confidence
+                or higher and a selected-team moneyline of −300 or better. The
+                public 2022–2025 showcase returned +12.78% across 104 signals,
+                but both conditions were selected retrospectively and must
+                prove themselves prospectively in 2026.
               </p>
             </article>
           </div>

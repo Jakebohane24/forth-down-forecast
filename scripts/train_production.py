@@ -41,6 +41,7 @@ def main() -> None:
         "moneyline_confidence_threshold": (
             BettingConfig().moneyline_confidence_threshold
         ),
+        "moneyline_minimum_odds": BettingConfig().moneyline_minimum_odds,
         "trained_at": datetime.now(UTC).isoformat(),
     }
     manifest_path = Path("reports/production_model.json")

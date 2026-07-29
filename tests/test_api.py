@@ -15,7 +15,8 @@ def test_health_model_and_performance_endpoints(tmp_path):
         performance = client.get("/performance").json()
 
     assert performance["moneyline_threshold"] == 0.625
-    assert performance["pooled_bets"] == 280
+    assert performance["moneyline_minimum_odds"] == -300
+    assert performance["pooled_bets"] == 104
 
 
 def test_week_endpoint_returns_latest_snapshot(tmp_path):

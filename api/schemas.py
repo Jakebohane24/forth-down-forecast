@@ -51,6 +51,7 @@ class ModelResponse(BaseModel):
     status: str
     training_seasons: list[int]
     moneyline_confidence_threshold: float
+    moneyline_minimum_odds: float
     artifact_created_at: str | None
 
 
@@ -65,6 +66,7 @@ class PerformanceSeason(BaseModel):
 
 class PerformanceResponse(BaseModel):
     moneyline_threshold: float
+    moneyline_minimum_odds: float
     pooled_bets: int
     pooled_roi: float
     seasons: list[PerformanceSeason]

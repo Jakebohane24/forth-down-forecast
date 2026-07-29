@@ -39,14 +39,18 @@ def american_columns(frame: pd.DataFrame) -> pd.DataFrame:
         frame["pred_home_win"],
         1 - frame["home_win_prob"],
     )
-    frame["moneyline_signal"] = (
-        frame["model_win_confidence"]
-        >= BettingConfig().moneyline_confidence_threshold
-    )
-    frame["moneyline_signal_odds"] = frame["home_moneyline"].where(
+    config = BettingConfig()
+    selected_moneyline = frame["home_moneyline"].where(
         frame["pred_home_win"],
         frame["away_moneyline"],
-    ).where(frame["moneyline_signal"])
+    )
+    frame["moneyline_signal"] = (
+        (frame["model_win_confidence"] >= config.moneyline_confidence_threshold)
+        & (selected_moneyline >= config.moneyline_minimum_odds)
+    )
+    frame["moneyline_signal_odds"] = selected_moneyline.where(
+        frame["moneyline_signal"]
+    )
     return frame
 
 

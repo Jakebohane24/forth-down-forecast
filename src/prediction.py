@@ -60,13 +60,9 @@ class WeeklyPredictor:
             result["pred_home_win"],
             1 - result["home_win_prob"],
         )
-        result["moneyline_signal"] = (
-            result["model_win_confidence"]
-            >= self.betting_config.moneyline_confidence_threshold
-        )
-        result["moneyline_signal_team"] = result["predicted_winner"].where(
-            result["moneyline_signal"]
-        )
+        result["moneyline_signal"] = False
+        result["moneyline_signal_team"] = None
+        result["moneyline_signal_odds"] = None
 
         if market_provider is not None:
             lines = consensus_lines(
@@ -81,10 +77,27 @@ class WeeklyPredictor:
                     else "away" if pd.notna(edge) and edge < 0 else "none"
                 )
             )
-            result["moneyline_signal_odds"] = result["home_moneyline"].where(
+            selected_moneyline = result["home_moneyline"].where(
                 result["pred_home_win"],
                 result["away_moneyline"],
-            ).where(result["moneyline_signal"])
+            )
+            result["moneyline_signal"] = (
+                (
+                    result["model_win_confidence"]
+                    >= self.betting_config.moneyline_confidence_threshold
+                )
+                & selected_moneyline.notna()
+                & (
+                    selected_moneyline
+                    >= self.betting_config.moneyline_minimum_odds
+                )
+            )
+            result["moneyline_signal_team"] = result["predicted_winner"].where(
+                result["moneyline_signal"]
+            )
+            result["moneyline_signal_odds"] = selected_moneyline.where(
+                result["moneyline_signal"]
+            )
 
         return result
 

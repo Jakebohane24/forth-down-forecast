@@ -13,7 +13,7 @@ service, PostgreSQL persistence, and a Next.js/TypeScript interface.
 - Expanding-window historical evaluation with all results retained
 - Production artifact trained on completed 2018–2025 data
 - Pregame feature builder verified against historical training rows
-- Seeded score simulation and a frozen 62.5% moneyline-confidence signal
+- Seeded score simulation and a frozen 62.5% confidence / −300 moneyline signal
 - Immutable Parquet and relational prediction snapshots
 - Separately stored final scores, closing moneylines, and signal settlement
 - FastAPI with generated OpenAPI documentation
@@ -55,7 +55,7 @@ moneylines, pick accuracy, and flat one-unit signal profit or loss.
 ## Model policy
 
 The production model uses all completed data from 2018 through 2025. Its
-features, architecture, and 62.5% moneyline-confidence threshold are frozen
+features, architecture, and combined 62.5% confidence / −300 moneyline rule are frozen
 before prospective 2026 evaluation.
 
 The current feature definition requires five completed games from each team in
@@ -71,9 +71,10 @@ Historical results live in `reports/`:
 - `betting_retrospective.json`: threshold research
 - `production_model.json`: public production-model manifest
 
-Across the five rolling test seasons, the 62.5% moneyline-confidence rule
-returned approximately 0.74% over 280 flat-stake bets. This is close to
-break-even and is displayed as experimental, not as a promise of profitability.
+Across the public 2022–2025 rolling test seasons, the combined rule returned
+approximately 12.78% over 104 flat-stake signals. Both conditions were selected
+retrospectively, so the signal is displayed as experimental rather than as a
+promise of profitability.
 
 ## Local development
 

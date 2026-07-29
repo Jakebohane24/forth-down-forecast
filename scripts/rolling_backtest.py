@@ -9,7 +9,7 @@ from pathlib import Path
 import nfl_data_py as nfl
 import pandas as pd
 
-from src.config import EvaluationConfig, ModelConfig
+from src.config import BettingConfig, EvaluationConfig, ModelConfig
 from src.evaluation import evaluate_model, evaluation_frame
 from src.training import NFLModel
 
@@ -40,6 +40,7 @@ def moneyline_results(
     frame: pd.DataFrame,
     schedules: pd.DataFrame,
     confidence_threshold: float,
+    minimum_odds: float,
 ) -> dict:
     odds_columns = [
         "season",
@@ -60,13 +61,15 @@ def moneyline_results(
         1 - joined["home_win_prob"],
     )
     available = joined["home_moneyline"].notna() & joined["away_moneyline"].notna()
-    bets = joined.loc[
-        available & (joined["model_win_confidence"] >= confidence_threshold)
-    ].copy()
-    bets["odds"] = bets["home_moneyline"].where(
-        bets["pred_home_win"],
-        bets["away_moneyline"],
+    joined["odds"] = joined["home_moneyline"].where(
+        joined["pred_home_win"],
+        joined["away_moneyline"],
     )
+    bets = joined.loc[
+        available
+        & (joined["model_win_confidence"] >= confidence_threshold)
+        & (joined["odds"] >= minimum_odds)
+    ].copy()
     bets["won"] = (
         bets["pred_home_win"]
         & (bets["home_score"] > bets["away_score"])
@@ -110,7 +113,7 @@ def run_backtest(
     tuning_strategy: str = "timeseries",
 ) -> dict:
     evaluation_config = EvaluationConfig()
-    moneyline_confidence_threshold = 0.625
+    betting_config = BettingConfig()
     schedules = nfl.import_schedules(
         list(range(first_test_season, last_test_season + 1))
     )
@@ -148,10 +151,11 @@ def run_backtest(
                     frame,
                     evaluation_config.high_edge_threshold,
                 ),
-                "moneyline_62_5_confidence": moneyline_results(
+                "moneyline_signal": moneyline_results(
                     frame,
                     schedules,
-                    moneyline_confidence_threshold,
+                    betting_config.moneyline_confidence_threshold,
+                    betting_config.moneyline_minimum_odds,
                 ),
             }
         )
@@ -161,7 +165,7 @@ def run_backtest(
             f"win={metrics['win_accuracy']:.1%}, "
             f"spread ROI={seasons[-1]['spread_4_point']['roi']:.1%}, "
             f"moneyline ROI="
-            f"{seasons[-1]['moneyline_62_5_confidence']['roi']:.1%}"
+            f"{seasons[-1]['moneyline_signal']['roi']:.1%}"
         )
 
     return {
@@ -179,16 +183,16 @@ def run_backtest(
         ),
         "caveat": (
             "Earlier test seasons use materially fewer training games. The "
-            "4.0-point spread and 62.5% moneyline-confidence thresholds were "
-            "selected after inspecting later seasons and are not unbiased."
+            "4.0-point spread and the combined 62.5% confidence / -300 "
+            "moneyline rule were selected retrospectively and are not unbiased."
         ),
         "spread_price": -110,
         "moneyline_source": "nflverse schedule closing moneylines",
         "pooled_results": {
             "spread_4_point": pooled_results(seasons, "spread_4_point"),
-            "moneyline_62_5_confidence": pooled_results(
+            "moneyline_signal": pooled_results(
                 seasons,
-                "moneyline_62_5_confidence",
+                "moneyline_signal",
             ),
         },
         "seasons": seasons,

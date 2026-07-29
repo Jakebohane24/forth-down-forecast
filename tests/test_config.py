@@ -44,6 +44,9 @@ def test_invalid_evaluation_configuration_fails_fast():
 
 def test_moneyline_threshold_is_a_probability():
     assert BettingConfig().moneyline_confidence_threshold == 0.625
+    assert BettingConfig().moneyline_minimum_odds == -300
 
     with pytest.raises(ValueError):
         BettingConfig(moneyline_confidence_threshold=0.49)
+    with pytest.raises(ValueError):
+        BettingConfig(moneyline_minimum_odds=100)

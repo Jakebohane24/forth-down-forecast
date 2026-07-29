@@ -174,26 +174,28 @@ def create_app(database_url: str | None = None) -> FastAPI:
             moneyline_confidence_threshold=metadata[
                 "moneyline_confidence_threshold"
             ],
+            moneyline_minimum_odds=metadata["moneyline_minimum_odds"],
             artifact_created_at=metadata.get("trained_at"),
         )
 
     @application.get("/performance", response_model=PerformanceResponse)
     def performance() -> PerformanceResponse:
         report = json.loads(ROLLING_REPORT.read_text())
-        pooled = report["pooled_results"]["moneyline_62_5_confidence"]
+        pooled = report["pooled_results"]["moneyline_signal"]
         seasons = [
             PerformanceSeason(
                 season=row["test_season"],
                 training_games=row["training_games"],
                 margin_mae=row["margin_mae"],
                 win_accuracy=row["win_accuracy"],
-                moneyline_bets=row["moneyline_62_5_confidence"]["bets"],
-                moneyline_roi=row["moneyline_62_5_confidence"]["roi"],
+                moneyline_bets=row["moneyline_signal"]["bets"],
+                moneyline_roi=row["moneyline_signal"]["roi"],
             )
             for row in report["seasons"]
         ]
         return PerformanceResponse(
             moneyline_threshold=BettingConfig().moneyline_confidence_threshold,
+            moneyline_minimum_odds=BettingConfig().moneyline_minimum_odds,
             pooled_bets=pooled["bets"],
             pooled_roi=pooled["roi"],
             seasons=seasons,

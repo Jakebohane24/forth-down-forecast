@@ -270,8 +270,8 @@ export default async function Home({
               <strong>1,476</strong>
             </div>
             <div>
-              <span>Moneyline trigger</span>
-              <strong>62.5%</strong>
+              <span>Signal rule</span>
+              <strong>62.5% / −300</strong>
             </div>
           </div>
         </section>

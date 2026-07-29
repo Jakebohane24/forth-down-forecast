@@ -12,5 +12,6 @@
     2025
   ],
   "moneyline_confidence_threshold": 0.625,
+  "moneyline_minimum_odds": -300,
   "trained_at": "2026-07-29T19:38:43.267047+00:00"
 }

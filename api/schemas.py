@@ -32,6 +32,11 @@ class PredictionResponse(BaseModel):
     model_version: str
     generated_at: datetime
     odds_retrieved_at: datetime | None
+    actual_home_score: int | None = None
+    actual_away_score: int | None = None
+    prediction_correct: bool | None = None
+    moneyline_signal_won: bool | None = None
+    moneyline_signal_profit: float | None = None
 
 
 class WeekPredictionsResponse(BaseModel):

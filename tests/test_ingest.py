@@ -4,8 +4,8 @@ import pandas as pd
 from sqlalchemy import func, select
 
 from api.database import create_database
-from api.ingest import persist_predictions
-from api.models import Prediction
+from api.ingest import persist_game_results, persist_predictions
+from api.models import GameResult, Prediction
 
 
 def test_prediction_snapshot_is_persisted(tmp_path):
@@ -38,3 +38,26 @@ def test_prediction_snapshot_is_persisted(tmp_path):
 
     assert inserted == 1
     assert count == 1
+
+
+def test_game_result_is_stored_separately_from_prediction(tmp_path):
+    database_url = f"sqlite:///{tmp_path / 'app.db'}"
+    games = pd.DataFrame(
+        {
+            "season": [2025],
+            "week": [6],
+            "home_team": ["BUF"],
+            "away_team": ["MIA"],
+            "home_score": [31],
+            "away_score": [20],
+        },
+        index=pd.Index(["2025_06_MIA_BUF"], name="game_id"),
+    )
+
+    persist_game_results(games, database_url=database_url)
+    _, session_factory = create_database(database_url)
+    with session_factory() as session:
+        result = session.get(GameResult, "2025_06_MIA_BUF")
+
+    assert result.home_score == 31
+    assert result.away_score == 20

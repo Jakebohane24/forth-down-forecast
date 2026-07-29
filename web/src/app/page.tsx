@@ -11,8 +11,14 @@ type Prediction = {
   moneyline_signal: boolean;
   home_moneyline: number | null;
   away_moneyline: number | null;
+  moneyline_signal_odds: number | null;
   model_version: string;
   generated_at: string;
+  actual_home_score: number | null;
+  actual_away_score: number | null;
+  prediction_correct: boolean | null;
+  moneyline_signal_won: boolean | null;
+  moneyline_signal_profit: number | null;
 };
 
 type WeekResponse = {
@@ -53,11 +59,26 @@ function TeamMark({ team }: { team: string }) {
   return <span className="team-mark">{team}</span>;
 }
 
+function formatOdds(odds: number | null) {
+  if (odds === null) return "—";
+  return odds > 0 ? `+${odds}` : `${odds}`;
+}
+
 function PredictionCard({ game, week }: { game: Prediction; week: number }) {
+  const completed =
+    game.actual_home_score !== null && game.actual_away_score !== null;
   return (
-    <article className="game-card">
+    <article
+      className={`game-card ${
+        completed
+          ? game.prediction_correct
+            ? "pick-correct"
+            : "pick-incorrect"
+          : ""
+      }`}
+    >
       <div className="game-meta">
-        <span>Week {week}</span>
+        <span>{completed ? "Final" : `Week ${week}`}</span>
         <span>{game.model_version.replaceAll("-", " ")}</span>
       </div>
       <div className="matchup">
@@ -66,8 +87,14 @@ function PredictionCard({ game, week }: { game: Prediction; week: number }) {
           <div>
             <span className="team-label">Away</span>
             <strong>{game.away_team}</strong>
+            <small className="moneyline">
+              ML {formatOdds(game.away_moneyline)}
+            </small>
           </div>
-          <b>{game.predicted_away_score}</b>
+          <div className="score-block">
+            {completed && <span>Pred {game.predicted_away_score}</span>}
+            <b>{game.actual_away_score ?? game.predicted_away_score}</b>
+          </div>
         </div>
         <div className="at">@</div>
         <div className="team">
@@ -75,8 +102,14 @@ function PredictionCard({ game, week }: { game: Prediction; week: number }) {
           <div>
             <span className="team-label">Home</span>
             <strong>{game.home_team}</strong>
+            <small className="moneyline">
+              ML {formatOdds(game.home_moneyline)}
+            </small>
           </div>
-          <b>{game.predicted_home_score}</b>
+          <div className="score-block">
+            {completed && <span>Pred {game.predicted_home_score}</span>}
+            <b>{game.actual_home_score ?? game.predicted_home_score}</b>
+          </div>
         </div>
       </div>
       <div className="prediction-footer">
@@ -88,8 +121,31 @@ function PredictionCard({ game, week }: { game: Prediction; week: number }) {
           <span className="eyebrow">Confidence</span>
           <strong>{(game.model_win_confidence * 100).toFixed(1)}%</strong>
         </div>
-        {game.moneyline_signal && (
-          <span className="signal-badge">Experimental signal</span>
+        {completed && (
+          <span
+            className={`result-badge ${
+              game.prediction_correct ? "won" : "lost"
+            }`}
+          >
+            Pick {game.prediction_correct ? "correct" : "missed"}
+          </span>
+        )}
+        {game.moneyline_signal && !completed && (
+          <span className="signal-badge">
+            Experimental signal · {formatOdds(game.moneyline_signal_odds)}
+          </span>
+        )}
+        {game.moneyline_signal && completed && (
+          <span
+            className={`signal-badge ${
+              game.moneyline_signal_won ? "won" : "lost"
+            }`}
+          >
+            Signal {game.moneyline_signal_won ? "won" : "lost"} ·{" "}
+            {game.moneyline_signal_profit !== null
+              ? `${game.moneyline_signal_profit > 0 ? "+" : ""}${game.moneyline_signal_profit.toFixed(2)}u`
+              : "odds unavailable"}
+          </span>
         )}
       </div>
     </article>

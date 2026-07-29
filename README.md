@@ -15,6 +15,7 @@ service, PostgreSQL persistence, and a Next.js/TypeScript interface.
 - Pregame feature builder verified against historical training rows
 - Seeded score simulation and a frozen 62.5% moneyline-confidence signal
 - Immutable Parquet and relational prediction snapshots
+- Separately stored final scores, closing moneylines, and signal settlement
 - FastAPI with generated OpenAPI documentation
 - Responsive Next.js 16, React 19, TypeScript, and Tailwind interface
 - PostgreSQL production persistence with a SQLite development fallback
@@ -46,6 +47,10 @@ nflverse schedule + play-by-play       market odds
 
 Training is offline. The public application reads stored prediction snapshots;
 it never retrains a model during a web request.
+
+Completed games join the immutable prediction to a separate final-result row.
+The interface shows predicted versus actual scores, the captured home and away
+moneylines, pick accuracy, and flat one-unit signal profit or loss.
 
 ## Model policy
 

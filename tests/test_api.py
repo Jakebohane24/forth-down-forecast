@@ -3,7 +3,7 @@ from datetime import UTC, datetime
 from fastapi.testclient import TestClient
 
 from api.main import create_app
-from api.models import Prediction
+from api.models import GameResult, Prediction
 
 
 def test_health_model_and_performance_endpoints(tmp_path):
@@ -47,9 +47,24 @@ def test_week_endpoint_returns_latest_snapshot(tmp_path):
                     },
                 )
             )
+            session.add(
+                GameResult(
+                    game_id="2026_01_MIA_BUF",
+                    season=2026,
+                    week=1,
+                    home_team="BUF",
+                    away_team="MIA",
+                    home_score=30,
+                    away_score=17,
+                    completed=True,
+                    updated_at=datetime(2026, 9, 3, tzinfo=UTC),
+                )
+            )
             session.commit()
 
         result = client.get("/predictions/2026/1").json()
 
     assert result["count"] == 1
     assert result["predictions"][0]["predicted_winner"] == "BUF"
+    assert result["predictions"][0]["actual_home_score"] == 30
+    assert result["predictions"][0]["prediction_correct"] is True

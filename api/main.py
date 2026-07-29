@@ -13,7 +13,7 @@ from sqlalchemy import distinct, select
 from sqlalchemy.orm import Session
 
 from api.database import Base, create_database
-from api.models import Prediction
+from api.models import GameResult, Prediction
 from api.schemas import (
     HealthResponse,
     ModelResponse,
@@ -27,6 +27,51 @@ from src.config import BettingConfig
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 MODEL_MANIFEST = PROJECT_ROOT / "reports" / "production_model.json"
 ROLLING_REPORT = PROJECT_ROOT / "reports" / "rolling_backtest.json"
+
+
+def _winning_profit(american_odds: float) -> float:
+    return american_odds / 100 if american_odds > 0 else 100 / abs(american_odds)
+
+
+def _prediction_response(
+    prediction: Prediction,
+    result: GameResult | None,
+):
+    values = {
+        column.name: getattr(prediction, column.name)
+        for column in Prediction.__table__.columns
+        if column.name != "id"
+    }
+    if result is None or not result.completed:
+        return values
+
+    actual_winner = (
+        result.home_team
+        if result.home_score > result.away_score
+        else result.away_team
+    )
+    signal_won = (
+        prediction.predicted_winner == actual_winner
+        if prediction.moneyline_signal
+        else None
+    )
+    signal_profit = None
+    if signal_won is not None and prediction.moneyline_signal_odds is not None:
+        signal_profit = (
+            _winning_profit(prediction.moneyline_signal_odds)
+            if signal_won
+            else -1.0
+        )
+    values.update(
+        {
+            "actual_home_score": result.home_score,
+            "actual_away_score": result.away_score,
+            "prediction_correct": prediction.predicted_winner == actual_winner,
+            "moneyline_signal_won": signal_won,
+            "moneyline_signal_profit": signal_profit,
+        }
+    )
+    return values
 
 
 def create_app(database_url: str | None = None) -> FastAPI:
@@ -97,11 +142,24 @@ def create_app(database_url: str | None = None) -> FastAPI:
         if latest_only and rows:
             latest_snapshot = rows[0].snapshot_id
             rows = [row for row in rows if row.snapshot_id == latest_snapshot]
+        game_ids = [row.game_id for row in rows]
+        results = (
+            {
+                result.game_id: result
+                for result in session.scalars(
+                    select(GameResult).where(GameResult.game_id.in_(game_ids))
+                )
+            }
+            if game_ids
+            else {}
+        )
         return WeekPredictionsResponse(
             season=season,
             week=week,
             count=len(rows),
-            predictions=rows,
+            predictions=[
+                _prediction_response(row, results.get(row.game_id)) for row in rows
+            ],
         )
 
     @application.get("/model", response_model=ModelResponse)

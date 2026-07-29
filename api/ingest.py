@@ -7,7 +7,7 @@ from datetime import UTC, datetime
 import pandas as pd
 
 from api.database import Base, create_database
-from api.models import Prediction
+from api.models import GameResult, Prediction
 
 
 def _timestamp(value):
@@ -56,5 +56,39 @@ def persist_predictions(
                     odds_retrieved_at=_timestamp(row.get("retrieved_at")),
                 )
             )
+    engine.dispose()
+    return len(rows)
+
+
+def persist_game_results(
+    games: pd.DataFrame,
+    *,
+    database_url: str | None = None,
+) -> int:
+    """Insert or refresh final results without altering any prediction."""
+    engine, session_factory = create_database(database_url)
+    Base.metadata.create_all(engine)
+    rows = games.reset_index().to_dict(orient="records")
+    updated_at = datetime.now(UTC)
+
+    with session_factory.begin() as session:
+        for row in rows:
+            game_id = str(row["game_id"])
+            result = session.get(GameResult, game_id)
+            values = {
+                "season": int(row["season"]),
+                "week": int(row["week"]),
+                "home_team": row["home_team"],
+                "away_team": row["away_team"],
+                "home_score": int(row["home_score"]),
+                "away_score": int(row["away_score"]),
+                "completed": True,
+                "updated_at": updated_at,
+            }
+            if result is None:
+                session.add(GameResult(game_id=game_id, **values))
+            else:
+                for key, value in values.items():
+                    setattr(result, key, value)
     engine.dispose()
     return len(rows)

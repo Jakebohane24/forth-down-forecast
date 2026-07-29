@@ -11,7 +11,7 @@ import pandas as pd
 from sqlalchemy import select
 
 from api.database import create_database
-from api.ingest import persist_predictions
+from api.ingest import persist_game_results, persist_predictions
 from api.models import Prediction
 from src.config import BettingConfig, ModelConfig
 from src.evaluation import evaluation_frame
@@ -114,6 +114,19 @@ def main() -> None:
         frame = evaluation_frame(model, "test").join(markets, how="left")
         frame = american_columns(frame)
         frame["prediction_timestamp"] = generated_at
+        persist_game_results(
+            frame[
+                [
+                    "season",
+                    "week",
+                    "home_team",
+                    "away_team",
+                    "home_score",
+                    "away_score",
+                ]
+            ],
+            database_url=args.database_url,
+        )
 
         for week, week_frame in frame.groupby("week"):
             snapshot_id = f"historical-{season}-w{int(week):02d}-v1"

@@ -47,3 +47,24 @@ class Prediction(Base):
         ),
         Index("ix_predictions_season_week", "season", "week"),
     )
+
+
+class GameResult(Base):
+    """Final game outcome stored independently from prediction snapshots."""
+
+    __tablename__ = "game_results"
+
+    game_id: Mapped[str] = mapped_column(String(40), primary_key=True)
+    season: Mapped[int] = mapped_column(Integer, nullable=False)
+    week: Mapped[int] = mapped_column(Integer, nullable=False)
+    home_team: Mapped[str] = mapped_column(String(8), nullable=False)
+    away_team: Mapped[str] = mapped_column(String(8), nullable=False)
+    home_score: Mapped[int] = mapped_column(Integer, nullable=False)
+    away_score: Mapped[int] = mapped_column(Integer, nullable=False)
+    completed: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+    )
+
+    __table_args__ = (Index("ix_game_results_season_week", "season", "week"),)

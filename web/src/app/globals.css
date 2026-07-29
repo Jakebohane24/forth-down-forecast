@@ -78,11 +78,21 @@ h1 em { color: var(--green); font-weight: 500; }
 .team-mark { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 50%; font-size: 10px; font-weight: 850; }
 .team-label { display: block; color: var(--muted); font-size: 9px; text-transform: uppercase; letter-spacing: .1em; }
 .team strong { font-size: 15px; }
-.team b { font-family: Georgia, serif; font-size: 29px; font-weight: 500; }
+.moneyline { display: block; margin-top: 3px; color: var(--green); font-size: 9px; font-weight: 750; letter-spacing: .04em; }
+.score-block { text-align: right; }
+.score-block span { display: block; color: var(--muted); font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+.score-block b { font-family: Georgia, serif; font-size: 29px; font-weight: 500; }
 .at { margin-left: 19px; color: var(--muted); font-size: 9px; }
 .prediction-footer { padding-top: 16px; border-top: 1px solid var(--line); display: flex; gap: 28px; align-items: center; }
 .prediction-footer .eyebrow { display: block; margin-bottom: 3px; font-size: 8px; }
 .signal-badge, .experimental-pill { margin-left: auto; padding: 7px 9px; background: rgba(200,240,77,.3); color: var(--green); border-radius: 2px; font-size: 9px; font-weight: 850; text-transform: uppercase; letter-spacing: .08em; }
+.result-badge { padding: 6px 8px; border-radius: 2px; font-size: 8px; font-weight: 850; text-transform: uppercase; letter-spacing: .07em; }
+.result-badge.won { color: var(--green); background: #e4f1e8; }
+.result-badge.lost { color: var(--red); background: #f5e5e3; }
+.signal-badge.won { color: var(--green); background: #dff0df; }
+.signal-badge.lost { color: var(--red); background: #f5e5e3; }
+.game-card.pick-correct { box-shadow: inset 3px 0 0 #4f9b69; }
+.game-card.pick-incorrect { box-shadow: inset 3px 0 0 #b9584e; }
 .empty-board { min-height: 300px; display: grid; place-items: center; align-content: center; text-align: center; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,.16); border-radius: 4px 18px 4px 4px; }
 .empty-board > *:not(.field-lines) { position: relative; z-index: 1; }
 .field-lines { position: absolute; inset: 0; opacity: .08; background: repeating-linear-gradient(90deg, transparent 0 9.8%, white 10%); }

@@ -358,6 +358,18 @@ class NFLModel:
             selected.extend(self.vegas_features)
         return selected
 
+    def required_prediction_features(self):
+        """Return the minimal pregame schema required for inference."""
+        feature_cols = self.get_feature_cols()
+        selected = set(self.selected_stage_2_features())
+        for metric in self.stage_1_targets:
+            for prefix in ["home", "away"]:
+                target_col = f"{prefix}_{metric}"
+                selected.update(
+                    self.selected_stage_1_features(target_col, feature_cols)
+                )
+        return sorted(selected)
+
     def train_val_test_masks(self):
 
         train = self.df["season"].isin(self.config.training_seasons)
@@ -607,7 +619,7 @@ class NFLModel:
 
         return s2_predictions
 
-    def save(self, artifact_dir):
+    def save(self, artifact_dir, *, model_version=None):
         """Save trained models plus the configuration and schema metadata."""
         self._require_fitted()
         artifact_dir = Path(artifact_dir)
@@ -624,6 +636,7 @@ class NFLModel:
         )
         metadata = {
             "artifact_version": 1,
+            "model_version": model_version,
             "created_at": datetime.now(UTC).isoformat(),
             "config": self.config.to_dict(),
             "dataset_columns": list(self.df.columns),

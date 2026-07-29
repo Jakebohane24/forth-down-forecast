@@ -1,74 +1,160 @@
-# NFL Project 2
+# Fourth Down Forecast
 
-Two-stage NFL score prediction project with reproducible processing,
-training, evaluation, model artifacts, and weekly prediction contracts.
+An end-to-end NFL forecasting product that turns play-level data into
+versioned weekly predictions through a two-stage XGBoost model, a FastAPI
+service, PostgreSQL persistence, and a Next.js/TypeScript interface.
 
-## Current model
+> The betting indicators are experimental analysis, not financial advice.
 
-```python
-from src.config import ModelConfig
-from src.training import NFLModel
+## What is included
 
-config = ModelConfig(
-    use_market_history=True,
-    stacking_strategy="kfold",
-    market_history_features="all",
-)
-model = NFLModel(config).train()
+- Leakage-conscious SQLite feature pipeline built from nflverse play-by-play
+- Stage-one component models and stage-two home/away point models
+- Expanding-window historical evaluation with all results retained
+- Production artifact trained on completed 2018–2025 data
+- Pregame feature builder verified against historical training rows
+- Seeded score simulation and a frozen 62.5% moneyline-confidence signal
+- Immutable Parquet and relational prediction snapshots
+- FastAPI with generated OpenAPI documentation
+- Responsive Next.js 16, React 19, TypeScript, and Tailwind interface
+- PostgreSQL production persistence with a SQLite development fallback
+- Docker Compose and GitHub Actions CI
+
+The four-point spread experiment is retained in research reports but is not
+shown as a product recommendation because the larger rolling backtest found it
+unreliable.
+
+## Architecture
+
+```text
+nflverse schedule + play-by-play       market odds
+                 \                       /
+                  pregame feature builder
+                           |
+                 versioned XGBoost model
+                           |
+                  seeded score simulation
+                           |
+              immutable prediction snapshot
+                           |
+                       PostgreSQL
+                           |
+                        FastAPI
+                           |
+                  Next.js public dashboard
 ```
 
-Stage one predicts team efficiency and volume components. Stage two uses
-out-of-fold stage-one predictions and rolling game features to predict home
-and away offensive points.
+Training is offline. The public application reads stored prediction snapshots;
+it never retrains a model during a web request.
 
-## Evaluate
+## Model policy
 
-```python
-from src.evaluation import evaluate_model
+The production model uses all completed data from 2018 through 2025. Its
+features, architecture, and 62.5% moneyline-confidence threshold are frozen
+before prospective 2026 evaluation.
 
-evaluate_model(model, "val")
-evaluate_model(model, "test")
+The current feature definition requires five completed games from each team in
+the same season. Therefore Version 1 intentionally does not publish predictions
+for early-season games without sufficient history. Carrying prior-season form
+across the offseason would change the feature distribution and belongs in a
+separately backtested Version 2.
+
+Historical results live in `reports/`:
+
+- `rolling_backtest.json`: expanding-window 2021–2025 evaluation
+- `baseline_metrics.json`: locked Version 1 regression baseline
+- `betting_retrospective.json`: threshold research
+- `production_model.json`: public production-model manifest
+
+Across the five rolling test seasons, the 62.5% moneyline-confidence rule
+returned approximately 0.74% over 280 flat-stake bets. This is close to
+break-even and is displayed as experimental, not as a promise of profitability.
+
+## Local development
+
+### Python API
+
+```bash
+python -m pip install -r requirements.txt
+pytest -q
+uvicorn api.main:app --reload
 ```
 
-The locked regression baseline is stored in
-`reports/baseline_metrics.json`.
+The API is available at `http://localhost:8000` and its interactive OpenAPI
+documentation at `http://localhost:8000/docs`.
 
-The current high-edge threshold is a model-versus-market difference of at
-least 4.0 points. It is an experimental indicator, not a proven betting
-recommendation.
+### Next.js interface
 
-Retrospective spread and moneyline indicator results are recorded in
-`reports/betting_retrospective.json`. The moneyline experiment uses a 62.5%
-model-confidence threshold. Both thresholds were chosen after inspecting the
-2024 and 2025 results, so they must be tracked prospectively before being
-treated as reliable.
-
-## Save and load
-
-```python
-model.save("artifacts/models/default")
-loaded = NFLModel.load("artifacts/models/default")
+```bash
+cd web
+npm ci
+npm run dev
 ```
 
-Generated model artifacts and the local SQLite database are intentionally
-excluded from Git.
+Open `http://localhost:3000`.
 
-## Weekly predictions
+### Full application with Docker
 
-`src.prediction.WeeklyPredictor` accepts prepared pregame matchup features,
-runs the saved model, simulates score distributions, joins normalized market
-lines, and saves immutable prediction snapshots.
+```bash
+docker compose up --build
+```
 
-`src.market.MarketDataProvider` isolates the application from any particular
-odds vendor. Current internal spread convention is a positive
-`market_home_margin` when the home team is favored.
+This starts the interface, API, and PostgreSQL. SQLite remains the automatic
+fallback when `DATABASE_URL` is not set.
 
-## Tests
+## Production workflow
+
+Train and version the all-data model:
+
+```bash
+python -m scripts.train_production
+```
+
+Generate a weekly snapshot after both teams have five completed games:
+
+```bash
+python -m scripts.generate_week 2026 6
+```
+
+To attach market prices, normalize provider output to the contract in
+`src/market.py` and pass it as a CSV:
+
+```bash
+python -m scripts.generate_week 2026 6 --market-csv data/market_week_06.csv
+```
+
+The odds key belongs only in the server-side `ODDS_API_KEY` environment
+variable. It must never be committed or exposed to the browser. A live provider
+account still needs to be connected before automatic market ingestion can run.
+
+## API
+
+| Endpoint | Purpose |
+|---|---|
+| `GET /health` | Service health |
+| `GET /seasons` | Seasons with stored predictions |
+| `GET /predictions/{season}/{week}` | Latest immutable weekly snapshot |
+| `GET /model` | Production version and frozen configuration |
+| `GET /performance` | Transparent rolling backtest |
+
+## Quality controls
 
 ```bash
 pytest -q
+cd web && npm run lint && npm run build
 ```
 
-The next pipeline component is a pregame feature builder that converts an
-upcoming schedule and each team's latest completed-game history into the same
-feature schema used by the trained model.
+GitHub Actions runs both Python and frontend checks on pushes and pull
+requests. Generated databases, trained binaries, secrets, caches, and
+prediction artifacts are excluded from Git.
+
+## Repository layout
+
+```text
+api/          FastAPI, SQLAlchemy models, persistence, schemas
+src/          processing, training, evaluation, pregame, prediction contracts
+scripts/      production training, rolling backtest, weekly generation
+reports/      committed model manifests and historical results
+tests/        Python unit and integration tests
+web/          Next.js TypeScript application
+```

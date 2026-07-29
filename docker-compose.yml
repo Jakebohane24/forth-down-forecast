@@ -1,0 +1,40 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: postgresql+psycopg://nfl:nfl@postgres:5432/nfl
+      CORS_ORIGINS: http://localhost:3000
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+
+  web:
+    build:
+      context: ./web
+      args:
+        API_URL: http://api:8000
+    depends_on:
+      - api
+    ports:
+      - "3000:3000"
+
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: nfl
+      POSTGRES_USER: nfl
+      POSTGRES_PASSWORD: nfl
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nfl"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:

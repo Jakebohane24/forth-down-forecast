@@ -1,0 +1,16 @@
+{
+  "model_version": "production-2018-2025-v1",
+  "status": "production",
+  "training_seasons": [
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "moneyline_confidence_threshold": 0.625,
+  "trained_at": "2026-07-29T19:38:43.267047+00:00"
+}

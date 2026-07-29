@@ -183,7 +183,14 @@ export default async function Home({
     <>
       <header className="site-header">
         <Link href="/" className="brand">
-          <span className="brand-icon">4</span>
+          <Image
+            className="brand-mark"
+            src="/brand-mark.svg"
+            alt="Fourth Down Forecast"
+            width={36}
+            height={42}
+            priority
+          />
           <span>
             Fourth Down
             <small>Forecast</small>

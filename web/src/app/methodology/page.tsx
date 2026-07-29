@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const seasons = [
   { year: 2022, games: 715, mae: 9.04, win: 62.8, roi: 6.5 },
@@ -35,7 +36,14 @@ export default function Methodology() {
     <>
       <header className="site-header">
         <Link href="/" className="brand">
-          <span className="brand-icon">4</span>
+          <Image
+            className="brand-mark"
+            src="/brand-mark.svg"
+            alt="Fourth Down Forecast"
+            width={36}
+            height={42}
+            priority
+          />
           <span>Fourth Down<small>Forecast</small></span>
         </Link>
         <nav>

@@ -116,6 +116,14 @@ Generate a weekly snapshot after both teams have five completed games:
 python -m scripts.generate_week 2026 6
 ```
 
+Build the historical showcase once. This caches a rolling model for every test
+season and stores Weeks 6–18 for browsing without retraining during web
+requests:
+
+```bash
+python -m scripts.build_historical_showcase
+```
+
 To attach market prices, normalize provider output to the contract in
 `src/market.py` and pass it as a CSV:
 

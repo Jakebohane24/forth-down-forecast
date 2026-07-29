@@ -11,6 +11,7 @@ type Prediction = {
   moneyline_signal: boolean;
   home_moneyline: number | null;
   away_moneyline: number | null;
+  model_version: string;
   generated_at: string;
 };
 
@@ -35,6 +36,19 @@ async function getPredictions(season: number, week: number): Promise<WeekRespons
   }
 }
 
+async function getSeasons(): Promise<number[]> {
+  try {
+    const response = await fetch(`${API_URL}/seasons`, {
+      next: { revalidate: 300 },
+    });
+    if (!response.ok) throw new Error("Season API unavailable");
+    const historical: number[] = await response.json();
+    return Array.from(new Set([2026, ...historical])).sort((a, b) => b - a);
+  } catch {
+    return [2026, 2025, 2024, 2023, 2022, 2021];
+  }
+}
+
 function TeamMark({ team }: { team: string }) {
   return <span className="team-mark">{team}</span>;
 }
@@ -44,7 +58,7 @@ function PredictionCard({ game, week }: { game: Prediction; week: number }) {
     <article className="game-card">
       <div className="game-meta">
         <span>Week {week}</span>
-        <span>Model v1</span>
+        <span>{game.model_version.replaceAll("-", " ")}</span>
       </div>
       <div className="matchup">
         <div className="team">
@@ -89,9 +103,12 @@ export default async function Home({
 }) {
   const query = await searchParams;
   const selectedSeason = Number(query.season) || 2026;
-  const selectedWeek = Math.min(18, Math.max(1, Number(query.week) || 1));
-  const board = await getPredictions(selectedSeason, selectedWeek);
-  const previousWeek = Math.max(1, selectedWeek - 1);
+  const selectedWeek = Math.min(18, Math.max(6, Number(query.week) || 6));
+  const [board, seasons] = await Promise.all([
+    getPredictions(selectedSeason, selectedWeek),
+    getSeasons(),
+  ]);
+  const previousWeek = Math.max(6, selectedWeek - 1);
   const nextWeek = Math.min(18, selectedWeek + 1);
 
   return (
@@ -107,7 +124,7 @@ export default async function Home({
         <nav>
           <Link className="active" href="/">Predictions</Link>
           <Link href="/methodology">Methodology</Link>
-          <a href={`${API_URL}/docs`}>API</a>
+          <a href={`${API_URL}/docs`} target="_blank" rel="noreferrer">API ↗</a>
         </nav>
         <span className="model-status"><i /> Model online</span>
       </header>
@@ -147,7 +164,7 @@ export default async function Home({
             <div className="week-controls">
               <Link
                 aria-label="Previous week"
-                aria-disabled={selectedWeek === 1}
+                aria-disabled={selectedWeek === 6}
                 href={`/?season=${selectedSeason}&week=${previousWeek}`}
               >
                 ←
@@ -162,6 +179,18 @@ export default async function Home({
               </Link>
             </div>
           </div>
+          <form className="season-picker" action="/">
+            <label htmlFor="season">Explore a season</label>
+            <select id="season" name="season" defaultValue={selectedSeason}>
+              {seasons.map((season) => (
+                <option value={season} key={season}>
+                  {season}{season === 2026 ? " · prospective" : " · historical"}
+                </option>
+              ))}
+            </select>
+            <input type="hidden" name="week" value={selectedWeek} />
+            <button type="submit">View season</button>
+          </form>
 
           {board.count > 0 ? (
             <div className="game-grid">

@@ -19,7 +19,7 @@ export default function Methodology() {
         <nav>
           <Link href="/">Predictions</Link>
           <Link className="active" href="/methodology">Methodology</Link>
-          <a href="http://localhost:8000/docs">API</a>
+          <a href="http://localhost:8000/docs" target="_blank" rel="noreferrer">API ↗</a>
         </nav>
         <span className="model-status"><i /> Model online</span>
       </header>

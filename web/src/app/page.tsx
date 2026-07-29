@@ -183,10 +183,10 @@ export default async function Home({
     <>
       <header className="site-header">
         <Link href="/" className="brand">
-          <span className="brand-icon">S</span>
+          <span className="brand-icon">4</span>
           <span>
-            Sunday
-            <small>Signal</small>
+            Fourth Down
+            <small>Forecast</small>
           </span>
         </Link>
         <nav>
@@ -299,7 +299,7 @@ export default async function Home({
       </main>
 
       <footer>
-        <span>Sunday Signal</span>
+        <span>Fourth Down Forecast</span>
         <span>Experimental analysis—not financial advice.</span>
       </footer>
     </>

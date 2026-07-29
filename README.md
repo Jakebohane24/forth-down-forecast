@@ -1,4 +1,4 @@
-# Sunday Signal
+# Fourth Down Forecast
 
 An end-to-end NFL forecasting product that turns play-level data into
 versioned weekly predictions through a two-stage XGBoost model, a FastAPI

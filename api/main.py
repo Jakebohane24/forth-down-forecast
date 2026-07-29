@@ -84,7 +84,7 @@ def create_app(database_url: str | None = None) -> FastAPI:
         engine.dispose()
 
     application = FastAPI(
-        title="Sunday Signal API",
+        title="Fourth Down Forecast API",
         version="1.0.0",
         description="Versioned NFL score predictions and model performance.",
         lifespan=lifespan,
@@ -108,7 +108,7 @@ def create_app(database_url: str | None = None) -> FastAPI:
 
     @application.get("/health", response_model=HealthResponse)
     def health() -> HealthResponse:
-        return HealthResponse(status="ok", service="sunday-signal-api")
+        return HealthResponse(status="ok", service="fourth-down-forecast-api")
 
     @application.get("/seasons", response_model=list[int])
     def seasons(session: Session = Depends(get_session)) -> list[int]:

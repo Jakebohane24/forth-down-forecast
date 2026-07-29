@@ -133,8 +133,9 @@ export default function Methodology() {
               </p>
               <p>
                 Stage-one training predictions are generated out of fold using
-                five-fold shuffled K-fold stacking. This prevents a row from
-                being predicted by a model trained on that same row.
+                five-fold shuffled K-fold stacking. A row is never predicted by
+                a model fitted on that same row, although a fold can use games
+                that occurred later in the training period.
               </p>
             </article>
             <article>
@@ -183,6 +184,69 @@ export default function Methodology() {
                 genuinely prospective evaluation period is 2026.
               </p>
             </article>
+          </div>
+        </section>
+
+        <section className="technical-section split-section">
+          <div className="section-heading">
+            <div>
+              <span className="overline">Validation design</span>
+              <h2>Why K-fold and time-series splits are both used</h2>
+            </div>
+          </div>
+          <p className="section-intro">
+            The two split methods solve different problems. Their roles were
+            tested separately across independent 2022–2025 seasons rather than
+            chosen from a single favorable year.
+          </p>
+          <div className="split-grid">
+            <article>
+              <span className="detail-number">Stage-one stacking</span>
+              <h3>Shuffled K-fold</h3>
+              <p>
+                Stage two must learn from stage-one estimates created without
+                fitting stage one on the same game. Shuffled K-fold supplies an
+                out-of-fold estimate for every training row and preserves more
+                data for stage-two fitting.
+              </p>
+              <p>
+                This is not perfectly chronological. A fold predicting an
+                earlier game may contain later games, creating temporal
+                information leakage inside the training process. The leaked
+                information never includes the held-out test season, but it can
+                make the stage-two training inputs more representative than
+                they would have been in real time.
+              </p>
+            </article>
+            <article>
+              <span className="detail-number">Hyperparameter tuning</span>
+              <h3>TimeSeriesSplit</h3>
+              <p>
+                Parameter searches train on earlier rows and validate on later
+                rows. This more closely matches deployment and prevents the
+                tuning procedure from selecting settings using future games
+                within its validation folds.
+              </p>
+              <p>
+                Replacing this step with shuffled K-fold reduced 2022–2025
+                moneyline ROI from 3.90% to 0.16% and slightly reduced winner
+                accuracy, despite improving margin MAE by only 0.05 points.
+              </p>
+            </article>
+          </div>
+          <div className="technical-note">
+            <strong>Why K-fold stacking was retained</strong>
+            <p>
+              We also replaced stage-one K-fold stacking with chronological
+              splits while leaving the outer seasonal tests untouched. The
+              chronological version produced 64.13% winner accuracy and 2.00%
+              moneyline ROI; K-fold produced 65.05% and 3.90%. Because every
+              reported season remained completely outside its model’s training
+              data, this is evidence of better independent-season performance,
+              not proof that the internal leakage is harmless. The limitation
+              is disclosed and the 2026 predictions remain the prospective
+              test.
+            </p>
           </div>
         </section>
 

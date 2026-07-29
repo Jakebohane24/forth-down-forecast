@@ -18,7 +18,15 @@
     "win_accuracy": 0.6473684210526316,
     "ats_accuracy": 0.5238095238095238,
     "high_edge_games": 59,
-    "high_edge_ats_accuracy": 0.5423728813559322
+    "high_edge_ats_accuracy": 0.5423728813559322,
+    "moneyline_62_5_confidence": {
+      "bets": 68,
+      "wins": 52,
+      "losses": 16,
+      "win_rate": 0.7647058823529411,
+      "profit_units": 2.006101886176833,
+      "roi": 0.029501498326129895
+    }
   },
   "trained_through_2024": {
     "training_seasons": [2018, 2019, 2020, 2021, 2022, 2023, 2024],
@@ -29,7 +37,16 @@
     "win_accuracy": 0.6578947368421053,
     "ats_accuracy": 0.4973544973544973,
     "high_edge_games": 59,
-    "high_edge_ats_accuracy": 0.4406779661016949
+    "high_edge_ats_accuracy": 0.4406779661016949,
+    "moneyline_62_5_confidence": {
+      "bets": 70,
+      "wins": 53,
+      "losses": 17,
+      "win_rate": 0.7571428571428571,
+      "profit_units": -1.4169511774896772,
+      "roi": -0.020242159678423962
+    }
   },
-  "conclusion": "Do not replace Version 1 based on this test. Adding 2024 slightly improved winner accuracy but worsened margin error, overall ATS accuracy, and the four-point high-edge signal."
+  "moneyline_method": "Flat one-unit stakes using nflverse 2025 closing moneylines; bet the predicted winner only when model win confidence was at least 0.625.",
+  "conclusion": "Do not replace Version 1 based on this test. Adding 2024 slightly improved winner accuracy but worsened margin error, overall ATS accuracy, the four-point high-edge signal, and moneyline ROI."
 }

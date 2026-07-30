@@ -69,7 +69,7 @@ export default function Methodology() {
           <article><span>Architecture</span><strong>2-stage</strong><small>XGBoost regression</small></article>
           <article><span>Production data</span><strong>8 seasons</strong><small>2018 through 2025</small></article>
           <article><span>Rolling ML signals</span><strong>104</strong><small>2022–2025 showcase</small></article>
-          <article><span>Pooled ML ROI</span><strong>+12.78%</strong><small>2022–2025, flat stake</small></article>
+          <article><span>Pooled signal ROI</span><strong>+12.78%</strong><small>2022–2025, flat stake</small></article>
         </section>
 
         <section className="model-flow">
@@ -230,7 +230,7 @@ export default function Methodology() {
               <p>
                 In the controlled confidence-only research comparison,
                 replacing this step with shuffled K-fold reduced 2022–2025
-                moneyline ROI from 3.90% to 0.16% and slightly reduced winner
+                signal ROI from 3.90% to 0.16% and slightly reduced winner
                 accuracy, despite improving margin MAE by only 0.05 points.
               </p>
             </article>
@@ -283,7 +283,7 @@ export default function Methodology() {
           </div>
           <div className="table-wrap">
             <table>
-              <thead><tr><th>Test season</th><th>Training games</th><th>Official signals<br /><small>≥62.5% and odds ≥−300</small></th><th>Signal accuracy</th><th>Margin MAE</th><th>Winner accuracy</th><th>Moneyline ROI</th></tr></thead>
+              <thead><tr><th>Test season</th><th>Training games</th><th>Official signals<br /><small>Confidence 62.5%+; ML −300 or better</small></th><th>Signal accuracy</th><th>Margin MAE</th><th>Winner accuracy</th><th>Signal ROI</th></tr></thead>
               <tbody>
                 {seasons.map((row) => (
                   <tr key={row.year}>
@@ -359,7 +359,7 @@ export default function Methodology() {
           <ul>
             <li>Injuries and confirmed quarterback availability are not explicit model inputs.</li>
             <li>Historical betting comparisons use closing lines; a live prediction may capture a different price.</li>
-            <li>NFL seasons are small samples, and a few underdog outcomes can materially change moneyline ROI.</li>
+            <li>NFL seasons are small samples, and a few underdog outcomes can materially change signal ROI.</li>
             <li>The public 2022–2025 aggregate excludes the smaller 2021 training window; that result remains in the repository.</li>
             <li>Historical performance, including profitable periods, does not guarantee future returns.</li>
           </ul>

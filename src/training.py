@@ -348,6 +348,8 @@ class NFLModel:
 
     def selected_stage_1_features(self, target_col, fallback_features):
         selected = list(self.stage_1_feature_map.get(target_col, fallback_features))
+        if not self.config.use_wind:
+            selected = [feature for feature in selected if feature != "game_wind"]
         if self.config.use_market_history:
             selected.extend(self.vegas_features)
         return selected

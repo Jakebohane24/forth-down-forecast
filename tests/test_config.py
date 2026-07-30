@@ -7,6 +7,7 @@ def test_default_model_configuration_is_explicit():
     config = ModelConfig()
 
     assert config.use_market_history is True
+    assert config.use_wind is True
     assert config.stacking_strategy == "kfold"
     assert config.tuning_strategy == "timeseries"
     assert config.market_history_features == "all"

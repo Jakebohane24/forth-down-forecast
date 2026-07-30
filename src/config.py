@@ -14,6 +14,7 @@ class ModelConfig:
     """Reproducible settings for the two-stage NFL model."""
 
     use_market_history: bool = True
+    use_wind: bool = True
     stacking_strategy: StackingStrategy = "kfold"
     tuning_strategy: TuningStrategy = "timeseries"
     market_history_features: MarketHistoryFeatures = "all"

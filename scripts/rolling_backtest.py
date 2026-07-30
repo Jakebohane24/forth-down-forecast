@@ -111,6 +111,7 @@ def run_backtest(
     last_test_season: int = 2025,
     stacking_strategy: str = "kfold",
     tuning_strategy: str = "timeseries",
+    use_wind: bool = True,
 ) -> dict:
     evaluation_config = EvaluationConfig()
     betting_config = BettingConfig()
@@ -122,6 +123,7 @@ def run_backtest(
     for test_season in range(first_test_season, last_test_season + 1):
         training_seasons = tuple(range(2018, test_season))
         config = ModelConfig(
+            use_wind=use_wind,
             stacking_strategy=stacking_strategy,
             tuning_strategy=tuning_strategy,
             training_seasons=training_seasons,
@@ -176,6 +178,7 @@ def run_backtest(
         ),
         "stacking_strategy": stacking_strategy,
         "tuning_strategy": tuning_strategy,
+        "use_wind": use_wind,
         "methodology": (
             "Each test season is predicted by a newly tuned model trained only "
             "on processed games from 2018 through the prior season. "
@@ -218,12 +221,18 @@ def main() -> None:
         choices=["kfold", "timeseries"],
         default="timeseries",
     )
+    parser.add_argument(
+        "--use-wind",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+    )
     args = parser.parse_args()
     results = run_backtest(
         first_test_season=args.first_test_season,
         last_test_season=args.last_test_season,
         stacking_strategy=args.stacking_strategy,
         tuning_strategy=args.tuning_strategy,
+        use_wind=args.use_wind,
     )
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(results, indent=2) + "\n")

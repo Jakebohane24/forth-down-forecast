@@ -2,10 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 
 const seasons = [
-  { year: 2022, games: 715, predicted: 37, mae: 9.04, win: 62.8, roi: 8.8 },
-  { year: 2023, games: 906, predicted: 11, mae: 9.95, win: 62.6, roi: 6.5 },
-  { year: 2024, games: 1096, predicted: 32, mae: 10.09, win: 68.9, roi: 25.6 },
-  { year: 2025, games: 1286, predicted: 24, mae: 10.51, win: 65.8, roi: 4.7 },
+  { year: 2022, games: 715, predicted: 37, signalAccuracy: 70.3, mae: 9.04, win: 62.8, roi: 8.8 },
+  { year: 2023, games: 906, predicted: 11, signalAccuracy: 72.7, mae: 9.95, win: 62.6, roi: 6.5 },
+  { year: 2024, games: 1096, predicted: 32, signalAccuracy: 81.3, mae: 10.09, win: 68.9, roi: 25.6 },
+  { year: 2025, games: 1286, predicted: 24, signalAccuracy: 66.7, mae: 10.51, win: 65.8, roi: 4.7 },
 ];
 
 const featureGroups = [
@@ -283,13 +283,14 @@ export default function Methodology() {
           </div>
           <div className="table-wrap">
             <table>
-              <thead><tr><th>Test season</th><th>Training games</th><th>Official signals<br /><small>≥62.5% and odds ≥−300</small></th><th>Margin MAE</th><th>Winner accuracy</th><th>Moneyline ROI</th></tr></thead>
+              <thead><tr><th>Test season</th><th>Training games</th><th>Official signals<br /><small>≥62.5% and odds ≥−300</small></th><th>Signal accuracy</th><th>Margin MAE</th><th>Winner accuracy</th><th>Moneyline ROI</th></tr></thead>
               <tbody>
                 {seasons.map((row) => (
                   <tr key={row.year}>
                     <td><strong>{row.year}</strong></td>
                     <td>{row.games.toLocaleString()}</td>
                     <td>{row.predicted}</td>
+                    <td>{row.signalAccuracy.toFixed(1)}%</td>
                     <td>{row.mae.toFixed(2)}</td>
                     <td>{row.win.toFixed(1)}%</td>
                     <td className={row.roi >= 0 ? "positive" : "negative"}>

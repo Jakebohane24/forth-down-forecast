@@ -33,7 +33,7 @@ const fallbackSeasons: PerformanceSeason[] = [
 async function getPerformance(): Promise<PerformanceSeason[]> {
   try {
     const response = await fetch(`${API_URL}/performance`, {
-      next: { revalidate: 300 },
+      cache: "no-store",
     });
     if (!response.ok) throw new Error("Performance API unavailable");
     const data = await response.json();

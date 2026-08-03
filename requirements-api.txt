@@ -1,0 +1,7 @@
+# Minimal dependency set for the read-only production API.
+# Training and data-download packages remain in requirements.txt for offline jobs.
+fastapi==0.141.1
+pydantic==2.12.5
+psycopg[binary]==3.2.13
+SQLAlchemy==2.0.39
+uvicorn==0.52.0

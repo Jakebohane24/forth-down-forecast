@@ -1,0 +1,178 @@
+{
+  "description": "Frozen expanding-window models with training data untouched. Only test-season outdoor game_wind was replaced by Open-Meteo's stadium-location historical forecast one hour before kickoff.",
+  "seasons": [
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "weather_source": "https://historical-forecast-api.open-meteo.com/v1/forecast",
+  "weather_cache": "artifacts/weather/test_wind_2022_2025.parquet",
+  "neutral_site_policy": "Original wind retained; no home-stadium substitution.",
+  "roof_policy": "Original zero retained when historical roof_adjusted=1.",
+  "baseline": {
+    "pooled_moneyline_signal": {
+      "bets": 104,
+      "wins": 76,
+      "losses": 28,
+      "win_rate": 0.7307692307692307,
+      "profit_units": 13.29072922885302,
+      "roi": 0.12779547335435598
+    },
+    "by_season": [
+      {
+        "test_season": 2022,
+        "games": 191,
+        "margin_mae": 9.041884816753926,
+        "margin_rmse": 11.900767716887382,
+        "win_accuracy": 0.6282722513089005,
+        "moneyline_signal": {
+          "bets": 37,
+          "wins": 26,
+          "losses": 11,
+          "win_rate": 0.7027027027027027,
+          "profit_units": 3.2429356168528516,
+          "roi": 0.08764690856359059,
+          "games_missing_odds": 0
+        }
+      },
+      {
+        "test_season": 2023,
+        "games": 190,
+        "margin_mae": 9.95,
+        "margin_rmse": 13.045719201089844,
+        "win_accuracy": 0.6263157894736842,
+        "moneyline_signal": {
+          "bets": 11,
+          "wins": 8,
+          "losses": 3,
+          "win_rate": 0.7272727272727273,
+          "profit_units": 0.7203403053417441,
+          "roi": 0.06548548230379492,
+          "games_missing_odds": 0
+        }
+      },
+      {
+        "test_season": 2024,
+        "games": 190,
+        "margin_mae": 10.092105263157896,
+        "margin_rmse": 13.134376350069429,
+        "win_accuracy": 0.6894736842105263,
+        "moneyline_signal": {
+          "bets": 32,
+          "wins": 26,
+          "losses": 6,
+          "win_rate": 0.8125,
+          "profit_units": 8.204178131917574,
+          "roi": 0.2563805666224242,
+          "games_missing_odds": 0
+        }
+      },
+      {
+        "test_season": 2025,
+        "games": 190,
+        "margin_mae": 10.510526315789473,
+        "margin_rmse": 13.113873730157932,
+        "win_accuracy": 0.6578947368421053,
+        "moneyline_signal": {
+          "bets": 24,
+          "wins": 16,
+          "losses": 8,
+          "win_rate": 0.6666666666666666,
+          "profit_units": 1.1232751747408507,
+          "roi": 0.04680313228086878,
+          "games_missing_odds": 0
+        }
+      }
+    ]
+  },
+  "replacement": {
+    "pooled_moneyline_signal": {
+      "bets": 105,
+      "wins": 76,
+      "losses": 29,
+      "win_rate": 0.7238095238095238,
+      "profit_units": 11.071947442390433,
+      "roi": 0.10544711849895651
+    },
+    "by_season": [
+      {
+        "games": 191,
+        "margin_mae": 9.06020942408377,
+        "margin_rmse": 11.900602738926219,
+        "win_accuracy": 0.6230366492146597,
+        "wind_replaced_games": 128,
+        "wind_unchanged_games": 63,
+        "moneyline_signal": {
+          "bets": 37,
+          "wins": 25,
+          "losses": 12,
+          "win_rate": 0.6756756756756757,
+          "profit_units": 1.5806839612237136,
+          "roi": 0.04272118814118145,
+          "games_missing_odds": 0
+        },
+        "test_season": 2022
+      },
+      {
+        "games": 190,
+        "margin_mae": 10.0,
+        "margin_rmse": 13.049299235066831,
+        "win_accuracy": 0.6210526315789474,
+        "wind_replaced_games": 126,
+        "wind_unchanged_games": 64,
+        "moneyline_signal": {
+          "bets": 12,
+          "wins": 8,
+          "losses": 4,
+          "win_rate": 0.6666666666666666,
+          "profit_units": -0.4491397299101034,
+          "roi": -0.03742831082584195,
+          "games_missing_odds": 0
+        },
+        "test_season": 2023
+      },
+      {
+        "games": 190,
+        "margin_mae": 10.078947368421053,
+        "margin_rmse": 13.15394677613809,
+        "win_accuracy": 0.6947368421052632,
+        "wind_replaced_games": 122,
+        "wind_unchanged_games": 68,
+        "moneyline_signal": {
+          "bets": 33,
+          "wins": 26,
+          "losses": 7,
+          "win_rate": 0.7878787878787878,
+          "profit_units": 7.018915268382898,
+          "roi": 0.21269440207220902,
+          "games_missing_odds": 0
+        },
+        "test_season": 2024
+      },
+      {
+        "games": 190,
+        "margin_mae": 10.486842105263158,
+        "margin_rmse": 13.07111117573487,
+        "win_accuracy": 0.6526315789473685,
+        "wind_replaced_games": 123,
+        "wind_unchanged_games": 67,
+        "moneyline_signal": {
+          "bets": 23,
+          "wins": 17,
+          "losses": 6,
+          "win_rate": 0.7391304347826086,
+          "profit_units": 2.9214879426939246,
+          "roi": 0.12702121489973586,
+          "games_missing_odds": 0
+        },
+        "test_season": 2025
+      }
+    ]
+  },
+  "prediction_changes": {
+    "games": 761,
+    "spread_changed": 181,
+    "winner_changed": 8
+  }
+}

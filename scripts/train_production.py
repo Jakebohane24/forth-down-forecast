@@ -13,7 +13,7 @@ from src.training import NFLModel
 
 
 PRODUCTION_SEASONS = tuple(range(2018, 2026))
-MODEL_VERSION = "production-2018-2025-v1"
+MODEL_VERSION = "production-2018-2025-v2-no-wind"
 
 
 def main() -> None:
@@ -26,6 +26,7 @@ def main() -> None:
     args = parser.parse_args()
 
     config = ModelConfig(
+        use_wind=False,
         training_seasons=PRODUCTION_SEASONS,
         # These future masks remain empty by design. Production training uses
         # all completed data and is evaluated prospectively.
@@ -38,6 +39,8 @@ def main() -> None:
         "model_version": MODEL_VERSION,
         "status": "production",
         "training_seasons": list(PRODUCTION_SEASONS),
+        "use_wind": config.use_wind,
+        "evaluation_report": "rolling_backtest_no_wind_2022_2025.json",
         "moneyline_confidence_threshold": (
             BettingConfig().moneyline_confidence_threshold
         ),

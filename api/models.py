@@ -68,3 +68,46 @@ class GameResult(Base):
     )
 
     __table_args__ = (Index("ix_game_results_season_week", "season", "week"),)
+
+
+class GameCondition(Base):
+    """Latest pregame weather, mutable without altering the locked prediction."""
+
+    __tablename__ = "game_conditions"
+
+    game_id: Mapped[str] = mapped_column(String(40), primary_key=True)
+    venue_name: Mapped[str] = mapped_column(String(120), nullable=False)
+    venue_type: Mapped[str] = mapped_column(String(20), nullable=False)
+    roof_status: Mapped[str] = mapped_column(String(20), nullable=False)
+    country_code: Mapped[str] = mapped_column(
+        String(2), nullable=False, default="US"
+    )
+    forecast_for: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    retrieved_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    wind_mph: Mapped[float | None] = mapped_column(Float)
+    wind_gust_mph: Mapped[float | None] = mapped_column(Float)
+    temperature_f: Mapped[float | None] = mapped_column(Float)
+    precipitation_probability: Mapped[float | None] = mapped_column(Float)
+    precipitation_inches: Mapped[float | None] = mapped_column(Float)
+    weather_code: Mapped[int | None] = mapped_column(Integer)
+    source: Mapped[str] = mapped_column(String(40), nullable=False)
+
+
+class ScheduledGame(Base):
+    """Upcoming schedule metadata, kept separate from model predictions."""
+
+    __tablename__ = "scheduled_games"
+
+    game_id: Mapped[str] = mapped_column(String(40), primary_key=True)
+    season: Mapped[int] = mapped_column(Integer, nullable=False)
+    week: Mapped[int] = mapped_column(Integer, nullable=False)
+    home_team: Mapped[str] = mapped_column(String(8), nullable=False)
+    away_team: Mapped[str] = mapped_column(String(8), nullable=False)
+    kickoff: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    venue_name: Mapped[str] = mapped_column(String(120), nullable=False)
+    venue_type: Mapped[str] = mapped_column(String(20), nullable=False)
+    roof_status: Mapped[str] = mapped_column(String(20), nullable=False)
+    country_code: Mapped[str] = mapped_column(String(2), nullable=False)
+    prediction_eligible: Mapped[bool] = mapped_column(Boolean, nullable=False)
+
+    __table_args__ = (Index("ix_scheduled_games_season_week", "season", "week"),)

@@ -12,6 +12,7 @@ service, PostgreSQL persistence, and a Next.js/TypeScript interface.
 - Stage-one component models and stage-two home/away point models
 - Expanding-window historical evaluation with all results retained
 - Production artifact trained on completed 2018–2025 data
+- Official model excludes wind so historical and live feature definitions match
 - Pregame feature builder verified against historical training rows
 - Seeded score simulation and a frozen 62.5% confidence / −300 moneyline signal
 - Immutable Parquet and relational prediction snapshots
@@ -29,7 +30,7 @@ unreliable.
 
 ```text
 nflverse schedule + play-by-play       market odds
-                 \                       /
+                 \       Open-Meteo wind /
                   pregame feature builder
                            |
                  versioned XGBoost model
@@ -71,8 +72,8 @@ Historical results live in `reports/`:
 - `betting_retrospective.json`: threshold research
 - `production_model.json`: public production-model manifest
 
-Across the public 2022–2025 rolling test seasons, the combined rule returned
-approximately 12.78% over 104 flat-stake signals. Both conditions were selected
+Across the public 2022–2025 rolling test seasons, the no-wind model's combined
+rule returned approximately 7.14% over 93 flat-stake signals. Both conditions were selected
 retrospectively, so the signal is displayed as experimental rather than as a
 promise of profitability.
 
@@ -110,6 +111,9 @@ fallback when `DATABASE_URL` is not set.
 
 ## Production workflow
 
+For the complete Neon, Render, and Vercel setup, including the safe one-command
+database seed, see [DEPLOYMENT.md](DEPLOYMENT.md).
+
 Train and version the all-data model:
 
 ```bash
@@ -121,6 +125,50 @@ Generate a weekly snapshot after both teams have five completed games:
 ```bash
 python -m scripts.generate_week 2026 6
 ```
+
+Load schedule-only cards for eligible future matchups without creating fake
+predictions:
+
+```bash
+python -m scripts.load_upcoming_schedule
+```
+
+The generator fetches the hourly Open-Meteo forecast nearest kickoff for the
+website, but weather is not an official model input. The API labels
+retractable-roof status instead of claiming it is known. Neutral-site games
+require explicit stadium coordinates so a home-team location is never silently
+substituted.
+
+Refresh the conditions displayed by the API without changing the locked
+prediction:
+
+```bash
+python -m scripts.update_weather 2026 6
+```
+
+Import completed games and automatically refresh the live performance table:
+
+```bash
+python -m scripts.sync_results
+```
+
+The command derives the prospective season from the production model manifest,
+so it does not require a code change during the season. It is idempotent and is
+suitable for a scheduled job after games finish.
+
+Backfill archived kickoff conditions for the 2022–2025 historical showcase:
+
+```bash
+python -m scripts.backfill_historical_weather
+```
+
+The backfill uses explicit coordinates for neutral-site and international
+venues, caches the downloaded conditions, and can safely be rerun without
+changing predictions or results.
+
+This command is suitable for a scheduled job (for example, every 10 minutes on
+game day). The database records the provider, forecast target, and retrieval
+time. Open-Meteo requires no API key for this non-commercial project.
 
 Build the historical showcase once. This caches a rolling model for every test
 season and stores Weeks 6–18 for browsing without retraining during web
@@ -148,8 +196,9 @@ account still needs to be connected before automatic market ingestion can run.
 | `GET /health` | Service health |
 | `GET /seasons` | Seasons with stored predictions |
 | `GET /predictions/{season}/{week}` | Latest immutable weekly snapshot |
+| `GET /schedule/{season}/{week}` | Eligible schedule-only preview cards |
 | `GET /model` | Production version and frozen configuration |
-| `GET /performance` | Transparent rolling backtest |
+| `GET /performance` | Frozen backtests plus automatically calculated live-season results |
 
 ## Quality controls
 

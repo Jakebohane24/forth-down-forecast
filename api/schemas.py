@@ -37,6 +37,19 @@ class PredictionResponse(BaseModel):
     prediction_correct: bool | None = None
     moneyline_signal_won: bool | None = None
     moneyline_signal_profit: float | None = None
+    venue_name: str | None = None
+    venue_type: str | None = None
+    roof_status: str | None = None
+    country_code: str | None = None
+    forecast_for: datetime | None = None
+    weather_retrieved_at: datetime | None = None
+    wind_mph: float | None = None
+    wind_gust_mph: float | None = None
+    temperature_f: float | None = None
+    precipitation_probability: float | None = None
+    precipitation_inches: float | None = None
+    weather_code: int | None = None
+    weather_source: str | None = None
 
 
 class WeekPredictionsResponse(BaseModel):
@@ -46,10 +59,34 @@ class WeekPredictionsResponse(BaseModel):
     predictions: list[PredictionResponse]
 
 
+class ScheduleCardResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    game_id: str
+    season: int
+    week: int
+    home_team: str
+    away_team: str
+    kickoff: datetime
+    venue_name: str
+    venue_type: str
+    roof_status: str
+    country_code: str
+    prediction_eligible: bool
+
+
+class WeekScheduleResponse(BaseModel):
+    season: int
+    week: int
+    count: int
+    games: list[ScheduleCardResponse]
+
+
 class ModelResponse(BaseModel):
     version: str
     status: str
     training_seasons: list[int]
+    use_wind: bool
     moneyline_confidence_threshold: float
     moneyline_minimum_odds: float
     artifact_created_at: str | None
@@ -58,10 +95,14 @@ class ModelResponse(BaseModel):
 class PerformanceSeason(BaseModel):
     season: int
     training_games: int
-    margin_mae: float
-    win_accuracy: float
+    prediction_count: int
+    evaluated_games: int
+    margin_mae: float | None
+    win_accuracy: float | None
     moneyline_bets: int
-    moneyline_roi: float
+    moneyline_settled: int
+    moneyline_accuracy: float | None
+    moneyline_roi: float | None
 
 
 class PerformanceResponse(BaseModel):

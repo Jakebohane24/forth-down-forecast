@@ -25,14 +25,22 @@ def nflverse_week(season: int, week: int) -> pd.DataFrame:
                 "kickoff",
                 "div_game",
                 "game_wind",
+                "stadium",
+                "location",
             ]
         )
 
-    games["kickoff"] = pd.to_datetime(
+    # nflverse publishes `gametime` in US Eastern time. Localize before
+    # converting so weather is selected for the actual kickoff hour in UTC.
+    kickoff_eastern = pd.to_datetime(
         games["gameday"].astype(str) + " " + games["gametime"].fillna("00:00"),
         errors="coerce",
-        utc=True,
     )
+    games["kickoff"] = kickoff_eastern.dt.tz_localize(
+        "America/New_York",
+        ambiguous="NaT",
+        nonexistent="shift_forward",
+    ).dt.tz_convert("UTC")
     games["game_wind"] = pd.to_numeric(games.get("wind", 0), errors="coerce").fillna(0)
     games["div_game"] = pd.to_numeric(
         games.get("div_game", 0), errors="coerce"
@@ -47,5 +55,7 @@ def nflverse_week(season: int, week: int) -> pd.DataFrame:
             "kickoff",
             "div_game",
             "game_wind",
+            "stadium",
+            "location",
         ]
     ].reset_index(drop=True)

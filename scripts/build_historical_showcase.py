@@ -56,13 +56,17 @@ def american_columns(frame: pd.DataFrame) -> pd.DataFrame:
 
 def schedule_metadata(seasons: list[int]) -> pd.DataFrame:
     schedule = nfl.import_schedules(seasons).copy()
-    schedule["kickoff"] = pd.to_datetime(
+    kickoff_eastern = pd.to_datetime(
         schedule["gameday"].astype(str)
         + " "
         + schedule["gametime"].fillna("00:00"),
         errors="coerce",
-        utc=True,
     )
+    schedule["kickoff"] = kickoff_eastern.dt.tz_localize(
+        "America/New_York",
+        ambiguous="NaT",
+        nonexistent="shift_forward",
+    ).dt.tz_convert("UTC")
     return schedule[
         [
             "game_id",
@@ -74,13 +78,14 @@ def schedule_metadata(seasons: list[int]) -> pd.DataFrame:
 
 
 def model_for_season(test_season: int, artifact_root: Path) -> NFLModel:
-    artifact = artifact_root / f"rolling_{test_season}"
+    artifact = artifact_root / str(test_season)
     if (artifact / "models.joblib").exists():
         print(f"{test_season}: loading cached model")
         return NFLModel.load(artifact)
 
     training_seasons = tuple(range(2018, test_season))
     config = ModelConfig(
+        use_wind=False,
         training_seasons=training_seasons,
         validation_season=test_season - 1,
         test_season=test_season,
@@ -92,7 +97,7 @@ def model_for_season(test_season: int, artifact_root: Path) -> NFLModel:
     model = NFLModel(config).train()
     model.save(
         artifact,
-        model_version=f"rolling-through-{test_season - 1}-v1",
+        model_version=f"rolling-through-{test_season - 1}-no-wind-v2",
     )
     return model
 
@@ -104,7 +109,7 @@ def main() -> None:
     parser.add_argument(
         "--artifact-root",
         type=Path,
-        default=Path("artifacts/models"),
+        default=Path("artifacts/models/no_wind_rolling"),
     )
     parser.add_argument("--database-url")
     args = parser.parse_args()
@@ -133,15 +138,16 @@ def main() -> None:
         )
 
         for week, week_frame in frame.groupby("week"):
-            snapshot_id = f"historical-{season}-w{int(week):02d}-v1"
+            snapshot_id = f"historical-{season}-w{int(week):02d}-no-wind-v2"
             if snapshot_exists(snapshot_id, args.database_url):
                 print(f"{snapshot_id}: already stored")
                 continue
             inserted = persist_predictions(
                 week_frame,
                 snapshot_id=snapshot_id,
-                model_version=f"rolling-through-{season - 1}-v1",
+                model_version=f"rolling-through-{season - 1}-no-wind-v2",
                 database_url=args.database_url,
+                enforce_kickoff_lock=False,
             )
             print(f"{snapshot_id}: stored {inserted} predictions")
 

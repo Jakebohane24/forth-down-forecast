@@ -403,7 +403,7 @@ function PredictionCard({
           {completed ? (
             <div className="score-comparison">
               <div className="score-column predicted-score">
-                <span>Prediction</span>
+                <span>Median projection</span>
                 <b>{game.predicted_away_score ?? "—"}</b>
               </div>
               <div className="score-column final-score">
@@ -414,7 +414,7 @@ function PredictionCard({
           ) : (
             <div className="score-comparison pregame-comparison">
               <div className="score-column predicted-score">
-                <span>Prediction</span>
+                <span>Median projection</span>
                 <b>{game.predicted_away_score ?? "—"}</b>
               </div>
             </div>
@@ -433,7 +433,7 @@ function PredictionCard({
           {completed ? (
             <div className="score-comparison">
               <div className="score-column predicted-score">
-                <span>Prediction</span>
+                <span>Median projection</span>
                 <b>{game.predicted_home_score ?? "—"}</b>
               </div>
               <div className="score-column final-score">
@@ -444,7 +444,7 @@ function PredictionCard({
           ) : (
             <div className="score-comparison pregame-comparison">
               <div className="score-column predicted-score">
-                <span>Prediction</span>
+                <span>Median projection</span>
                 <b>{game.predicted_home_score ?? "—"}</b>
               </div>
             </div>
@@ -667,7 +667,7 @@ export default async function Home({
             </div>
             <div>
               <span>Signal rule</span>
-              <strong>62.5% / −300</strong>
+              <strong>65% / −300</strong>
             </div>
           </div>
         </section>
@@ -734,7 +734,7 @@ export default async function Home({
                 The signal refers to a moneyline bet: the selected team only
                 needs to win the game outright, with no point spread, and the
                 American odds determine the payout. A signal appears only when
-                the model gives its predicted winner at least 62.5% confidence
+                the model gives its predicted winner at least 65% confidence
                 and that team&apos;s moneyline is −300 or better. For example,
                 −275 and +110 qualify; −325 does not. Before the lock,
                 refreshed odds can make a signal appear or disappear. The

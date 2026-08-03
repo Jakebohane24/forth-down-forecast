@@ -1,10 +1,10 @@
 {
-  "description": "Expanding-window backtest of the locked model architecture using kfold stage-one out-of-fold stacking and timeseries hyperparameter cross-validation",
+  "description": "Expanding-window backtest of the locked model architecture using kfold stage-one out-of-fold stacking and timeseries hyperparameter cross-validation; simulated score ties are split equally when estimating win probability; simulated score ties are split equally when estimating win probability",
   "stacking_strategy": "kfold",
   "tuning_strategy": "timeseries",
   "use_wind": false,
   "methodology": "Each test season is predicted by a newly tuned model trained only on processed games from 2018 through the prior season. Hyperparameters use timeseries cross-validation.",
-  "caveat": "Earlier test seasons use materially fewer training games. The 4.0-point spread and the combined 62.5% confidence / -300 moneyline rule were selected retrospectively and are not unbiased.",
+  "caveat": "Earlier test seasons use materially fewer training games. The 4.0-point spread and combined 65% confidence / -300 moneyline rule were selected retrospectively and are not unbiased.",
   "spread_price": -110,
   "moneyline_source": "nflverse schedule closing moneylines",
   "pooled_results": {
@@ -17,12 +17,12 @@
       "roi": -0.04948216340621405
     },
     "moneyline_signal": {
-      "bets": 93,
-      "wins": 65,
-      "losses": 28,
-      "win_rate": 0.6989247311827957,
-      "profit_units": 6.642727384912536,
-      "roi": 0.07142717618185523
+      "bets": 53,
+      "wins": 40,
+      "losses": 13,
+      "win_rate": 0.7547169811320755,
+      "profit_units": 6.94234230879271,
+      "roi": 0.13098759073193791
     }
   },
   "seasons": [
@@ -38,7 +38,7 @@
       "test_games": 191,
       "margin_mae": 9.070680628272251,
       "margin_rmse": 11.877483206885326,
-      "win_accuracy": 0.6073298429319371,
+      "win_accuracy": 0.612565445026178,
       "ats_accuracy": 0.5380434782608695,
       "spread_4_point": {
         "bets": 52,
@@ -49,12 +49,12 @@
         "roi": 0.0646853146853147
       },
       "moneyline_signal": {
-        "bets": 22,
-        "wins": 15,
-        "losses": 7,
-        "win_rate": 0.6818181818181818,
-        "profit_units": 1.377795054112862,
-        "roi": 0.06262704791422101,
+        "bets": 14,
+        "wins": 11,
+        "losses": 3,
+        "win_rate": 0.7857142857142857,
+        "profit_units": 2.2430631193809263,
+        "roi": 0.16021879424149474,
         "games_missing_odds": 0
       }
     },
@@ -71,7 +71,7 @@
       "test_games": 190,
       "margin_mae": 9.921052631578947,
       "margin_rmse": 12.962496510683183,
-      "win_accuracy": 0.6,
+      "win_accuracy": 0.6368421052631579,
       "ats_accuracy": 0.5248618784530387,
       "spread_4_point": {
         "bets": 61,
@@ -82,12 +82,12 @@
         "roi": -0.0923994038748137
       },
       "moneyline_signal": {
-        "bets": 18,
-        "wins": 13,
-        "losses": 5,
-        "win_rate": 0.7222222222222222,
-        "profit_units": 2.012370703443197,
-        "roi": 0.11179837241351093,
+        "bets": 13,
+        "wins": 10,
+        "losses": 3,
+        "win_rate": 0.7692307692307693,
+        "profit_units": 1.7011245579688634,
+        "roi": 0.1308557352283741,
         "games_missing_odds": 0
       }
     },
@@ -105,7 +105,7 @@
       "test_games": 190,
       "margin_mae": 9.976315789473684,
       "margin_rmse": 13.06627841349431,
-      "win_accuracy": 0.7157894736842105,
+      "win_accuracy": 0.7315789473684211,
       "ats_accuracy": 0.5133689839572193,
       "spread_4_point": {
         "bets": 63,
@@ -116,12 +116,12 @@
         "roi": -0.15151515151515157
       },
       "moneyline_signal": {
-        "bets": 36,
-        "wins": 26,
-        "losses": 10,
-        "win_rate": 0.7222222222222222,
-        "profit_units": 2.8679773218156046,
-        "roi": 0.07966603671710012,
+        "bets": 17,
+        "wins": 14,
+        "losses": 3,
+        "win_rate": 0.8235294117647058,
+        "profit_units": 4.16797992448371,
+        "roi": 0.24517528967551236,
         "games_missing_odds": 0
       }
     },
@@ -140,7 +140,7 @@
       "test_games": 190,
       "margin_mae": 10.452631578947368,
       "margin_rmse": 13.073778497837813,
-      "win_accuracy": 0.6789473684210526,
+      "win_accuracy": 0.6263157894736842,
       "ats_accuracy": 0.49206349206349204,
       "spread_4_point": {
         "bets": 61,
@@ -151,12 +151,12 @@
         "roi": 0.001490312965722786
       },
       "moneyline_signal": {
-        "bets": 17,
-        "wins": 11,
-        "losses": 6,
-        "win_rate": 0.6470588235294118,
-        "profit_units": 0.38458430554087286,
-        "roi": 0.022622606208286638,
+        "bets": 9,
+        "wins": 5,
+        "losses": 4,
+        "win_rate": 0.5555555555555556,
+        "profit_units": -1.1698252930407897,
+        "roi": -0.1299805881156433,
         "games_missing_odds": 0
       }
     }

@@ -138,8 +138,8 @@ export default async function Methodology() {
         <section className="metric-row">
           <article><span>Architecture</span><strong>2-stage</strong><small>XGBoost regression</small></article>
           <article><span>Production data</span><strong>8 seasons</strong><small>2018 through 2025</small></article>
-          <article><span>Rolling ML signals</span><strong>93</strong><small>2022–2025 showcase</small></article>
-          <article><span>Pooled signal ROI</span><strong>+7.14%</strong><small>2022–2025, flat stake</small></article>
+          <article><span>Rolling ML signals</span><strong>53</strong><small>2022–2025 showcase</small></article>
+          <article><span>Pooled signal ROI</span><strong>+13.10%</strong><small>2022–2025, flat stake</small></article>
         </section>
 
         <section className="model-flow">
@@ -361,11 +361,17 @@ export default async function Methodology() {
               field-goal scoring rates. Ten thousand seeded Poisson simulations
               are run for each matchup, including a small non-offensive
               touchdown component. Median simulated scores become the displayed
-              forecast.
+              forecast. When a simulation ends level, half a win is allocated
+              to each team to approximate an unresolved overtime outcome rather
+              than incorrectly crediting either side with every simulated tie.
             </p>
             <p>
               “Model confidence” is the share of simulations won by the
-              predicted team. It is useful for ranking conviction, but it has
+              predicted team after that split-tie adjustment. The model pick is
+              based on the full joint simulation distribution, while the two
+              displayed scores are separate medians; in a small number of games,
+              those summaries can point in opposite directions. Confidence is
+              useful for ranking conviction, but it has
               not been proven to be a perfectly calibrated probability. That
               is why the site does not describe a 65% confidence value as a
               literal 65% chance of winning.
@@ -380,7 +386,7 @@ export default async function Methodology() {
           </div>
           <div className="table-wrap">
             <table>
-              <thead><tr><th>Test season</th><th>Training games</th><th>Official signals<br /><small>Confidence 62.5%+; ML −300 or better</small></th><th>Signal accuracy</th><th>Margin MAE</th><th>Winner accuracy</th><th>Signal ROI</th></tr></thead>
+              <thead><tr><th>Test season</th><th>Training games</th><th>Official signals<br /><small>Confidence 65%+; ML −300 or better</small></th><th>Signal accuracy</th><th>Margin MAE</th><th>Winner accuracy</th><th>Signal ROI</th></tr></thead>
               <tbody>
                 {seasons.map((row) => (
                   <tr key={row.season} className={row.season === 2026 ? "prospective-season" : undefined}>
@@ -404,22 +410,22 @@ export default async function Methodology() {
             </table>
           </div>
           <div className="technical-note">
-            <strong>Uncertainty around the +7.14% historical ROI</strong>
+            <strong>Uncertainty around the +13.10% historical ROI</strong>
             <p>
-              The 95% Student&apos;s t interval is −7.89% to +22.17%. An
+              The 95% Student&apos;s t interval is −5.27% to +31.47%. An
               ordinary bootstrap with 100,000 resamples gives a
-              normal-approximation interval of −7.65% to +21.93%. Both include
+              normal-approximation interval of −4.64% to +30.84%. Both include
               zero, so the historical sample does not establish that the
               signal&apos;s underlying mean return is positive. The intervals
-              exclude zero only below approximately 65.2% confidence for the
-              t method and 65.6% for the bootstrap method.
+              exclude zero only below approximately 84.2% confidence for the
+              t method and 85.2% for the bootstrap method.
             </p>
           </div>
           <div className="technical-note">
             <strong>Uncertainty around signal accuracy</strong>
             <p>
-              The signal won 65 of 93 games, an observed accuracy of 69.9%.
-              Its 95% Wilson interval is 59.9% to 78.3%, expressing the
+              The signal won 40 of 53 games, an observed accuracy of 75.5%.
+              Its 95% Wilson interval is 62.4% to 85.1%, expressing the
               sampling uncertainty around the underlying win proportion.
             </p>
           </div>
@@ -428,8 +434,9 @@ export default async function Methodology() {
             window contained 715 games. The earlier 2021 test remains preserved
             in the full research report but is excluded from this displayed
             aggregate because its training history was materially smaller. The
-            combined 62.5% confidence and −300 price floor was selected
-            retrospectively, so the +7.14% return is not evidence of
+            combined 65% confidence and −300 price floor was selected
+            retrospectively after a tie-handling correction and threshold
+            sensitivity analysis, so the +13.10% return is not evidence of
             guaranteed future profit. The 2026 season will be tracked
             prospectively without changing either condition.
           </p>
@@ -486,11 +493,11 @@ export default async function Methodology() {
             <span>Officially tracked</span>
             <h3>Moneyline signal</h3>
             <p>
-              A predicted winner is flagged only at 62.5% model confidence
+              A predicted winner is flagged only at 65% model confidence
               or higher and a selected-team moneyline of −300 or better. The
               signal is displayed in the live product and its picks lock one
               hour before kickoff. The public 2022–2025 showcase returned
-              +7.14% across 93 signals, but both conditions were selected
+              +13.10% across 53 signals, but both conditions were selected
               retrospectively and must prove themselves prospectively in 2026.
             </p>
           </article>

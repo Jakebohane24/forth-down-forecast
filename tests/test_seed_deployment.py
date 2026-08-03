@@ -23,7 +23,7 @@ def test_seed_database_copies_only_public_model_snapshots(tmp_path):
         "predicted_winner": "BUF",
         "model_win_confidence": 0.66,
         "moneyline_signal": True,
-        "model_version": "rolling-through-2024-no-wind-v2",
+        "model_version": "rolling-through-2024-no-wind-v3-tie-adjusted",
         "generated_at": datetime(2026, 8, 1, tzinfo=UTC),
     }
     with source_sessions.begin() as session:
@@ -47,4 +47,4 @@ def test_seed_database_copies_only_public_model_snapshots(tmp_path):
     assert first["predictions"] == 1
     assert second["predictions"] == 0
     assert rows == 1
-    assert version == "rolling-through-2024-no-wind-v2"
+    assert version == "rolling-through-2024-no-wind-v3-tie-adjusted"

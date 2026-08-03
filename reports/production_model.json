@@ -1,5 +1,5 @@
 {
-  "model_version": "production-2018-2025-v2-no-wind",
+  "model_version": "production-2018-2025-v3-no-wind-tie-adjusted",
   "status": "production",
   "training_seasons": [
     2018,
@@ -13,7 +13,7 @@
   ],
   "use_wind": false,
   "evaluation_report": "rolling_backtest_no_wind_2022_2025.json",
-  "moneyline_confidence_threshold": 0.625,
+  "moneyline_confidence_threshold": 0.65,
   "moneyline_minimum_odds": -300,
   "trained_at": "2026-07-30T18:31:17.781058+00:00"
 }

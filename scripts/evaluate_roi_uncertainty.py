@@ -197,7 +197,8 @@ def main() -> None:
     report = {
         "description": (
             "Uncertainty intervals for the historical mean one-unit return of "
-            "the locked 62.5% confidence / -300 moneyline rule using no-wind "
+            "the locked 65% confidence / -300 moneyline rule using no-wind, "
+            "split-tie probabilities and "
             "expanding-window test predictions from 2022 through 2025."
         ),
         "selection_caveat": (

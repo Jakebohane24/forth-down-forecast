@@ -97,7 +97,7 @@ def model_for_season(test_season: int, artifact_root: Path) -> NFLModel:
     model = NFLModel(config).train()
     model.save(
         artifact,
-        model_version=f"rolling-through-{test_season - 1}-no-wind-v2",
+        model_version=f"rolling-through-{test_season - 1}-no-wind-v3-tie-adjusted",
     )
     return model
 
@@ -138,14 +138,18 @@ def main() -> None:
         )
 
         for week, week_frame in frame.groupby("week"):
-            snapshot_id = f"historical-{season}-w{int(week):02d}-no-wind-v2"
+            snapshot_id = (
+                f"historical-{season}-w{int(week):02d}-no-wind-v3-tie-adjusted"
+            )
             if snapshot_exists(snapshot_id, args.database_url):
                 print(f"{snapshot_id}: already stored")
                 continue
             inserted = persist_predictions(
                 week_frame,
                 snapshot_id=snapshot_id,
-                model_version=f"rolling-through-{season - 1}-no-wind-v2",
+                model_version=(
+                    f"rolling-through-{season - 1}-no-wind-v3-tie-adjusted"
+                ),
                 database_url=args.database_url,
                 enforce_kickoff_lock=False,
             )

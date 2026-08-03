@@ -12,12 +12,14 @@ from src.config import EvaluationConfig
 
 
 DatasetSplit = Literal["val", "test"]
+TieHandling = Literal["away", "split"]
 
 
 def simulate_scores(
     point_predictions: pd.DataFrame,
     *,
     config: EvaluationConfig | None = None,
+    tie_handling: TieHandling = "split",
 ) -> pd.DataFrame:
     """Convert expected offensive points into game-level score distributions."""
     config = config or EvaluationConfig()
@@ -51,7 +53,12 @@ def simulate_scores(
 
     margin = home_scores - away_scores
     total = home_scores + away_scores
+    if tie_handling not in {"away", "split"}:
+        raise ValueError("tie_handling must be 'away' or 'split'")
     home_win_probability = np.mean(margin > 0, axis=1)
+    tie_probability = np.mean(margin == 0, axis=1)
+    if tie_handling == "split":
+        home_win_probability = home_win_probability + 0.5 * tie_probability
 
     return pd.DataFrame(
         {
@@ -60,6 +67,7 @@ def simulate_scores(
             "pred_spread": np.round(np.median(margin, axis=1) * 2) / 2,
             "pred_over_under": np.round(np.mean(total, axis=1) * 2) / 2,
             "home_win_prob": home_win_probability,
+            "tie_prob": tie_probability,
             "pred_home_win": home_win_probability > 0.5,
         },
         index=point_predictions.index,

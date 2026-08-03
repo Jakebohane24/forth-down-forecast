@@ -186,7 +186,7 @@ def run_backtest(
         ),
         "caveat": (
             "Earlier test seasons use materially fewer training games. The "
-            "4.0-point spread and the combined 62.5% confidence / -300 "
+            "4.0-point spread and the combined 65% confidence / -300 "
             "moneyline rule were selected retrospectively and are not unbiased."
         ),
         "spread_price": -110,

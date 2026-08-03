@@ -14,7 +14,8 @@ service, PostgreSQL persistence, and a Next.js/TypeScript interface.
 - Production artifact trained on completed 2018–2025 data
 - Official model excludes wind so historical and live feature definitions match
 - Pregame feature builder verified against historical training rows
-- Seeded score simulation and a frozen 62.5% confidence / −300 moneyline signal
+- Seeded score simulation with split-tie probabilities and a frozen 65%
+  confidence / −300 moneyline signal
 - Immutable Parquet and relational prediction snapshots
 - Separately stored final scores, closing moneylines, and signal settlement
 - FastAPI with generated OpenAPI documentation
@@ -56,7 +57,7 @@ moneylines, pick accuracy, and flat one-unit signal profit or loss.
 ## Model policy
 
 The production model uses all completed data from 2018 through 2025. Its
-features, architecture, and combined 62.5% confidence / −300 moneyline rule are frozen
+features, architecture, and combined 65% confidence / −300 moneyline rule are frozen
 before prospective 2026 evaluation.
 
 The current feature definition requires five completed games from each team in
@@ -73,7 +74,7 @@ Historical results live in `reports/`:
 - `production_model.json`: public production-model manifest
 
 Across the public 2022–2025 rolling test seasons, the no-wind model's combined
-rule returned approximately 7.14% over 93 flat-stake signals. Both conditions were selected
+rule returned approximately 13.10% over 53 flat-stake signals. Both conditions were selected
 retrospectively, so the signal is displayed as experimental rather than as a
 promise of profitability.
 

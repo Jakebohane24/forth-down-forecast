@@ -45,20 +45,21 @@ def seed_database(source_url: str, target_url: str) -> dict[str, int]:
         predictions = list(
             source.scalars(
                 select(Prediction).where(
-                    (Prediction.model_version.like("%-no-wind-v2"))
+                    (Prediction.model_version.like("%-no-wind-v3-tie-adjusted"))
                     | (Prediction.season >= 2026)
                 )
             )
         )
+        existing_predictions = set(
+            target.execute(
+                select(Prediction.snapshot_id, Prediction.game_id)
+            ).all()
+        )
         for row in predictions:
-            exists = target.scalar(
-                select(Prediction.id).where(
-                    Prediction.snapshot_id == row.snapshot_id,
-                    Prediction.game_id == row.game_id,
-                )
-            )
-            if exists is None:
+            identity = (row.snapshot_id, row.game_id)
+            if identity not in existing_predictions:
                 target.add(Prediction(**_values(row, exclude={"id"})))
+                existing_predictions.add(identity)
                 counts["predictions"] += 1
 
         for model, key in (
@@ -66,11 +67,13 @@ def seed_database(source_url: str, target_url: str) -> dict[str, int]:
             (GameCondition, "conditions"),
             (ScheduledGame, "scheduled_games"),
         ):
+            primary_key = next(iter(model.__table__.primary_key.columns)).name
+            existing_ids = set(target.scalars(select(getattr(model, primary_key))))
             for row in source.scalars(select(model)):
-                primary_key = next(iter(model.__table__.primary_key.columns)).name
                 identity = getattr(row, primary_key)
-                if target.get(model, identity) is None:
+                if identity not in existing_ids:
                     target.add(model(**_values(row)))
+                    existing_ids.add(identity)
                     counts[key] += 1
 
     source_engine.dispose()

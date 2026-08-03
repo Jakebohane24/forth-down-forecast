@@ -73,7 +73,7 @@ class EvaluationConfig:
 class BettingConfig:
     """Frozen thresholds used by the public prediction product."""
 
-    moneyline_confidence_threshold: float = 0.625
+    moneyline_confidence_threshold: float = 0.65
     moneyline_minimum_odds: float = -300
 
     def __post_init__(self):

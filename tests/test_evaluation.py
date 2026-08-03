@@ -37,3 +37,23 @@ def test_negative_point_predictions_are_clipped_before_simulation():
 
     assert result.loc["game_a", "pred_home_score"] >= 0
     assert result.loc["game_a", "pred_away_score"] >= 0
+
+
+def test_split_tie_handling_allocates_half_to_each_team():
+    points = pd.DataFrame(
+        {
+            "pred_home_offense_points": [0.0],
+            "pred_away_offense_points": [0.0],
+        },
+        index=["game_a"],
+    )
+    config = EvaluationConfig(simulations=1_000, random_state=7)
+
+    legacy = simulate_scores(points, config=config, tie_handling="away")
+    adjusted = simulate_scores(points, config=config, tie_handling="split")
+
+    expected = legacy.loc["game_a", "home_win_prob"] + (
+        0.5 * legacy.loc["game_a", "tie_prob"]
+    )
+    assert adjusted.loc["game_a", "home_win_prob"] == expected
+    assert adjusted.loc["game_a", "tie_prob"] == legacy.loc["game_a", "tie_prob"]

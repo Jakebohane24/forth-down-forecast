@@ -1,0 +1,2663 @@
+{
+  "description": "Split simulated ties equally between home and away win probability; all models, score draws, thresholds, and closing odds are unchanged.",
+  "seasons": [
+    {
+      "season": 2022,
+      "mean_simulated_tie_probability": 0.04010785340314136,
+      "legacy": {
+        "games": 191,
+        "win_accuracy": 0.6073298429319371,
+        "brier_score": 0.22731968947643982,
+        "mean_confidence": 0.588313612565445,
+        "signals": 14,
+        "signal_wins": 11,
+        "signal_accuracy": 0.7857142857142857,
+        "signal_profit_units": 2.439040410690889,
+        "signal_roi": 0.17421717219220637
+      },
+      "split_ties": {
+        "games": 191,
+        "win_accuracy": 0.612565445026178,
+        "brier_score": 0.22518268102094238,
+        "mean_confidence": 0.5912219895287958,
+        "signals": 14,
+        "signal_wins": 11,
+        "signal_accuracy": 0.7857142857142857,
+        "signal_profit_units": 2.2430631193809263,
+        "signal_roi": 0.16021879424149474
+      },
+      "picks_changed": 11,
+      "signals_added": 3,
+      "signals_removed": 3
+    },
+    {
+      "season": 2023,
+      "mean_simulated_tie_probability": 0.04183263157894737,
+      "legacy": {
+        "games": 190,
+        "win_accuracy": 0.6,
+        "brier_score": 0.2336477438947369,
+        "mean_confidence": 0.5844673684210526,
+        "signals": 9,
+        "signal_wins": 6,
+        "signal_accuracy": 0.6666666666666666,
+        "signal_profit_units": -0.43378456718416425,
+        "signal_roi": -0.048198285242684914
+      },
+      "split_ties": {
+        "games": 190,
+        "win_accuracy": 0.6368421052631579,
+        "brier_score": 0.23099817994736843,
+        "mean_confidence": 0.58873,
+        "signals": 13,
+        "signal_wins": 10,
+        "signal_accuracy": 0.7692307692307693,
+        "signal_profit_units": 1.7011245579688634,
+        "signal_roi": 0.1308557352283741
+      },
+      "picks_changed": 9,
+      "signals_added": 4,
+      "signals_removed": 0
+    },
+    {
+      "season": 2024,
+      "mean_simulated_tie_probability": 0.040536315789473684,
+      "legacy": {
+        "games": 190,
+        "win_accuracy": 0.7157894736842105,
+        "brier_score": 0.2118788799473684,
+        "mean_confidence": 0.5996605263157895,
+        "signals": 11,
+        "signal_wins": 10,
+        "signal_accuracy": 0.9090909090909091,
+        "signal_profit_units": 3.2264952167879124,
+        "signal_roi": 0.29331774698071933
+      },
+      "split_ties": {
+        "games": 190,
+        "win_accuracy": 0.7315789473684211,
+        "brier_score": 0.21130496661842102,
+        "mean_confidence": 0.6002107894736842,
+        "signals": 17,
+        "signal_wins": 14,
+        "signal_accuracy": 0.8235294117647058,
+        "signal_profit_units": 4.16797992448371,
+        "signal_roi": 0.24517528967551236
+      },
+      "picks_changed": 7,
+      "signals_added": 9,
+      "signals_removed": 3
+    },
+    {
+      "season": 2025,
+      "mean_simulated_tie_probability": 0.04069526315789474,
+      "legacy": {
+        "games": 190,
+        "win_accuracy": 0.6789473684210526,
+        "brier_score": 0.2233014347894737,
+        "mean_confidence": 0.5958836842105263,
+        "signals": 5,
+        "signal_wins": 2,
+        "signal_accuracy": 0.4,
+        "signal_profit_units": -2.2551724137931033,
+        "signal_roi": -0.4510344827586207
+      },
+      "split_ties": {
+        "games": 190,
+        "win_accuracy": 0.6263157894736842,
+        "brier_score": 0.22391013432894735,
+        "mean_confidence": 0.5979076315789474,
+        "signals": 9,
+        "signal_wins": 5,
+        "signal_accuracy": 0.5555555555555556,
+        "signal_profit_units": -1.1698252930407897,
+        "signal_roi": -0.1299805881156433
+      },
+      "picks_changed": 14,
+      "signals_added": 5,
+      "signals_removed": 1
+    }
+  ],
+  "pooled": {
+    "legacy": {
+      "games": 761,
+      "signals": 39,
+      "signal_wins": 29,
+      "signal_accuracy": 0.7435897435897436,
+      "signal_profit_units": 2.976578646501534,
+      "signal_roi": 0.07632252939747523,
+      "weighted_brier_score": 0.2240412507621551
+    },
+    "split_ties": {
+      "games": 761,
+      "signals": 53,
+      "signal_wins": 40,
+      "signal_accuracy": 0.7547169811320755,
+      "signal_profit_units": 6.94234230879271,
+      "signal_roi": 0.13098759073193791,
+      "weighted_brier_score": 0.2228520570893561
+    }
+  },
+  "threshold_grid": [
+    {
+      "confidence_threshold": 0.55,
+      "minimum_odds": -500,
+      "signals": 488,
+      "wins": 328,
+      "accuracy": 0.6721311475409836,
+      "profit_units": 7.305641192633791,
+      "roi": 0.014970576214413507,
+      "profitable_seasons": 2,
+      "minimum_season_signals": 113,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 126,
+          "wins": 85,
+          "accuracy": 0.6746031746031746,
+          "profit_units": 1.2668924308234097,
+          "roi": 0.010054701831931823
+        },
+        {
+          "season": 2023,
+          "signals": 118,
+          "wins": 76,
+          "accuracy": 0.6440677966101694,
+          "profit_units": -1.8335151599123651,
+          "roi": -0.015538264067053942
+        },
+        {
+          "season": 2024,
+          "signals": 131,
+          "wins": 95,
+          "accuracy": 0.7251908396946565,
+          "profit_units": 11.427744135826895,
+          "roi": 0.0872346880597473
+        },
+        {
+          "season": 2025,
+          "signals": 113,
+          "wins": 72,
+          "accuracy": 0.6371681415929203,
+          "profit_units": -3.5554802141041484,
+          "roi": -0.03146442667348804
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.55,
+      "minimum_odds": -400,
+      "signals": 450,
+      "wins": 296,
+      "accuracy": 0.6577777777777778,
+      "profit_units": 6.2044244344288915,
+      "roi": 0.013787609854286426,
+      "profitable_seasons": 1,
+      "minimum_season_signals": 102,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 115,
+          "wins": 75,
+          "accuracy": 0.6521739130434783,
+          "profit_units": -0.029845030534972894,
+          "roi": -0.0002595220046519382
+        },
+        {
+          "season": 2023,
+          "signals": 109,
+          "wins": 67,
+          "accuracy": 0.6146788990825688,
+          "profit_units": -3.7610793483012976,
+          "roi": -0.034505315122030256
+        },
+        {
+          "season": 2024,
+          "signals": 124,
+          "wins": 89,
+          "accuracy": 0.717741935483871,
+          "profit_units": 11.058708006962934,
+          "roi": 0.08918312908841076
+        },
+        {
+          "season": 2025,
+          "signals": 102,
+          "wins": 65,
+          "accuracy": 0.6372549019607843,
+          "profit_units": -1.0633591936977727,
+          "roi": -0.010425090134291888
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.55,
+      "minimum_odds": -300,
+      "signals": 369,
+      "wins": 236,
+      "accuracy": 0.6395663956639567,
+      "profit_units": 10.107520454424357,
+      "roi": 0.02739165434803349,
+      "profitable_seasons": 2,
+      "minimum_season_signals": 78,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 97,
+          "wins": 60,
+          "accuracy": 0.6185567010309279,
+          "profit_units": -1.271372516398445,
+          "roi": -0.013106933158746857
+        },
+        {
+          "season": 2023,
+          "signals": 93,
+          "wins": 58,
+          "accuracy": 0.6236559139784946,
+          "profit_units": 0.6673159898727894,
+          "roi": 0.007175440751320316
+        },
+        {
+          "season": 2024,
+          "signals": 101,
+          "wins": 71,
+          "accuracy": 0.7029702970297029,
+          "profit_units": 10.79679449927671,
+          "roi": 0.10689895543838328
+        },
+        {
+          "season": 2025,
+          "signals": 78,
+          "wins": 47,
+          "accuracy": 0.6025641025641025,
+          "profit_units": -0.08521751832669844,
+          "roi": -0.0010925322862397236
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.55,
+      "minimum_odds": -250,
+      "signals": 311,
+      "wins": 190,
+      "accuracy": 0.6109324758842444,
+      "profit_units": 5.571809843835085,
+      "roi": 0.017915787279212492,
+      "profitable_seasons": 3,
+      "minimum_season_signals": 65,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 82,
+          "wins": 46,
+          "accuracy": 0.5609756097560976,
+          "profit_units": -5.310809851341006,
+          "roi": -0.06476597379684153
+        },
+        {
+          "season": 2023,
+          "signals": 82,
+          "wins": 52,
+          "accuracy": 0.6341463414634146,
+          "profit_units": 3.516021703907364,
+          "roi": 0.04287831346228493
+        },
+        {
+          "season": 2024,
+          "signals": 82,
+          "wins": 54,
+          "accuracy": 0.6585365853658537,
+          "profit_units": 6.67383352814983,
+          "roi": 0.08138821375792475
+        },
+        {
+          "season": 2025,
+          "signals": 65,
+          "wins": 38,
+          "accuracy": 0.5846153846153846,
+          "profit_units": 0.6927644631188977,
+          "roi": 0.010657914817213811
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.55,
+      "minimum_odds": -200,
+      "signals": 247,
+      "wins": 143,
+      "accuracy": 0.5789473684210527,
+      "profit_units": 1.9864917262747195,
+      "roi": 0.008042476624594007,
+      "profitable_seasons": 3,
+      "minimum_season_signals": 50,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 68,
+          "wins": 36,
+          "accuracy": 0.5294117647058824,
+          "profit_units": -5.9299362473212,
+          "roi": -0.08720494481354706
+        },
+        {
+          "season": 2023,
+          "signals": 68,
+          "wins": 42,
+          "accuracy": 0.6176470588235294,
+          "profit_units": 3.1177653356481176,
+          "roi": 0.045849490230119375
+        },
+        {
+          "season": 2024,
+          "signals": 61,
+          "wins": 37,
+          "accuracy": 0.6065573770491803,
+          "profit_units": 3.4526308441776914,
+          "roi": 0.056600505642257236
+        },
+        {
+          "season": 2025,
+          "signals": 50,
+          "wins": 28,
+          "accuracy": 0.56,
+          "profit_units": 1.34603179377011,
+          "roi": 0.0269206358754022
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.55,
+      "minimum_odds": -150,
+      "signals": 131,
+      "wins": 68,
+      "accuracy": 0.5190839694656488,
+      "profit_units": 0.2436815394690217,
+      "roi": 0.0018601644234276468,
+      "profitable_seasons": 3,
+      "minimum_season_signals": 27,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 34,
+          "wins": 18,
+          "accuracy": 0.5294117647058824,
+          "profit_units": 0.039650282653102664,
+          "roi": 0.0011661847839147842
+        },
+        {
+          "season": 2023,
+          "signals": 38,
+          "wins": 21,
+          "accuracy": 0.5526315789473685,
+          "profit_units": 0.34427343232093377,
+          "roi": 0.009059827166340363
+        },
+        {
+          "season": 2024,
+          "signals": 32,
+          "wins": 15,
+          "accuracy": 0.46875,
+          "profit_units": -2.30159632468525,
+          "roi": -0.07192488514641407
+        },
+        {
+          "season": 2025,
+          "signals": 27,
+          "wins": 14,
+          "accuracy": 0.5185185185185185,
+          "profit_units": 2.1613541491802355,
+          "roi": 0.08005015367334206
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.55,
+      "minimum_odds": -100,
+      "signals": 61,
+      "wins": 23,
+      "accuracy": 0.3770491803278688,
+      "profit_units": -9.44,
+      "roi": -0.15475409836065573,
+      "profitable_seasons": 2,
+      "minimum_season_signals": 11,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 11,
+          "wins": 6,
+          "accuracy": 0.5454545454545454,
+          "profit_units": 2.0,
+          "roi": 0.18181818181818182
+        },
+        {
+          "season": 2023,
+          "signals": 14,
+          "wins": 3,
+          "accuracy": 0.21428571428571427,
+          "profit_units": -7.41,
+          "roi": -0.5292857142857142
+        },
+        {
+          "season": 2024,
+          "signals": 20,
+          "wins": 6,
+          "accuracy": 0.3,
+          "profit_units": -6.39,
+          "roi": -0.3195
+        },
+        {
+          "season": 2025,
+          "signals": 16,
+          "wins": 8,
+          "accuracy": 0.5,
+          "profit_units": 2.36,
+          "roi": 0.1475
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.55,
+      "minimum_odds": 100,
+      "signals": 61,
+      "wins": 23,
+      "accuracy": 0.3770491803278688,
+      "profit_units": -9.44,
+      "roi": -0.15475409836065573,
+      "profitable_seasons": 2,
+      "minimum_season_signals": 11,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 11,
+          "wins": 6,
+          "accuracy": 0.5454545454545454,
+          "profit_units": 2.0,
+          "roi": 0.18181818181818182
+        },
+        {
+          "season": 2023,
+          "signals": 14,
+          "wins": 3,
+          "accuracy": 0.21428571428571427,
+          "profit_units": -7.41,
+          "roi": -0.5292857142857142
+        },
+        {
+          "season": 2024,
+          "signals": 20,
+          "wins": 6,
+          "accuracy": 0.3,
+          "profit_units": -6.39,
+          "roi": -0.3195
+        },
+        {
+          "season": 2025,
+          "signals": 16,
+          "wins": 8,
+          "accuracy": 0.5,
+          "profit_units": 2.36,
+          "roi": 0.1475
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.575,
+      "minimum_odds": -500,
+      "signals": 370,
+      "wins": 252,
+      "accuracy": 0.6810810810810811,
+      "profit_units": 0.6778072340297245,
+      "roi": 0.0018319114433235798,
+      "profitable_seasons": 2,
+      "minimum_season_signals": 82,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 97,
+          "wins": 68,
+          "accuracy": 0.7010309278350515,
+          "profit_units": 2.234739195785869,
+          "roi": 0.0230385484101636
+        },
+        {
+          "season": 2023,
+          "signals": 82,
+          "wins": 51,
+          "accuracy": 0.6219512195121951,
+          "profit_units": -5.496068960906189,
+          "roi": -0.06702523123056328
+        },
+        {
+          "season": 2024,
+          "signals": 103,
+          "wins": 77,
+          "accuracy": 0.7475728155339806,
+          "profit_units": 9.270711974759662,
+          "roi": 0.0900069123763074
+        },
+        {
+          "season": 2025,
+          "signals": 88,
+          "wins": 56,
+          "accuracy": 0.6363636363636364,
+          "profit_units": -5.331574975609618,
+          "roi": -0.06058607926829111
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.575,
+      "minimum_odds": -400,
+      "signals": 336,
+      "wins": 223,
+      "accuracy": 0.6636904761904762,
+      "profit_units": -0.7688640696297184,
+      "roi": -0.002288285921517019,
+      "profitable_seasons": 2,
+      "minimum_season_signals": 76,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 86,
+          "wins": 58,
+          "accuracy": 0.6744186046511628,
+          "profit_units": 0.9380017344274865,
+          "roi": 0.010906996911947518
+        },
+        {
+          "season": 2023,
+          "signals": 76,
+          "wins": 45,
+          "accuracy": 0.5921052631578947,
+          "profit_units": -6.769087694749665,
+          "roi": -0.08906694335196927
+        },
+        {
+          "season": 2024,
+          "signals": 96,
+          "wins": 71,
+          "accuracy": 0.7395833333333334,
+          "profit_units": 8.9016758458957,
+          "roi": 0.09272579006141353
+        },
+        {
+          "season": 2025,
+          "signals": 78,
+          "wins": 49,
+          "accuracy": 0.6282051282051282,
+          "profit_units": -3.8394539552032394,
+          "roi": -0.04922376865645179
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.575,
+      "minimum_odds": -300,
+      "signals": 266,
+      "wins": 172,
+      "accuracy": 0.6466165413533834,
+      "profit_units": 3.688219352521829,
+      "roi": 0.01386548628767605,
+      "profitable_seasons": 2,
+      "minimum_season_signals": 58,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 70,
+          "wins": 45,
+          "accuracy": 0.6428571428571429,
+          "profit_units": 0.267092283011835,
+          "roi": 0.0038156040430262148
+        },
+        {
+          "season": 2023,
+          "signals": 61,
+          "wins": 37,
+          "accuracy": 0.6065573770491803,
+          "profit_units": -2.0128235041165636,
+          "roi": -0.0329971066248617
+        },
+        {
+          "season": 2024,
+          "signals": 77,
+          "wins": 56,
+          "accuracy": 0.7272727272727273,
+          "profit_units": 8.497250260914788,
+          "roi": 0.11035389949239983
+        },
+        {
+          "season": 2025,
+          "signals": 58,
+          "wins": 34,
+          "accuracy": 0.5862068965517241,
+          "profit_units": -3.06329968728823,
+          "roi": -0.05281551184979707
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.575,
+      "minimum_odds": -250,
+      "signals": 221,
+      "wins": 135,
+      "accuracy": 0.6108597285067874,
+      "profit_units": -1.6015410666456615,
+      "roi": -0.0072467921567677,
+      "profitable_seasons": 1,
+      "minimum_season_signals": 47,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 60,
+          "wins": 35,
+          "accuracy": 0.5833333333333334,
+          "profit_units": -3.33094175459684,
+          "roi": -0.05551569590994733
+        },
+        {
+          "season": 2023,
+          "signals": 52,
+          "wins": 31,
+          "accuracy": 0.5961538461538461,
+          "profit_units": -1.1641177900819897,
+          "roi": -0.0223868805784998
+        },
+        {
+          "season": 2024,
+          "signals": 62,
+          "wins": 42,
+          "accuracy": 0.6774193548387096,
+          "profit_units": 4.4575886205229756,
+          "roi": 0.07189659065359638
+        },
+        {
+          "season": 2025,
+          "signals": 47,
+          "wins": 27,
+          "accuracy": 0.574468085106383,
+          "profit_units": -1.5640701424898076,
+          "roi": -0.03327808813808101
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.575,
+      "minimum_odds": -200,
+      "signals": 170,
+      "wins": 95,
+      "accuracy": 0.5588235294117647,
+      "profit_units": -8.142202544791854,
+      "roi": -0.0478953090870109,
+      "profitable_seasons": 0,
+      "minimum_season_signals": 37,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 47,
+          "wins": 25,
+          "accuracy": 0.5319148936170213,
+          "profit_units": -4.950068150577035,
+          "roi": -0.10532059894844756
+        },
+        {
+          "season": 2023,
+          "signals": 43,
+          "wins": 24,
+          "accuracy": 0.5581395348837209,
+          "profit_units": -2.2653220041462236,
+          "roi": -0.05268190707316799
+        },
+        {
+          "season": 2024,
+          "signals": 43,
+          "wins": 25,
+          "accuracy": 0.5813953488372093,
+          "profit_units": -0.7636140634491635,
+          "roi": -0.01775846659184101
+        },
+        {
+          "season": 2025,
+          "signals": 37,
+          "wins": 21,
+          "accuracy": 0.5675675675675675,
+          "profit_units": -0.1631983266194309,
+          "roi": -0.004410765584308943
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.575,
+      "minimum_odds": -150,
+      "signals": 80,
+      "wins": 41,
+      "accuracy": 0.5125,
+      "profit_units": -2.898481331239048,
+      "roi": -0.0362310166404881,
+      "profitable_seasons": 2,
+      "minimum_season_signals": 16,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 18,
+          "wins": 10,
+          "accuracy": 0.5555555555555556,
+          "profit_units": 0.6506015819090409,
+          "roi": 0.03614453232828005
+        },
+        {
+          "season": 2023,
+          "signals": 25,
+          "wins": 13,
+          "accuracy": 0.52,
+          "profit_units": -1.2526692157581414,
+          "roi": -0.050106768630325656
+        },
+        {
+          "season": 2024,
+          "signals": 21,
+          "wins": 10,
+          "accuracy": 0.47619047619047616,
+          "profit_units": -2.5658216767979267,
+          "roi": -0.12218198460942509
+        },
+        {
+          "season": 2025,
+          "signals": 16,
+          "wins": 8,
+          "accuracy": 0.5,
+          "profit_units": 0.26940797940797934,
+          "roi": 0.01683799871299871
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.575,
+      "minimum_odds": -100,
+      "signals": 37,
+      "wins": 10,
+      "accuracy": 0.2702702702702703,
+      "profit_units": -14.8,
+      "roi": -0.4,
+      "profitable_seasons": 0,
+      "minimum_season_signals": 5,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 5,
+          "wins": 2,
+          "accuracy": 0.4,
+          "profit_units": -0.49,
+          "roi": -0.098
+        },
+        {
+          "season": 2023,
+          "signals": 11,
+          "wins": 2,
+          "accuracy": 0.18181818181818182,
+          "profit_units": -6.65,
+          "roi": -0.6045454545454546
+        },
+        {
+          "season": 2024,
+          "signals": 11,
+          "wins": 2,
+          "accuracy": 0.18181818181818182,
+          "profit_units": -6.95,
+          "roi": -0.6318181818181818
+        },
+        {
+          "season": 2025,
+          "signals": 10,
+          "wins": 4,
+          "accuracy": 0.4,
+          "profit_units": -0.7100000000000002,
+          "roi": -0.07100000000000002
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.575,
+      "minimum_odds": 100,
+      "signals": 37,
+      "wins": 10,
+      "accuracy": 0.2702702702702703,
+      "profit_units": -14.8,
+      "roi": -0.4,
+      "profitable_seasons": 0,
+      "minimum_season_signals": 5,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 5,
+          "wins": 2,
+          "accuracy": 0.4,
+          "profit_units": -0.49,
+          "roi": -0.098
+        },
+        {
+          "season": 2023,
+          "signals": 11,
+          "wins": 2,
+          "accuracy": 0.18181818181818182,
+          "profit_units": -6.65,
+          "roi": -0.6045454545454546
+        },
+        {
+          "season": 2024,
+          "signals": 11,
+          "wins": 2,
+          "accuracy": 0.18181818181818182,
+          "profit_units": -6.95,
+          "roi": -0.6318181818181818
+        },
+        {
+          "season": 2025,
+          "signals": 10,
+          "wins": 4,
+          "accuracy": 0.4,
+          "profit_units": -0.7100000000000002,
+          "roi": -0.07100000000000002
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.6,
+      "minimum_odds": -500,
+      "signals": 262,
+      "wins": 184,
+      "accuracy": 0.7022900763358778,
+      "profit_units": 3.466189595380633,
+      "roi": 0.013229731280078753,
+      "profitable_seasons": 2,
+      "minimum_season_signals": 53,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 71,
+          "wins": 50,
+          "accuracy": 0.704225352112676,
+          "profit_units": -0.25344665542850575,
+          "roi": -0.003569671203218391
+        },
+        {
+          "season": 2023,
+          "signals": 53,
+          "wins": 36,
+          "accuracy": 0.6792452830188679,
+          "profit_units": -0.03083397940502608,
+          "roi": -0.0005817731963212467
+        },
+        {
+          "season": 2024,
+          "signals": 75,
+          "wins": 55,
+          "accuracy": 0.7333333333333333,
+          "profit_units": 3.746810596277696,
+          "roi": 0.049957474617035945
+        },
+        {
+          "season": 2025,
+          "signals": 63,
+          "wins": 43,
+          "accuracy": 0.6825396825396826,
+          "profit_units": 0.0036596339364690644,
+          "roi": 5.808942756300102e-05
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.6,
+      "minimum_odds": -400,
+      "signals": 233,
+      "wins": 160,
+      "accuracy": 0.6866952789699571,
+      "profit_units": 3.1390288540888953,
+      "roi": 0.013472226841583241,
+      "profitable_seasons": 2,
+      "minimum_season_signals": 49,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 62,
+          "wins": 42,
+          "accuracy": 0.6774193548387096,
+          "profit_units": -1.0777265014721296,
+          "roi": -0.017382685507614994
+        },
+        {
+          "season": 2023,
+          "signals": 49,
+          "wins": 32,
+          "accuracy": 0.6530612244897959,
+          "profit_units": -0.8840724934682824,
+          "roi": -0.018042295785066987
+        },
+        {
+          "season": 2024,
+          "signals": 68,
+          "wins": 49,
+          "accuracy": 0.7205882352941176,
+          "profit_units": 3.3777744674137344,
+          "roi": 0.04967315393255492
+        },
+        {
+          "season": 2025,
+          "signals": 54,
+          "wins": 37,
+          "accuracy": 0.6851851851851852,
+          "profit_units": 1.723053381615573,
+          "roi": 0.031908395955843945
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.6,
+      "minimum_odds": -300,
+      "signals": 174,
+      "wins": 117,
+      "accuracy": 0.6724137931034483,
+      "profit_units": 6.936450375366199,
+      "roi": 0.0398646573296908,
+      "profitable_seasons": 3,
+      "minimum_season_signals": 37,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 48,
+          "wins": 31,
+          "accuracy": 0.6458333333333334,
+          "profit_units": -1.1583581751100027,
+          "roi": -0.02413246198145839
+        },
+        {
+          "season": 2023,
+          "signals": 37,
+          "wins": 25,
+          "accuracy": 0.6756756756756757,
+          "profit_units": 2.15388183800989,
+          "roi": 0.058213022648915945
+        },
+        {
+          "season": 2024,
+          "signals": 52,
+          "wins": 37,
+          "accuracy": 0.7115384615384616,
+          "profit_units": 3.8606856535146865,
+          "roi": 0.07424395487528243
+        },
+        {
+          "season": 2025,
+          "signals": 37,
+          "wins": 24,
+          "accuracy": 0.6486486486486487,
+          "profit_units": 2.080241058951625,
+          "roi": 0.05622273132301689
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.6,
+      "minimum_odds": -250,
+      "signals": 140,
+      "wins": 88,
+      "accuracy": 0.6285714285714286,
+      "profit_units": 1.5977395325266888,
+      "roi": 0.011412425232333491,
+      "profitable_seasons": 3,
+      "minimum_season_signals": 30,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 39,
+          "wins": 22,
+          "accuracy": 0.5641025641025641,
+          "profit_units": -4.38602184234831,
+          "roi": -0.11246209852175153
+        },
+        {
+          "season": 2023,
+          "signals": 31,
+          "wins": 21,
+          "accuracy": 0.6774193548387096,
+          "profit_units": 2.7503164129808715,
+          "roi": 0.08871988428970554
+        },
+        {
+          "season": 2024,
+          "signals": 40,
+          "wins": 26,
+          "accuracy": 0.65,
+          "profit_units": 0.8890189683532363,
+          "roi": 0.02222547420883091
+        },
+        {
+          "season": 2025,
+          "signals": 30,
+          "wins": 19,
+          "accuracy": 0.6333333333333333,
+          "profit_units": 2.3444259935408907,
+          "roi": 0.07814753311802969
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.6,
+      "minimum_odds": -200,
+      "signals": 99,
+      "wins": 56,
+      "accuracy": 0.5656565656565656,
+      "profit_units": -3.40475489371567,
+      "roi": -0.034391463572885556,
+      "profitable_seasons": 2,
+      "minimum_season_signals": 21,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 27,
+          "wins": 13,
+          "accuracy": 0.48148148148148145,
+          "profit_units": -5.514952159897129,
+          "roi": -0.2042574874035974
+        },
+        {
+          "season": 2023,
+          "signals": 24,
+          "wins": 15,
+          "accuracy": 0.625,
+          "profit_units": 1.1369170769654176,
+          "roi": 0.04737154487355907
+        },
+        {
+          "season": 2024,
+          "signals": 27,
+          "wins": 14,
+          "accuracy": 0.5185185185185185,
+          "profit_units": -3.1801808855013487,
+          "roi": -0.11778447724079069
+        },
+        {
+          "season": 2025,
+          "signals": 21,
+          "wins": 14,
+          "accuracy": 0.6666666666666666,
+          "profit_units": 4.153461074717391,
+          "roi": 0.19778386070082812
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.6,
+      "minimum_odds": -150,
+      "signals": 43,
+      "wins": 21,
+      "accuracy": 0.4883720930232558,
+      "profit_units": -2.2606999341278433,
+      "roi": -0.05257441707274054,
+      "profitable_seasons": 1,
+      "minimum_season_signals": 7,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 10,
+          "wins": 4,
+          "accuracy": 0.4,
+          "profit_units": -2.4026529547656312,
+          "roi": -0.2402652954765631
+        },
+        {
+          "season": 2023,
+          "signals": 13,
+          "wins": 7,
+          "accuracy": 0.5384615384615384,
+          "profit_units": -0.16890904136070062,
+          "roi": -0.012993003181592355
+        },
+        {
+          "season": 2024,
+          "signals": 13,
+          "wins": 5,
+          "accuracy": 0.38461538461538464,
+          "profit_units": -3.6071945660581393,
+          "roi": -0.2774765050813953
+        },
+        {
+          "season": 2025,
+          "signals": 7,
+          "wins": 5,
+          "accuracy": 0.7142857142857143,
+          "profit_units": 3.918056628056628,
+          "roi": 0.5597223754366611
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.6,
+      "minimum_odds": -100,
+      "signals": 21,
+      "wins": 7,
+      "accuracy": 0.3333333333333333,
+      "profit_units": -5.16,
+      "roi": -0.24571428571428572,
+      "profitable_seasons": 1,
+      "minimum_season_signals": 3,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 3,
+          "wins": 1,
+          "accuracy": 0.3333333333333333,
+          "profit_units": -0.8,
+          "roi": -0.26666666666666666
+        },
+        {
+          "season": 2023,
+          "signals": 5,
+          "wins": 1,
+          "accuracy": 0.2,
+          "profit_units": -2.7,
+          "roi": -0.54
+        },
+        {
+          "season": 2024,
+          "signals": 8,
+          "wins": 2,
+          "accuracy": 0.25,
+          "profit_units": -3.95,
+          "roi": -0.49375
+        },
+        {
+          "season": 2025,
+          "signals": 5,
+          "wins": 3,
+          "accuracy": 0.6,
+          "profit_units": 2.29,
+          "roi": 0.458
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.6,
+      "minimum_odds": 100,
+      "signals": 21,
+      "wins": 7,
+      "accuracy": 0.3333333333333333,
+      "profit_units": -5.16,
+      "roi": -0.24571428571428572,
+      "profitable_seasons": 1,
+      "minimum_season_signals": 3,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 3,
+          "wins": 1,
+          "accuracy": 0.3333333333333333,
+          "profit_units": -0.8,
+          "roi": -0.26666666666666666
+        },
+        {
+          "season": 2023,
+          "signals": 5,
+          "wins": 1,
+          "accuracy": 0.2,
+          "profit_units": -2.7,
+          "roi": -0.54
+        },
+        {
+          "season": 2024,
+          "signals": 8,
+          "wins": 2,
+          "accuracy": 0.25,
+          "profit_units": -3.95,
+          "roi": -0.49375
+        },
+        {
+          "season": 2025,
+          "signals": 5,
+          "wins": 3,
+          "accuracy": 0.6,
+          "profit_units": 2.29,
+          "roi": 0.458
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.625,
+      "minimum_odds": -500,
+      "signals": 166,
+      "wins": 121,
+      "accuracy": 0.7289156626506024,
+      "profit_units": 3.7148234386072687,
+      "roi": 0.02237845444944138,
+      "profitable_seasons": 3,
+      "minimum_season_signals": 33,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 44,
+          "wins": 34,
+          "accuracy": 0.7727272727272727,
+          "profit_units": 3.6454568726025958,
+          "roi": 0.0828512925591499
+        },
+        {
+          "season": 2023,
+          "signals": 33,
+          "wins": 25,
+          "accuracy": 0.7575757575757576,
+          "profit_units": 2.371068451890845,
+          "roi": 0.07185055914820743
+        },
+        {
+          "season": 2024,
+          "signals": 48,
+          "wins": 37,
+          "accuracy": 0.7708333333333334,
+          "profit_units": 4.269665129510116,
+          "roi": 0.08895135686479409
+        },
+        {
+          "season": 2025,
+          "signals": 41,
+          "wins": 25,
+          "accuracy": 0.6097560975609756,
+          "profit_units": -6.571367015396288,
+          "roi": -0.16027724427795825
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.625,
+      "minimum_odds": -400,
+      "signals": 146,
+      "wins": 105,
+      "accuracy": 0.7191780821917808,
+      "profit_units": 4.243817612263679,
+      "roi": 0.02906724391961424,
+      "profitable_seasons": 3,
+      "minimum_season_signals": 29,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 40,
+          "wins": 30,
+          "accuracy": 0.75,
+          "profit_units": 2.767712149534387,
+          "roi": 0.06919280373835968
+        },
+        {
+          "season": 2023,
+          "signals": 29,
+          "wins": 21,
+          "accuracy": 0.7241379310344828,
+          "profit_units": 1.5178299378275886,
+          "roi": 0.052338963373365126
+        },
+        {
+          "season": 2024,
+          "signals": 44,
+          "wins": 34,
+          "accuracy": 0.7727272727272727,
+          "profit_units": 4.590468572838668,
+          "roi": 0.10432883120087881
+        },
+        {
+          "season": 2025,
+          "signals": 33,
+          "wins": 20,
+          "accuracy": 0.6060606060606061,
+          "profit_units": -4.632193047936965,
+          "roi": -0.14036948630112014
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.625,
+      "minimum_odds": -300,
+      "signals": 102,
+      "wins": 71,
+      "accuracy": 0.696078431372549,
+      "profit_units": 4.667013987410387,
+      "roi": 0.0457550390922587,
+      "profitable_seasons": 3,
+      "minimum_season_signals": 22,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 27,
+          "wins": 20,
+          "accuracy": 0.7407407407407407,
+          "profit_units": 2.9703665948766838,
+          "roi": 0.11001357758802532
+        },
+        {
+          "season": 2023,
+          "signals": 22,
+          "wins": 17,
+          "accuracy": 0.7727272727272727,
+          "profit_units": 3.4338746358871752,
+          "roi": 0.15608521072214432
+        },
+        {
+          "season": 2024,
+          "signals": 31,
+          "wins": 23,
+          "accuracy": 0.7419354838709677,
+          "profit_units": 3.340046425606286,
+          "roi": 0.10774343308407373
+        },
+        {
+          "season": 2025,
+          "signals": 22,
+          "wins": 11,
+          "accuracy": 0.5,
+          "profit_units": -5.077273668959758,
+          "roi": -0.23078516677089808
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.625,
+      "minimum_odds": -250,
+      "signals": 80,
+      "wins": 53,
+      "accuracy": 0.6625,
+      "profit_units": 2.2885026351342934,
+      "roi": 0.02860628293917867,
+      "profitable_seasons": 3,
+      "minimum_season_signals": 17,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 21,
+          "wins": 14,
+          "accuracy": 0.6666666666666666,
+          "profit_units": 0.8298417869592059,
+          "roi": 0.03951627556948599
+        },
+        {
+          "season": 2023,
+          "signals": 18,
+          "wins": 14,
+          "accuracy": 0.7777777777777778,
+          "profit_units": 3.365879680656815,
+          "roi": 0.18699331559204527
+        },
+        {
+          "season": 2024,
+          "signals": 24,
+          "wins": 17,
+          "accuracy": 0.7083333333333334,
+          "profit_units": 2.2254718458832103,
+          "roi": 0.0927279935784671
+        },
+        {
+          "season": 2025,
+          "signals": 17,
+          "wins": 8,
+          "accuracy": 0.47058823529411764,
+          "profit_units": -4.132690678364938,
+          "roi": -0.24309945166852576
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.625,
+      "minimum_odds": -200,
+      "signals": 48,
+      "wins": 28,
+      "accuracy": 0.5833333333333334,
+      "profit_units": -1.6682692115470892,
+      "roi": -0.034755608573897694,
+      "profitable_seasons": 1,
+      "minimum_season_signals": 11,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 12,
+          "wins": 7,
+          "accuracy": 0.5833333333333334,
+          "profit_units": -0.38754368009127615,
+          "roi": -0.032295306674273015
+        },
+        {
+          "season": 2023,
+          "signals": 11,
+          "wins": 8,
+          "accuracy": 0.7272727272727273,
+          "profit_units": 1.7524803446413613,
+          "roi": 0.15931639496739647
+        },
+        {
+          "season": 2024,
+          "signals": 14,
+          "wins": 8,
+          "accuracy": 0.5714285714285714,
+          "profit_units": -0.5539947233531802,
+          "roi": -0.0395710516680843
+        },
+        {
+          "season": 2025,
+          "signals": 11,
+          "wins": 5,
+          "accuracy": 0.45454545454545453,
+          "profit_units": -2.479211152743994,
+          "roi": -0.22538283206763585
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.625,
+      "minimum_odds": -150,
+      "signals": 17,
+      "wins": 9,
+      "accuracy": 0.5294117647058824,
+      "profit_units": -0.5817908927671422,
+      "roi": -0.03422299369218484,
+      "profitable_seasons": 1,
+      "minimum_season_signals": 4,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 5,
+          "wins": 3,
+          "accuracy": 0.6,
+          "profit_units": 0.39734704523436903,
+          "roi": 0.0794694090468738
+        },
+        {
+          "season": 2023,
+          "signals": 4,
+          "wins": 2,
+          "accuracy": 0.5,
+          "profit_units": -0.4768666972056803,
+          "roi": -0.11921667430142008
+        },
+        {
+          "season": 2024,
+          "signals": 4,
+          "wins": 2,
+          "accuracy": 0.5,
+          "profit_units": -0.13032786885245895,
+          "roi": -0.03258196721311474
+        },
+        {
+          "season": 2025,
+          "signals": 4,
+          "wins": 2,
+          "accuracy": 0.5,
+          "profit_units": -0.371943371943372,
+          "roi": -0.092985842985843
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.625,
+      "minimum_odds": -100,
+      "signals": 6,
+      "wins": 1,
+      "accuracy": 0.16666666666666666,
+      "profit_units": -3.95,
+      "roi": -0.6583333333333333,
+      "profitable_seasons": 1,
+      "minimum_season_signals": 0,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2023,
+          "signals": 2,
+          "wins": 0,
+          "accuracy": 0.0,
+          "profit_units": -2.0,
+          "roi": -1.0
+        },
+        {
+          "season": 2024,
+          "signals": 2,
+          "wins": 1,
+          "accuracy": 0.5,
+          "profit_units": 0.050000000000000044,
+          "roi": 0.025000000000000022
+        },
+        {
+          "season": 2025,
+          "signals": 2,
+          "wins": 0,
+          "accuracy": 0.0,
+          "profit_units": -2.0,
+          "roi": -1.0
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.625,
+      "minimum_odds": 100,
+      "signals": 6,
+      "wins": 1,
+      "accuracy": 0.16666666666666666,
+      "profit_units": -3.95,
+      "roi": -0.6583333333333333,
+      "profitable_seasons": 1,
+      "minimum_season_signals": 0,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2023,
+          "signals": 2,
+          "wins": 0,
+          "accuracy": 0.0,
+          "profit_units": -2.0,
+          "roi": -1.0
+        },
+        {
+          "season": 2024,
+          "signals": 2,
+          "wins": 1,
+          "accuracy": 0.5,
+          "profit_units": 0.050000000000000044,
+          "roi": 0.025000000000000022
+        },
+        {
+          "season": 2025,
+          "signals": 2,
+          "wins": 0,
+          "accuracy": 0.0,
+          "profit_units": -2.0,
+          "roi": -1.0
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.65,
+      "minimum_odds": -500,
+      "signals": 101,
+      "wins": 78,
+      "accuracy": 0.7722772277227723,
+      "profit_units": 6.970800888482285,
+      "roi": 0.06901783057903252,
+      "profitable_seasons": 3,
+      "minimum_season_signals": 21,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 26,
+          "wins": 21,
+          "accuracy": 0.8076923076923077,
+          "profit_units": 2.952972463624206,
+          "roi": 0.1135758639855464
+        },
+        {
+          "season": 2023,
+          "signals": 21,
+          "wins": 16,
+          "accuracy": 0.7619047619047619,
+          "profit_units": 1.1653735972302879,
+          "roi": 0.0554939808204899
+        },
+        {
+          "season": 2024,
+          "signals": 31,
+          "wins": 25,
+          "accuracy": 0.8064516129032258,
+          "profit_units": 4.248970648180612,
+          "roi": 0.13706356929614877
+        },
+        {
+          "season": 2025,
+          "signals": 23,
+          "wins": 16,
+          "accuracy": 0.6956521739130435,
+          "profit_units": -1.3965158205528216,
+          "roi": -0.06071807915447051
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.65,
+      "minimum_odds": -400,
+      "signals": 86,
+      "wins": 66,
+      "accuracy": 0.7674418604651163,
+      "profit_units": 7.388613025433045,
+      "roi": 0.08591410494689587,
+      "profitable_seasons": 3,
+      "minimum_season_signals": 17,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 24,
+          "wins": 19,
+          "accuracy": 0.7916666666666666,
+          "profit_units": 2.5314995266233193,
+          "roi": 0.10547914694263831
+        },
+        {
+          "season": 2023,
+          "signals": 18,
+          "wins": 13,
+          "accuracy": 0.7222222222222222,
+          "profit_units": 0.5319153029472512,
+          "roi": 0.029550850163736177
+        },
+        {
+          "season": 2024,
+          "signals": 27,
+          "wins": 22,
+          "accuracy": 0.8148148148148148,
+          "profit_units": 4.569774091509164,
+          "roi": 0.16925089227811718
+        },
+        {
+          "season": 2025,
+          "signals": 17,
+          "wins": 12,
+          "accuracy": 0.7058823529411765,
+          "profit_units": -0.24457589564668902,
+          "roi": -0.014386817390981707
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.65,
+      "minimum_odds": -300,
+      "signals": 53,
+      "wins": 40,
+      "accuracy": 0.7547169811320755,
+      "profit_units": 6.94234230879271,
+      "roi": 0.13098759073193791,
+      "profitable_seasons": 3,
+      "minimum_season_signals": 9,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 14,
+          "wins": 11,
+          "accuracy": 0.7857142857142857,
+          "profit_units": 2.2430631193809263,
+          "roi": 0.16021879424149474
+        },
+        {
+          "season": 2023,
+          "signals": 13,
+          "wins": 10,
+          "accuracy": 0.7692307692307693,
+          "profit_units": 1.7011245579688634,
+          "roi": 0.1308557352283741
+        },
+        {
+          "season": 2024,
+          "signals": 17,
+          "wins": 14,
+          "accuracy": 0.8235294117647058,
+          "profit_units": 4.16797992448371,
+          "roi": 0.24517528967551236
+        },
+        {
+          "season": 2025,
+          "signals": 9,
+          "wins": 5,
+          "accuracy": 0.5555555555555556,
+          "profit_units": -1.1698252930407897,
+          "roi": -0.1299805881156433
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.65,
+      "minimum_odds": -250,
+      "signals": 41,
+      "wins": 30,
+      "accuracy": 0.7317073170731707,
+      "profit_units": 5.3889067615021276,
+      "roi": 0.1314367502805397,
+      "profitable_seasons": 3,
+      "minimum_season_signals": 7,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 10,
+          "wins": 7,
+          "accuracy": 0.7,
+          "profit_units": 0.8042021518134206,
+          "roi": 0.08042021518134206
+        },
+        {
+          "season": 2023,
+          "signals": 11,
+          "wins": 9,
+          "accuracy": 0.8181818181818182,
+          "profit_units": 2.3655540881702057,
+          "roi": 0.21505037165183688
+        },
+        {
+          "season": 2024,
+          "signals": 13,
+          "wins": 10,
+          "accuracy": 0.7692307692307693,
+          "profit_units": 2.7338034007661878,
+          "roi": 0.21029256928970674
+        },
+        {
+          "season": 2025,
+          "signals": 7,
+          "wins": 4,
+          "accuracy": 0.5714285714285714,
+          "profit_units": -0.5146528792476864,
+          "roi": -0.07352183989252663
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.65,
+      "minimum_odds": -200,
+      "signals": 24,
+      "wins": 14,
+      "accuracy": 0.5833333333333334,
+      "profit_units": -0.6200014902560667,
+      "roi": -0.02583339542733611,
+      "profitable_seasons": 2,
+      "minimum_season_signals": 5,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 6,
+          "wins": 4,
+          "accuracy": 0.6666666666666666,
+          "profit_units": 0.406399465964546,
+          "roi": 0.06773324432742434
+        },
+        {
+          "season": 2023,
+          "signals": 5,
+          "wins": 3,
+          "accuracy": 0.6,
+          "profit_units": -0.24784524784524797,
+          "roi": -0.049569049569049596
+        },
+        {
+          "season": 2024,
+          "signals": 8,
+          "wins": 5,
+          "accuracy": 0.625,
+          "profit_units": 0.6239020489211022,
+          "roi": 0.07798775611513778
+        },
+        {
+          "season": 2025,
+          "signals": 5,
+          "wins": 2,
+          "accuracy": 0.4,
+          "profit_units": -1.402457757296467,
+          "roi": -0.2804915514592934
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.65,
+      "minimum_odds": -150,
+      "signals": 7,
+      "wins": 5,
+      "accuracy": 0.7142857142857143,
+      "profit_units": 2.2384694999449097,
+      "roi": 0.3197813571349871,
+      "profitable_seasons": 2,
+      "minimum_season_signals": 1,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 1,
+          "wins": 1,
+          "accuracy": 1.0,
+          "profit_units": 0.7407407407407407,
+          "roi": 0.7407407407407407
+        },
+        {
+          "season": 2023,
+          "signals": 2,
+          "wins": 1,
+          "accuracy": 0.5,
+          "profit_units": -0.32432432432432434,
+          "roi": -0.16216216216216217
+        },
+        {
+          "season": 2024,
+          "signals": 2,
+          "wins": 2,
+          "accuracy": 1.0,
+          "profit_units": 1.869672131147541,
+          "roi": 0.9348360655737705
+        },
+        {
+          "season": 2025,
+          "signals": 2,
+          "wins": 1,
+          "accuracy": 0.5,
+          "profit_units": -0.04761904761904767,
+          "roi": -0.023809523809523836
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.65,
+      "minimum_odds": -100,
+      "signals": 3,
+      "wins": 1,
+      "accuracy": 0.3333333333333333,
+      "profit_units": -0.95,
+      "roi": -0.31666666666666665,
+      "profitable_seasons": 1,
+      "minimum_season_signals": 0,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2023,
+          "signals": 1,
+          "wins": 0,
+          "accuracy": 0.0,
+          "profit_units": -1.0,
+          "roi": -1.0
+        },
+        {
+          "season": 2024,
+          "signals": 1,
+          "wins": 1,
+          "accuracy": 1.0,
+          "profit_units": 1.05,
+          "roi": 1.05
+        },
+        {
+          "season": 2025,
+          "signals": 1,
+          "wins": 0,
+          "accuracy": 0.0,
+          "profit_units": -1.0,
+          "roi": -1.0
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.65,
+      "minimum_odds": 100,
+      "signals": 3,
+      "wins": 1,
+      "accuracy": 0.3333333333333333,
+      "profit_units": -0.95,
+      "roi": -0.31666666666666665,
+      "profitable_seasons": 1,
+      "minimum_season_signals": 0,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2023,
+          "signals": 1,
+          "wins": 0,
+          "accuracy": 0.0,
+          "profit_units": -1.0,
+          "roi": -1.0
+        },
+        {
+          "season": 2024,
+          "signals": 1,
+          "wins": 1,
+          "accuracy": 1.0,
+          "profit_units": 1.05,
+          "roi": 1.05
+        },
+        {
+          "season": 2025,
+          "signals": 1,
+          "wins": 0,
+          "accuracy": 0.0,
+          "profit_units": -1.0,
+          "roi": -1.0
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.675,
+      "minimum_odds": -500,
+      "signals": 48,
+      "wins": 36,
+      "accuracy": 0.75,
+      "profit_units": -0.012889991425326042,
+      "roi": -0.00026854148802762587,
+      "profitable_seasons": 2,
+      "minimum_season_signals": 8,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 14,
+          "wins": 11,
+          "accuracy": 0.7857142857142857,
+          "profit_units": 0.4321839488257267,
+          "roi": 0.03087028205898048
+        },
+        {
+          "season": 2023,
+          "signals": 13,
+          "wins": 9,
+          "accuracy": 0.6923076923076923,
+          "profit_units": -0.7744494594685489,
+          "roi": -0.05957303534373453
+        },
+        {
+          "season": 2024,
+          "signals": 13,
+          "wins": 10,
+          "accuracy": 0.7692307692307693,
+          "profit_units": 0.5871152401889289,
+          "roi": 0.045162710783763764
+        },
+        {
+          "season": 2025,
+          "signals": 8,
+          "wins": 6,
+          "accuracy": 0.75,
+          "profit_units": -0.2577397209714327,
+          "roi": -0.03221746512142909
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.675,
+      "minimum_odds": -400,
+      "signals": 41,
+      "wins": 30,
+      "accuracy": 0.7317073170731707,
+      "profit_units": -0.2616356556989406,
+      "roi": -0.006381357456071722,
+      "profitable_seasons": 2,
+      "minimum_season_signals": 7,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 12,
+          "wins": 9,
+          "accuracy": 0.75,
+          "profit_units": 0.010711011824839578,
+          "roi": 0.0008925843187366315
+        },
+        {
+          "season": 2023,
+          "signals": 11,
+          "wins": 7,
+          "accuracy": 0.6363636363636364,
+          "profit_units": -1.2017221867412762,
+          "roi": -0.1092474715219342
+        },
+        {
+          "season": 2024,
+          "signals": 11,
+          "wins": 9,
+          "accuracy": 0.8181818181818182,
+          "profit_units": 1.3871152401889288,
+          "roi": 0.1261013854717208
+        },
+        {
+          "season": 2025,
+          "signals": 7,
+          "wins": 5,
+          "accuracy": 0.7142857142857143,
+          "profit_units": -0.45773972097143284,
+          "roi": -0.0653913887102047
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.675,
+      "minimum_odds": -300,
+      "signals": 24,
+      "wins": 17,
+      "accuracy": 0.7083333333333334,
+      "profit_units": 0.061136889360757674,
+      "roi": 0.0025473703900315697,
+      "profitable_seasons": 1,
+      "minimum_season_signals": 2,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 7,
+          "wins": 5,
+          "accuracy": 0.7142857142857143,
+          "profit_units": -0.09165546435737615,
+          "roi": -0.01309363776533945
+        },
+        {
+          "season": 2023,
+          "signals": 8,
+          "wins": 5,
+          "accuracy": 0.625,
+          "profit_units": -0.7693550369828219,
+          "roi": -0.09616937962285274
+        },
+        {
+          "season": 2024,
+          "signals": 7,
+          "wins": 6,
+          "accuracy": 0.8571428571428571,
+          "profit_units": 1.5221473907009557,
+          "roi": 0.2174496272429937
+        },
+        {
+          "season": 2025,
+          "signals": 2,
+          "wins": 1,
+          "accuracy": 0.5,
+          "profit_units": -0.6,
+          "roi": -0.3
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.675,
+      "minimum_odds": -250,
+      "signals": 16,
+      "wins": 10,
+      "accuracy": 0.625,
+      "profit_units": -1.4345421113582328,
+      "roi": -0.08965888195988955,
+      "profitable_seasons": 2,
+      "minimum_season_signals": 2,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 3,
+          "wins": 1,
+          "accuracy": 0.3333333333333333,
+          "profit_units": -1.5305164319248825,
+          "roi": -0.5101721439749608
+        },
+        {
+          "season": 2023,
+          "signals": 7,
+          "wins": 5,
+          "accuracy": 0.7142857142857143,
+          "profit_units": 0.23064496301717807,
+          "roi": 0.03294928043102544
+        },
+        {
+          "season": 2024,
+          "signals": 4,
+          "wins": 3,
+          "accuracy": 0.75,
+          "profit_units": 0.46532935754947147,
+          "roi": 0.11633233938736787
+        },
+        {
+          "season": 2025,
+          "signals": 2,
+          "wins": 1,
+          "accuracy": 0.5,
+          "profit_units": -0.6,
+          "roi": -0.3
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.675,
+      "minimum_odds": -200,
+      "signals": 8,
+      "wins": 2,
+      "accuracy": 0.25,
+      "profit_units": -4.849788204626914,
+      "roi": -0.6062235255783642,
+      "profitable_seasons": 0,
+      "minimum_season_signals": 1,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 2,
+          "wins": 0,
+          "accuracy": 0.0,
+          "profit_units": -2.0,
+          "roi": -1.0
+        },
+        {
+          "season": 2023,
+          "signals": 3,
+          "wins": 1,
+          "accuracy": 0.3333333333333333,
+          "profit_units": -1.4949494949494948,
+          "roi": -0.49831649831649827
+        },
+        {
+          "season": 2024,
+          "signals": 2,
+          "wins": 1,
+          "accuracy": 0.5,
+          "profit_units": -0.3548387096774194,
+          "roi": -0.1774193548387097
+        },
+        {
+          "season": 2025,
+          "signals": 1,
+          "wins": 0,
+          "accuracy": 0.0,
+          "profit_units": -1.0,
+          "roi": -1.0
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.675,
+      "minimum_odds": -150,
+      "signals": 2,
+      "wins": 0,
+      "accuracy": 0.0,
+      "profit_units": -2.0,
+      "roi": -1.0,
+      "profitable_seasons": 0,
+      "minimum_season_signals": 0,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2023,
+          "signals": 1,
+          "wins": 0,
+          "accuracy": 0.0,
+          "profit_units": -1.0,
+          "roi": -1.0
+        },
+        {
+          "season": 2024,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2025,
+          "signals": 1,
+          "wins": 0,
+          "accuracy": 0.0,
+          "profit_units": -1.0,
+          "roi": -1.0
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.675,
+      "minimum_odds": -100,
+      "signals": 2,
+      "wins": 0,
+      "accuracy": 0.0,
+      "profit_units": -2.0,
+      "roi": -1.0,
+      "profitable_seasons": 0,
+      "minimum_season_signals": 0,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2023,
+          "signals": 1,
+          "wins": 0,
+          "accuracy": 0.0,
+          "profit_units": -1.0,
+          "roi": -1.0
+        },
+        {
+          "season": 2024,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2025,
+          "signals": 1,
+          "wins": 0,
+          "accuracy": 0.0,
+          "profit_units": -1.0,
+          "roi": -1.0
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.675,
+      "minimum_odds": 100,
+      "signals": 2,
+      "wins": 0,
+      "accuracy": 0.0,
+      "profit_units": -2.0,
+      "roi": -1.0,
+      "profitable_seasons": 0,
+      "minimum_season_signals": 0,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2023,
+          "signals": 1,
+          "wins": 0,
+          "accuracy": 0.0,
+          "profit_units": -1.0,
+          "roi": -1.0
+        },
+        {
+          "season": 2024,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2025,
+          "signals": 1,
+          "wins": 0,
+          "accuracy": 0.0,
+          "profit_units": -1.0,
+          "roi": -1.0
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.7,
+      "minimum_odds": -500,
+      "signals": 17,
+      "wins": 12,
+      "accuracy": 0.7058823529411765,
+      "profit_units": -1.1708672996686962,
+      "roi": -0.06887454703933507,
+      "profitable_seasons": 2,
+      "minimum_season_signals": 3,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 4,
+          "wins": 4,
+          "accuracy": 1.0,
+          "profit_units": 1.1639333532023786,
+          "roi": 0.29098333830059464
+        },
+        {
+          "season": 2023,
+          "signals": 4,
+          "wins": 2,
+          "accuracy": 0.5,
+          "profit_units": -1.4323671497584543,
+          "roi": -0.35809178743961356
+        },
+        {
+          "season": 2024,
+          "signals": 3,
+          "wins": 1,
+          "accuracy": 0.3333333333333333,
+          "profit_units": -1.3548387096774195,
+          "roi": -0.4516129032258065
+        },
+        {
+          "season": 2025,
+          "signals": 6,
+          "wins": 5,
+          "accuracy": 0.8333333333333334,
+          "profit_units": 0.452405206564799,
+          "roi": 0.07540086776079984
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.7,
+      "minimum_odds": -400,
+      "signals": 15,
+      "wins": 11,
+      "accuracy": 0.7333333333333333,
+      "profit_units": -0.370867299668696,
+      "roi": -0.024724486644579734,
+      "profitable_seasons": 2,
+      "minimum_season_signals": 2,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 4,
+          "wins": 4,
+          "accuracy": 1.0,
+          "profit_units": 1.1639333532023786,
+          "roi": 0.29098333830059464
+        },
+        {
+          "season": 2023,
+          "signals": 4,
+          "wins": 2,
+          "accuracy": 0.5,
+          "profit_units": -1.4323671497584543,
+          "roi": -0.35809178743961356
+        },
+        {
+          "season": 2024,
+          "signals": 2,
+          "wins": 1,
+          "accuracy": 0.5,
+          "profit_units": -0.3548387096774194,
+          "roi": -0.1774193548387097
+        },
+        {
+          "season": 2025,
+          "signals": 5,
+          "wins": 4,
+          "accuracy": 0.8,
+          "profit_units": 0.25240520656479903,
+          "roi": 0.05048104131295981
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.7,
+      "minimum_odds": -300,
+      "signals": 6,
+      "wins": 3,
+      "accuracy": 0.5,
+      "profit_units": -1.6123729562527618,
+      "roi": -0.26872882604212694,
+      "profitable_seasons": 1,
+      "minimum_season_signals": 1,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 1,
+          "wins": 1,
+          "accuracy": 1.0,
+          "profit_units": 0.3424657534246575,
+          "roi": 0.3424657534246575
+        },
+        {
+          "season": 2023,
+          "signals": 1,
+          "wins": 0,
+          "accuracy": 0.0,
+          "profit_units": -1.0,
+          "roi": -1.0
+        },
+        {
+          "season": 2024,
+          "signals": 2,
+          "wins": 1,
+          "accuracy": 0.5,
+          "profit_units": -0.3548387096774194,
+          "roi": -0.1774193548387097
+        },
+        {
+          "season": 2025,
+          "signals": 2,
+          "wins": 1,
+          "accuracy": 0.5,
+          "profit_units": -0.6,
+          "roi": -0.3
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.7,
+      "minimum_odds": -250,
+      "signals": 4,
+      "wins": 2,
+      "accuracy": 0.5,
+      "profit_units": -0.9548387096774194,
+      "roi": -0.23870967741935484,
+      "profitable_seasons": 0,
+      "minimum_season_signals": 0,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2023,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2024,
+          "signals": 2,
+          "wins": 1,
+          "accuracy": 0.5,
+          "profit_units": -0.3548387096774194,
+          "roi": -0.1774193548387097
+        },
+        {
+          "season": 2025,
+          "signals": 2,
+          "wins": 1,
+          "accuracy": 0.5,
+          "profit_units": -0.6,
+          "roi": -0.3
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.7,
+      "minimum_odds": -200,
+      "signals": 3,
+      "wins": 1,
+      "accuracy": 0.3333333333333333,
+      "profit_units": -1.3548387096774195,
+      "roi": -0.4516129032258065,
+      "profitable_seasons": 0,
+      "minimum_season_signals": 0,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2023,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2024,
+          "signals": 2,
+          "wins": 1,
+          "accuracy": 0.5,
+          "profit_units": -0.3548387096774194,
+          "roi": -0.1774193548387097
+        },
+        {
+          "season": 2025,
+          "signals": 1,
+          "wins": 0,
+          "accuracy": 0.0,
+          "profit_units": -1.0,
+          "roi": -1.0
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.7,
+      "minimum_odds": -150,
+      "signals": 1,
+      "wins": 0,
+      "accuracy": 0.0,
+      "profit_units": -1.0,
+      "roi": -1.0,
+      "profitable_seasons": 0,
+      "minimum_season_signals": 0,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2023,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2024,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2025,
+          "signals": 1,
+          "wins": 0,
+          "accuracy": 0.0,
+          "profit_units": -1.0,
+          "roi": -1.0
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.7,
+      "minimum_odds": -100,
+      "signals": 1,
+      "wins": 0,
+      "accuracy": 0.0,
+      "profit_units": -1.0,
+      "roi": -1.0,
+      "profitable_seasons": 0,
+      "minimum_season_signals": 0,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2023,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2024,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2025,
+          "signals": 1,
+          "wins": 0,
+          "accuracy": 0.0,
+          "profit_units": -1.0,
+          "roi": -1.0
+        }
+      ]
+    },
+    {
+      "confidence_threshold": 0.7,
+      "minimum_odds": 100,
+      "signals": 1,
+      "wins": 0,
+      "accuracy": 0.0,
+      "profit_units": -1.0,
+      "roi": -1.0,
+      "profitable_seasons": 0,
+      "minimum_season_signals": 0,
+      "yearly": [
+        {
+          "season": 2022,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2023,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2024,
+          "signals": 0,
+          "wins": 0,
+          "accuracy": null,
+          "profit_units": 0.0,
+          "roi": null
+        },
+        {
+          "season": 2025,
+          "signals": 1,
+          "wins": 0,
+          "accuracy": 0.0,
+          "profit_units": -1.0,
+          "roi": -1.0
+        }
+      ]
+    }
+  ]
+}

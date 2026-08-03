@@ -65,7 +65,7 @@ def test_weekly_prediction_adds_consensus_market_edge():
         else row["away_moneyline"]
     )
     assert row["moneyline_signal"] == (
-        row["model_win_confidence"] >= 0.625 and selected_odds >= -300
+        row["model_win_confidence"] >= 0.65 and selected_odds >= -300
     )
 
     extreme_favorite_lines = lines.assign(

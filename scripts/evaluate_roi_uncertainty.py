@@ -19,6 +19,9 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 ARTIFACT_ROOT = PROJECT_ROOT / "artifacts" / "models" / "no_wind_rolling"
 RETURNS_PATH = PROJECT_ROOT / "artifacts" / "evaluation" / "no_wind_signals.parquet"
 REPORT_PATH = PROJECT_ROOT / "reports" / "roi_uncertainty_no_wind.json"
+COMPARISON_REPORT_PATH = (
+    PROJECT_ROOT / "reports" / "roi_uncertainty_threshold_comparison.json"
+)
 SEASONS = range(2022, 2026)
 BOOTSTRAP_SAMPLES = 100_000
 RANDOM_STATE = 24
@@ -44,7 +47,12 @@ def model_for_season(season: int) -> NFLModel:
     return model
 
 
-def signal_returns(model: NFLModel, schedules: pd.DataFrame) -> pd.DataFrame:
+def signal_returns(
+    model: NFLModel,
+    schedules: pd.DataFrame,
+    *,
+    confidence_threshold: float | None = None,
+) -> pd.DataFrame:
     frame = evaluation_frame(model, "test")
     frame = frame.merge(
         schedules[
@@ -68,8 +76,13 @@ def signal_returns(model: NFLModel, schedules: pd.DataFrame) -> pd.DataFrame:
         frame["pred_home_win"], frame["away_moneyline"]
     )
     config = BettingConfig()
+    confidence_threshold = (
+        config.moneyline_confidence_threshold
+        if confidence_threshold is None
+        else confidence_threshold
+    )
     signals = frame.loc[
-        (frame["confidence"] >= config.moneyline_confidence_threshold)
+        (frame["confidence"] >= confidence_threshold)
         & frame["selected_odds"].notna()
         & (frame["selected_odds"] >= config.moneyline_minimum_odds)
     ].copy()
@@ -188,16 +201,28 @@ def interval_report(returns: np.ndarray, wins: int) -> dict:
 
 def main() -> None:
     schedules = nfl.import_schedules(list(SEASONS))
-    signals = pd.concat(
-        [signal_returns(model_for_season(season), schedules) for season in SEASONS],
-        ignore_index=True,
-    )
+    models = {season: model_for_season(season) for season in SEASONS}
+    by_threshold = {
+        threshold: pd.concat(
+            [
+                signal_returns(
+                    models[season],
+                    schedules,
+                    confidence_threshold=threshold,
+                )
+                for season in SEASONS
+            ],
+            ignore_index=True,
+        )
+        for threshold in (0.60, 0.65)
+    }
+    signals = by_threshold[BettingConfig().moneyline_confidence_threshold]
     RETURNS_PATH.parent.mkdir(parents=True, exist_ok=True)
     signals.to_parquet(RETURNS_PATH, index=False)
     report = {
         "description": (
             "Uncertainty intervals for the historical mean one-unit return of "
-            "the locked 65% confidence / -300 moneyline rule using no-wind, "
+            "the locked 60% confidence / -300 moneyline rule using no-wind, "
             "split-tie probabilities and "
             "expanding-window test predictions from 2022 through 2025."
         ),
@@ -216,9 +241,29 @@ def main() -> None:
         ),
     }
     REPORT_PATH.write_text(json.dumps(report, indent=2) + "\n")
+    comparison = {
+        "description": (
+            "Uncertainty comparison for corrected split-tie moneyline signals "
+            "at a fixed -300 minimum price."
+        ),
+        "selection_caveat": report["selection_caveat"],
+        "independence_caveat": report["independence_caveat"],
+        "thresholds": {
+            str(threshold): interval_report(
+                frame["return_units"].to_numpy(),
+                int(frame["won"].sum()),
+            )
+            for threshold, frame in by_threshold.items()
+        },
+    }
+    COMPARISON_REPORT_PATH.write_text(
+        json.dumps(comparison, indent=2) + "\n",
+        encoding="utf-8",
+    )
     print(json.dumps(report, indent=2))
     print(f"Saved signal returns to {RETURNS_PATH}")
     print(f"Saved interval report to {REPORT_PATH}")
+    print(f"Saved threshold comparison to {COMPARISON_REPORT_PATH}")
 
 
 if __name__ == "__main__":

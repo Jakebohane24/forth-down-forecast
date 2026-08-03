@@ -45,7 +45,7 @@ def seed_database(source_url: str, target_url: str) -> dict[str, int]:
         predictions = list(
             source.scalars(
                 select(Prediction).where(
-                    (Prediction.model_version.like("%-no-wind-v3-tie-adjusted"))
+                    (Prediction.model_version.like("%-no-wind-v4-signal-60"))
                     | (Prediction.season >= 2026)
                 )
             )

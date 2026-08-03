@@ -14,13 +14,19 @@ type PerformanceSeason = {
   moneyline_settled: number;
   moneyline_accuracy: number | null;
   moneyline_roi: number | null;
+  standard_tier_bets?: number;
+  standard_tier_accuracy?: number | null;
+  standard_tier_roi?: number | null;
+  high_tier_bets?: number;
+  high_tier_accuracy?: number | null;
+  high_tier_roi?: number | null;
 };
 
 const fallbackSeasons: PerformanceSeason[] = [
-  { season: 2022, training_games: 715, prediction_count: 191, evaluated_games: 191, moneyline_bets: 22, moneyline_settled: 22, moneyline_accuracy: .682, margin_mae: 9.07, win_accuracy: .607, moneyline_roi: .063 },
-  { season: 2023, training_games: 906, prediction_count: 190, evaluated_games: 190, moneyline_bets: 18, moneyline_settled: 18, moneyline_accuracy: .722, margin_mae: 9.92, win_accuracy: .600, moneyline_roi: .112 },
-  { season: 2024, training_games: 1096, prediction_count: 190, evaluated_games: 190, moneyline_bets: 36, moneyline_settled: 36, moneyline_accuracy: .722, margin_mae: 9.98, win_accuracy: .716, moneyline_roi: .080 },
-  { season: 2025, training_games: 1286, prediction_count: 190, evaluated_games: 190, moneyline_bets: 17, moneyline_settled: 17, moneyline_accuracy: .647, margin_mae: 10.45, win_accuracy: .679, moneyline_roi: .023 },
+  { season: 2022, training_games: 715, prediction_count: 191, evaluated_games: 191, moneyline_bets: 48, moneyline_settled: 48, moneyline_accuracy: .646, margin_mae: 9.07, win_accuracy: .613, moneyline_roi: -.024, standard_tier_bets: 34, standard_tier_accuracy: .588, standard_tier_roi: -.100, high_tier_bets: 14, high_tier_accuracy: .786, high_tier_roi: .160 },
+  { season: 2023, training_games: 906, prediction_count: 190, evaluated_games: 190, moneyline_bets: 37, moneyline_settled: 37, moneyline_accuracy: .676, margin_mae: 9.92, win_accuracy: .637, moneyline_roi: .058, standard_tier_bets: 24, standard_tier_accuracy: .625, standard_tier_roi: .019, high_tier_bets: 13, high_tier_accuracy: .769, high_tier_roi: .131 },
+  { season: 2024, training_games: 1096, prediction_count: 190, evaluated_games: 190, moneyline_bets: 52, moneyline_settled: 52, moneyline_accuracy: .712, margin_mae: 9.98, win_accuracy: .732, moneyline_roi: .074, standard_tier_bets: 35, standard_tier_accuracy: .657, standard_tier_roi: -.009, high_tier_bets: 17, high_tier_accuracy: .824, high_tier_roi: .245 },
+  { season: 2025, training_games: 1286, prediction_count: 190, evaluated_games: 190, moneyline_bets: 37, moneyline_settled: 37, moneyline_accuracy: .649, margin_mae: 10.45, win_accuracy: .626, moneyline_roi: .056, standard_tier_bets: 28, standard_tier_accuracy: .679, standard_tier_roi: .116, high_tier_bets: 9, high_tier_accuracy: .556, high_tier_roi: -.130 },
   { season: 2026, training_games: 1476, prediction_count: 0, evaluated_games: 0, moneyline_bets: 0, moneyline_settled: 0, moneyline_accuracy: null, margin_mae: null, win_accuracy: null, moneyline_roi: null },
 ];
 
@@ -138,8 +144,8 @@ export default async function Methodology() {
         <section className="metric-row">
           <article><span>Architecture</span><strong>2-stage</strong><small>XGBoost regression</small></article>
           <article><span>Production data</span><strong>8 seasons</strong><small>2018 through 2025</small></article>
-          <article><span>Rolling ML signals</span><strong>53</strong><small>2022–2025 showcase</small></article>
-          <article><span>Pooled signal ROI</span><strong>+13.10%</strong><small>2022–2025, flat stake</small></article>
+          <article><span>Rolling ML signals</span><strong>174</strong><small>2022–2025 showcase</small></article>
+          <article><span>Pooled signal ROI</span><strong>+3.99%</strong><small>2022–2025, flat stake</small></article>
         </section>
 
         <section className="model-flow">
@@ -386,7 +392,7 @@ export default async function Methodology() {
           </div>
           <div className="table-wrap">
             <table>
-              <thead><tr><th>Test season</th><th>Training games</th><th>Official signals<br /><small>Confidence 65%+; ML −300 or better</small></th><th>Signal accuracy</th><th>Margin MAE</th><th>Winner accuracy</th><th>Signal ROI</th></tr></thead>
+              <thead><tr><th>Test season</th><th>Training games</th><th>Official signals<br /><small>Confidence 60%+; ML −300 or better</small></th><th>Signal accuracy</th><th>Margin MAE</th><th>Winner accuracy</th><th>Signal ROI</th></tr></thead>
               <tbody>
                 {seasons.map((row) => (
                   <tr key={row.season} className={row.season === 2026 ? "prospective-season" : undefined}>
@@ -409,23 +415,57 @@ export default async function Methodology() {
               </tbody>
             </table>
           </div>
+          <div className="section-heading confidence-tier-heading">
+            <div>
+              <span className="overline">Prospective tier tracking</span>
+              <h3>How confidence bands behave</h3>
+            </div>
+          </div>
+          <div className="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Season</th>
+                  <th>60%–under 65%<br /><small>Signals · accuracy · ROI</small></th>
+                  <th>65%+ high confidence<br /><small>Signals · accuracy · ROI</small></th>
+                </tr>
+              </thead>
+              <tbody>
+                {seasons.map((row) => (
+                  <tr key={`tier-${row.season}`} className={row.season === 2026 ? "prospective-season" : undefined}>
+                    <td><strong>{row.season}</strong>{row.season === 2026 && <small>Prospective</small>}</td>
+                    <td>
+                      {(row.standard_tier_bets ?? 0) > 0
+                        ? `${row.standard_tier_bets} · ${((row.standard_tier_accuracy ?? 0) * 100).toFixed(1)}% · ${((row.standard_tier_roi ?? 0) * 100) >= 0 ? "+" : ""}${((row.standard_tier_roi ?? 0) * 100).toFixed(1)}%`
+                        : "Pending"}
+                    </td>
+                    <td>
+                      {(row.high_tier_bets ?? 0) > 0
+                        ? `${row.high_tier_bets} · ${((row.high_tier_accuracy ?? 0) * 100).toFixed(1)}% · ${((row.high_tier_roi ?? 0) * 100) >= 0 ? "+" : ""}${((row.high_tier_roi ?? 0) * 100).toFixed(1)}%`
+                        : "Pending"}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
           <div className="technical-note">
-            <strong>Uncertainty around the +13.10% historical ROI</strong>
+            <strong>Uncertainty around the +3.99% historical ROI</strong>
             <p>
-              The 95% Student&apos;s t interval is −5.27% to +31.47%. An
+              The 95% Student&apos;s t interval is −7.30% to +15.28%. An
               ordinary bootstrap with 100,000 resamples gives a
-              normal-approximation interval of −4.64% to +30.84%. Both include
+              normal-approximation interval of −7.19% to +15.16%. Both include
               zero, so the historical sample does not establish that the
               signal&apos;s underlying mean return is positive. The intervals
-              exclude zero only below approximately 84.2% confidence for the
-              t method and 85.2% for the bootstrap method.
+              exclude zero only below approximately 51.3% confidence for the
+              t method and 51.6% for the bootstrap method.
             </p>
           </div>
           <div className="technical-note">
             <strong>Uncertainty around signal accuracy</strong>
             <p>
-              The signal won 40 of 53 games, an observed accuracy of 75.5%.
-              Its 95% Wilson interval is 62.4% to 85.1%, expressing the
+              The signal won 117 of 174 games, an observed accuracy of 67.2%.
+              Its 95% Wilson interval is 60.0% to 73.8%, expressing the
               sampling uncertainty around the underlying win proportion.
             </p>
           </div>
@@ -434,11 +474,14 @@ export default async function Methodology() {
             window contained 715 games. The earlier 2021 test remains preserved
             in the full research report but is excluded from this displayed
             aggregate because its training history was materially smaller. The
-            combined 65% confidence and −300 price floor was selected
+            combined 60% confidence and −300 price floor was selected
             retrospectively after a tie-handling correction and threshold
-            sensitivity analysis, so the +13.10% return is not evidence of
-            guaranteed future profit. The 2026 season will be tracked
-            prospectively without changing either condition.
+            sensitivity analysis. It favors a larger sample and steadier
+            season-level returns over the higher but more volatile historical
+            ROI of the 65% subgroup. Therefore, the +3.99% return is not
+            evidence of guaranteed future profit. The 2026 rule will remain
+            frozen; 60%–under-65% and 65%+ results will be tracked separately
+            and reconsidered only after the complete season.
           </p>
         </section>
 
@@ -493,12 +536,15 @@ export default async function Methodology() {
             <span>Officially tracked</span>
             <h3>Moneyline signal</h3>
             <p>
-              A predicted winner is flagged only at 65% model confidence
+              A predicted winner is flagged only at 60% model confidence
               or higher and a selected-team moneyline of −300 or better. The
               signal is displayed in the live product and its picks lock one
               hour before kickoff. The public 2022–2025 showcase returned
-              +13.10% across 53 signals, but both conditions were selected
-              retrospectively and must prove themselves prospectively in 2026.
+              +3.99% across 174 signals. Signals at 65% or higher receive a
+              high-confidence label, allowing the two confidence bands to be
+              monitored without changing the official wager rule. Both
+              conditions were selected retrospectively and must prove
+              themselves prospectively in 2026.
             </p>
           </article>
         </section>

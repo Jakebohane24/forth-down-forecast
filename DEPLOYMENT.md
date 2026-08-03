@@ -103,6 +103,6 @@ connected, weekly generation remains an explicit operator command.
 
 - `/health` returns HTTP 200.
 - `/performance` ends with the prospective 2026 row.
-- Historical API pages total 761 final tie-adjusted no-wind predictions and 53 signals.
+- Historical API pages total 761 final tie-adjusted no-wind predictions and 174 signals.
 - The Vercel Methodology API link opens the Render OpenAPI documentation.
 - No database URLs or API keys appear in Git, browser JavaScript, or build logs.

@@ -36,6 +36,44 @@ def _winning_profit(american_odds: float) -> float:
     return american_odds / 100 if american_odds > 0 else 100 / abs(american_odds)
 
 
+def _confidence_tier_metrics(
+    predictions: list[Prediction],
+    results: dict[str, GameResult],
+    *,
+    minimum: float,
+    maximum: float | None = None,
+) -> dict:
+    tier = [
+        row
+        for row in predictions
+        if row.moneyline_signal
+        and row.model_win_confidence >= minimum
+        and (maximum is None or row.model_win_confidence < maximum)
+    ]
+    settled = [
+        (row, results[row.game_id])
+        for row in tier
+        if row.game_id in results and results[row.game_id].completed
+    ]
+    wins = [
+        row.predicted_winner
+        == (result.home_team if result.home_score > result.away_score else result.away_team)
+        for row, result in settled
+    ]
+    returns = [
+        _winning_profit(row.moneyline_signal_odds)
+        if won and row.moneyline_signal_odds is not None
+        else -1.0
+        for (row, _), won in zip(settled, wins)
+    ]
+    return {
+        "bets": len(tier),
+        "settled": len(settled),
+        "accuracy": sum(wins) / len(wins) if wins else None,
+        "roi": sum(returns) / len(returns) if returns else None,
+    }
+
+
 def _prediction_response(
     prediction: Prediction,
     result: GameResult | None,
@@ -374,6 +412,51 @@ def create_app(database_url: str | None = None) -> FastAPI:
                 ),
             )
         )
+        tracked_seasons = [row.season for row in seasons]
+        all_prediction_rows = list(
+            session.scalars(
+                select(Prediction)
+                .where(Prediction.season.in_(tracked_seasons))
+                .order_by(Prediction.generated_at.desc())
+            )
+        )
+        latest_by_season_game = {}
+        for prediction in all_prediction_rows:
+            latest_by_season_game.setdefault(
+                (prediction.season, prediction.game_id), prediction
+            )
+        all_game_ids = [game_id for _, game_id in latest_by_season_game]
+        all_results = {
+            result.game_id: result
+            for result in session.scalars(
+                select(GameResult).where(GameResult.game_id.in_(all_game_ids))
+            )
+        }
+        for row in seasons:
+            season_predictions = [
+                prediction
+                for (season, _), prediction in latest_by_season_game.items()
+                if season == row.season
+            ]
+            standard = _confidence_tier_metrics(
+                season_predictions,
+                all_results,
+                minimum=BettingConfig().moneyline_confidence_threshold,
+                maximum=0.65,
+            )
+            high = _confidence_tier_metrics(
+                season_predictions,
+                all_results,
+                minimum=0.65,
+            )
+            row.standard_tier_bets = standard["bets"]
+            row.standard_tier_settled = standard["settled"]
+            row.standard_tier_accuracy = standard["accuracy"]
+            row.standard_tier_roi = standard["roi"]
+            row.high_tier_bets = high["bets"]
+            row.high_tier_settled = high["settled"]
+            row.high_tier_accuracy = high["accuracy"]
+            row.high_tier_roi = high["roi"]
         return PerformanceResponse(
             moneyline_threshold=BettingConfig().moneyline_confidence_threshold,
             moneyline_minimum_odds=BettingConfig().moneyline_minimum_odds,

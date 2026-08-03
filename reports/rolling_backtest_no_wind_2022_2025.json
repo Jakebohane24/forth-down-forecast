@@ -1,10 +1,10 @@
 {
-  "description": "Expanding-window backtest of the locked model architecture using kfold stage-one out-of-fold stacking and timeseries hyperparameter cross-validation; simulated score ties are split equally when estimating win probability; simulated score ties are split equally when estimating win probability",
+  "description": "Expanding-window backtest of the locked model architecture using kfold stage-one out-of-fold stacking and timeseries hyperparameter cross-validation; simulated score ties are split equally when estimating win probability; simulated score ties are split equally when estimating win probability; simulated score ties are split equally when estimating win probability",
   "stacking_strategy": "kfold",
   "tuning_strategy": "timeseries",
   "use_wind": false,
   "methodology": "Each test season is predicted by a newly tuned model trained only on processed games from 2018 through the prior season. Hyperparameters use timeseries cross-validation.",
-  "caveat": "Earlier test seasons use materially fewer training games. The 4.0-point spread and combined 65% confidence / -300 moneyline rule were selected retrospectively and are not unbiased.",
+  "caveat": "Earlier test seasons use materially fewer training games. The 4.0-point spread and combined 60% confidence / -300 moneyline rule were selected retrospectively and are not unbiased.",
   "spread_price": -110,
   "moneyline_source": "nflverse schedule closing moneylines",
   "pooled_results": {
@@ -17,12 +17,12 @@
       "roi": -0.04948216340621405
     },
     "moneyline_signal": {
-      "bets": 53,
-      "wins": 40,
-      "losses": 13,
-      "win_rate": 0.7547169811320755,
-      "profit_units": 6.94234230879271,
-      "roi": 0.13098759073193791
+      "bets": 174,
+      "wins": 117,
+      "losses": 57,
+      "win_rate": 0.6724137931034483,
+      "profit_units": 6.936450375366199,
+      "roi": 0.0398646573296908
     }
   },
   "seasons": [
@@ -49,12 +49,12 @@
         "roi": 0.0646853146853147
       },
       "moneyline_signal": {
-        "bets": 14,
-        "wins": 11,
-        "losses": 3,
-        "win_rate": 0.7857142857142857,
-        "profit_units": 2.2430631193809263,
-        "roi": 0.16021879424149474,
+        "bets": 48,
+        "wins": 31,
+        "losses": 17,
+        "win_rate": 0.6458333333333334,
+        "profit_units": -1.1583581751100027,
+        "roi": -0.02413246198145839,
         "games_missing_odds": 0
       }
     },
@@ -82,12 +82,12 @@
         "roi": -0.0923994038748137
       },
       "moneyline_signal": {
-        "bets": 13,
-        "wins": 10,
-        "losses": 3,
-        "win_rate": 0.7692307692307693,
-        "profit_units": 1.7011245579688634,
-        "roi": 0.1308557352283741,
+        "bets": 37,
+        "wins": 25,
+        "losses": 12,
+        "win_rate": 0.6756756756756757,
+        "profit_units": 2.15388183800989,
+        "roi": 0.058213022648915945,
         "games_missing_odds": 0
       }
     },
@@ -116,12 +116,12 @@
         "roi": -0.15151515151515157
       },
       "moneyline_signal": {
-        "bets": 17,
-        "wins": 14,
-        "losses": 3,
-        "win_rate": 0.8235294117647058,
-        "profit_units": 4.16797992448371,
-        "roi": 0.24517528967551236,
+        "bets": 52,
+        "wins": 37,
+        "losses": 15,
+        "win_rate": 0.7115384615384616,
+        "profit_units": 3.8606856535146865,
+        "roi": 0.07424395487528243,
         "games_missing_odds": 0
       }
     },
@@ -151,12 +151,12 @@
         "roi": 0.001490312965722786
       },
       "moneyline_signal": {
-        "bets": 9,
-        "wins": 5,
-        "losses": 4,
-        "win_rate": 0.5555555555555556,
-        "profit_units": -1.1698252930407897,
-        "roi": -0.1299805881156433,
+        "bets": 37,
+        "wins": 24,
+        "losses": 13,
+        "win_rate": 0.6486486486486487,
+        "profit_units": 2.080241058951625,
+        "roi": 0.05622273132301689,
         "games_missing_odds": 0
       }
     }

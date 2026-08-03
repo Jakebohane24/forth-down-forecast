@@ -1,39 +1,39 @@
 {
-  "description": "Uncertainty intervals for the historical mean one-unit return of the locked 65% confidence / -300 moneyline rule using no-wind, split-tie probabilities and expanding-window test predictions from 2022 through 2025.",
+  "description": "Uncertainty intervals for the historical mean one-unit return of the locked 60% confidence / -300 moneyline rule using no-wind, split-tie probabilities and expanding-window test predictions from 2022 through 2025.",
   "selection_caveat": "Intervals are conditional on the retrospectively selected signal rule and do not account for threshold-selection bias or guarantee future profitability.",
   "independence_caveat": "The individual-signal intervals do not model correlation within weeks or seasons.",
-  "signals": 53,
-  "wins": 40,
-  "losses": 13,
-  "win_accuracy": 0.7547169811320755,
+  "signals": 174,
+  "wins": 117,
+  "losses": 57,
+  "win_accuracy": 0.6724137931034483,
   "win_accuracy_wilson_95": [
-    0.6243344231264808,
-    0.8506709789194319
+    0.5996107770375335,
+    0.7377683717721603
   ],
-  "mean_roi": 0.13098759073193794,
-  "profit_units": 6.942342308792711,
-  "return_standard_deviation": 0.6663281720430081,
-  "mean_standard_error": 0.09152721348672668,
+  "mean_roi": 0.039864657329690786,
+  "profit_units": 6.936450375366197,
+  "return_standard_deviation": 0.754585231698888,
+  "mean_standard_error": 0.057204958786446054,
   "confidence_level": 0.95,
   "student_t_interval": [
-    -0.05267519978740118,
-    0.3146503812512771
+    -0.07304485065055655,
+    0.15277416530993812
   ],
-  "student_t_positive_roi_confidence_boundary": 0.8416250819215345,
+  "student_t_positive_roi_confidence_boundary": 0.5131831054823461,
   "bootstrap": {
     "method": "ordinary nonparametric bootstrap of individual signals",
     "samples": 100000,
     "random_state": 24,
-    "standard_error": 0.09050991610882393,
+    "standard_error": 0.056998555762184704,
     "normal_interval": [
-      -0.046411844841356964,
-      0.30838702630523285
+      -0.07185251196419123,
+      0.1515818266235728
     ],
     "percentile_interval": [
-      -0.05173442741911257,
-      0.3023258266107816
+      -0.07262384240769856,
+      0.15018345454860604
     ],
-    "normal_positive_roi_confidence_boundary": 0.8521641571800858,
-    "percentile_positive_roi_confidence_boundary": 0.84562
+    "normal_positive_roi_confidence_boundary": 0.5156964590313877,
+    "percentile_positive_roi_confidence_boundary": 0.51798
   }
 }

@@ -81,7 +81,7 @@ def main() -> None:
                 """
                 SELECT game_id, home_moneyline, away_moneyline
                 FROM predictions
-                WHERE season = ? AND model_version LIKE '%-no-wind-v3-tie-adjusted'
+                WHERE season = ? AND model_version LIKE '%-no-wind-v4-signal-60'
                 """,
                 connection,
                 params=(season,),
@@ -190,7 +190,7 @@ def main() -> None:
     selected = next(
         row
         for row in threshold_grid
-        if row["confidence_threshold"] == 0.65 and row["minimum_odds"] == -300
+        if row["confidence_threshold"] == 0.60 and row["minimum_odds"] == -300
     )
     official = json.loads(OFFICIAL_REPORT.read_text(encoding="utf-8"))
     official["description"] += (
@@ -198,7 +198,7 @@ def main() -> None:
     )
     official["caveat"] = (
         "Earlier test seasons use materially fewer training games. The 4.0-point "
-        "spread and combined 65% confidence / -300 moneyline rule were selected "
+        "spread and combined 60% confidence / -300 moneyline rule were selected "
         "retrospectively and are not unbiased."
     )
     for season_row, adjusted_row, selected_row in zip(

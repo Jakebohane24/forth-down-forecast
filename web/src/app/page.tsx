@@ -357,6 +357,10 @@ function PredictionCard({
     game.actual_away_score !== null;
   const international =
     game.country_code ? INTERNATIONAL_FLAGS[game.country_code] : undefined;
+  const highConfidenceSignal =
+    game.moneyline_signal &&
+    game.model_win_confidence !== null &&
+    game.model_win_confidence >= 0.65;
   return (
     <article
       className={`game-card ${
@@ -533,20 +537,22 @@ function PredictionCard({
         )}
         {game.moneyline_signal && !completed && (
           <span
-            className="signal-badge"
+            className={`signal-badge ${highConfidenceSignal ? "high-confidence" : ""}`}
             title="Experimental moneyline signal"
           >
-            Signal indicates {game.predicted_winner}{" "}
+            {highConfidenceSignal ? "High-confidence signal" : "Signal"} indicates{" "}
+            {game.predicted_winner}{" "}
             {formatOdds(game.moneyline_signal_odds)}
           </span>
         )}
         {game.moneyline_signal && completed && (
           <span
-            className={`signal-badge ${
+            className={`signal-badge ${highConfidenceSignal ? "high-confidence" : ""} ${
               game.moneyline_signal_won ? "won" : "lost"
             }`}
           >
-            Signal {game.moneyline_signal_won ? "won" : "lost"} ·{" "}
+            {highConfidenceSignal ? "High-confidence signal" : "Signal"}{" "}
+            {game.moneyline_signal_won ? "won" : "lost"} ·{" "}
             {game.moneyline_signal_profit !== null
               ? `${game.moneyline_signal_profit > 0 ? "+" : ""}${game.moneyline_signal_profit.toFixed(2)}u`
               : "odds unavailable"}
@@ -667,7 +673,7 @@ export default async function Home({
             </div>
             <div>
               <span>Signal rule</span>
-              <strong>65% / −300</strong>
+              <strong>60% / −300</strong>
             </div>
           </div>
         </section>
@@ -734,10 +740,12 @@ export default async function Home({
                 The signal refers to a moneyline bet: the selected team only
                 needs to win the game outright, with no point spread, and the
                 American odds determine the payout. A signal appears only when
-                the model gives its predicted winner at least 65% confidence
+                the model gives its predicted winner at least 60% confidence
                 and that team&apos;s moneyline is −300 or better. For example,
                 −275 and +110 qualify; −325 does not. Before the lock,
-                refreshed odds can make a signal appear or disappear. The
+                Signals at 65% or higher are labeled high confidence so both
+                tiers can be tracked separately. Before the lock, refreshed
+                odds can make a signal appear or disappear. The
                 latest eligible prediction locks one hour before that
                 game&apos;s kickoff and cannot be rewritten afterward.
               </p>

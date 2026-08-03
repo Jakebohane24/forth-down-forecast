@@ -14,9 +14,9 @@ def test_health_model_and_performance_endpoints(tmp_path):
         assert client.get("/model").status_code == 200
         performance = client.get("/performance").json()
 
-    assert performance["moneyline_threshold"] == 0.65
+    assert performance["moneyline_threshold"] == 0.60
     assert performance["moneyline_minimum_odds"] == -300
-    assert performance["pooled_bets"] == 53
+    assert performance["pooled_bets"] == 174
     assert performance["seasons"][-1]["season"] == 2026
     assert performance["seasons"][-1]["training_games"] == 1476
     assert performance["seasons"][-1]["evaluated_games"] == 0

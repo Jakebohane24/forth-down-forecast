@@ -9,26 +9,26 @@
         "win_accuracy": 0.6073298429319371,
         "brier_score": 0.22731968947643982,
         "mean_confidence": 0.588313612565445,
-        "signals": 14,
-        "signal_wins": 11,
-        "signal_accuracy": 0.7857142857142857,
-        "signal_profit_units": 2.439040410690889,
-        "signal_roi": 0.17421717219220637
+        "signals": 45,
+        "signal_wins": 29,
+        "signal_accuracy": 0.6444444444444445,
+        "signal_profit_units": 0.4710211716689248,
+        "signal_roi": 0.01046713714819833
       },
       "split_ties": {
         "games": 191,
         "win_accuracy": 0.612565445026178,
         "brier_score": 0.22518268102094238,
         "mean_confidence": 0.5912219895287958,
-        "signals": 14,
-        "signal_wins": 11,
-        "signal_accuracy": 0.7857142857142857,
-        "signal_profit_units": 2.2430631193809263,
-        "signal_roi": 0.16021879424149474
+        "signals": 48,
+        "signal_wins": 31,
+        "signal_accuracy": 0.6458333333333334,
+        "signal_profit_units": -1.1583581751100027,
+        "signal_roi": -0.02413246198145839
       },
       "picks_changed": 11,
-      "signals_added": 3,
-      "signals_removed": 3
+      "signals_added": 12,
+      "signals_removed": 9
     },
     {
       "season": 2023,
@@ -38,26 +38,26 @@
         "win_accuracy": 0.6,
         "brier_score": 0.2336477438947369,
         "mean_confidence": 0.5844673684210526,
-        "signals": 9,
-        "signal_wins": 6,
-        "signal_accuracy": 0.6666666666666666,
-        "signal_profit_units": -0.43378456718416425,
-        "signal_roi": -0.048198285242684914
+        "signals": 36,
+        "signal_wins": 23,
+        "signal_accuracy": 0.6388888888888888,
+        "signal_profit_units": 0.11601280014085158,
+        "signal_roi": 0.0032225777816903218
       },
       "split_ties": {
         "games": 190,
         "win_accuracy": 0.6368421052631579,
         "brier_score": 0.23099817994736843,
         "mean_confidence": 0.58873,
-        "signals": 13,
-        "signal_wins": 10,
-        "signal_accuracy": 0.7692307692307693,
-        "signal_profit_units": 1.7011245579688634,
-        "signal_roi": 0.1308557352283741
+        "signals": 37,
+        "signal_wins": 25,
+        "signal_accuracy": 0.6756756756756757,
+        "signal_profit_units": 2.15388183800989,
+        "signal_roi": 0.058213022648915945
       },
       "picks_changed": 9,
-      "signals_added": 4,
-      "signals_removed": 0
+      "signals_added": 8,
+      "signals_removed": 7
     },
     {
       "season": 2024,
@@ -67,26 +67,26 @@
         "win_accuracy": 0.7157894736842105,
         "brier_score": 0.2118788799473684,
         "mean_confidence": 0.5996605263157895,
-        "signals": 11,
-        "signal_wins": 10,
-        "signal_accuracy": 0.9090909090909091,
-        "signal_profit_units": 3.2264952167879124,
-        "signal_roi": 0.29331774698071933
+        "signals": 56,
+        "signal_wins": 42,
+        "signal_accuracy": 0.75,
+        "signal_profit_units": 7.925055308635866,
+        "signal_roi": 0.14151884479706903
       },
       "split_ties": {
         "games": 190,
         "win_accuracy": 0.7315789473684211,
         "brier_score": 0.21130496661842102,
         "mean_confidence": 0.6002107894736842,
-        "signals": 17,
-        "signal_wins": 14,
-        "signal_accuracy": 0.8235294117647058,
-        "signal_profit_units": 4.16797992448371,
-        "signal_roi": 0.24517528967551236
+        "signals": 52,
+        "signal_wins": 37,
+        "signal_accuracy": 0.7115384615384616,
+        "signal_profit_units": 3.8606856535146865,
+        "signal_roi": 0.07424395487528243
       },
       "picks_changed": 7,
-      "signals_added": 9,
-      "signals_removed": 3
+      "signals_added": 6,
+      "signals_removed": 10
     },
     {
       "season": 2025,
@@ -96,45 +96,45 @@
         "win_accuracy": 0.6789473684210526,
         "brier_score": 0.2233014347894737,
         "mean_confidence": 0.5958836842105263,
-        "signals": 5,
-        "signal_wins": 2,
-        "signal_accuracy": 0.4,
-        "signal_profit_units": -2.2551724137931033,
-        "signal_roi": -0.4510344827586207
+        "signals": 39,
+        "signal_wins": 21,
+        "signal_accuracy": 0.5384615384615384,
+        "signal_profit_units": -6.254711003776179,
+        "signal_roi": -0.16037720522503024
       },
       "split_ties": {
         "games": 190,
         "win_accuracy": 0.6263157894736842,
         "brier_score": 0.22391013432894735,
         "mean_confidence": 0.5979076315789474,
-        "signals": 9,
-        "signal_wins": 5,
-        "signal_accuracy": 0.5555555555555556,
-        "signal_profit_units": -1.1698252930407897,
-        "signal_roi": -0.1299805881156433
+        "signals": 37,
+        "signal_wins": 24,
+        "signal_accuracy": 0.6486486486486487,
+        "signal_profit_units": 2.080241058951625,
+        "signal_roi": 0.05622273132301689
       },
       "picks_changed": 14,
-      "signals_added": 5,
-      "signals_removed": 1
+      "signals_added": 9,
+      "signals_removed": 11
     }
   ],
   "pooled": {
     "legacy": {
       "games": 761,
-      "signals": 39,
-      "signal_wins": 29,
-      "signal_accuracy": 0.7435897435897436,
-      "signal_profit_units": 2.976578646501534,
-      "signal_roi": 0.07632252939747523,
+      "signals": 176,
+      "signal_wins": 115,
+      "signal_accuracy": 0.6534090909090909,
+      "signal_profit_units": 2.2573782766694634,
+      "signal_roi": 0.012826012935621951,
       "weighted_brier_score": 0.2240412507621551
     },
     "split_ties": {
       "games": 761,
-      "signals": 53,
-      "signal_wins": 40,
-      "signal_accuracy": 0.7547169811320755,
-      "signal_profit_units": 6.94234230879271,
-      "signal_roi": 0.13098759073193791,
+      "signals": 174,
+      "signal_wins": 117,
+      "signal_accuracy": 0.6724137931034483,
+      "signal_profit_units": 6.936450375366199,
+      "signal_roi": 0.0398646573296908,
       "weighted_brier_score": 0.2228520570893561
     }
   },

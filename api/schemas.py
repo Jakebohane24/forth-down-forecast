@@ -103,6 +103,14 @@ class PerformanceSeason(BaseModel):
     moneyline_settled: int
     moneyline_accuracy: float | None
     moneyline_roi: float | None
+    standard_tier_bets: int = 0
+    standard_tier_settled: int = 0
+    standard_tier_accuracy: float | None = None
+    standard_tier_roi: float | None = None
+    high_tier_bets: int = 0
+    high_tier_settled: int = 0
+    high_tier_accuracy: float | None = None
+    high_tier_roi: float | None = None
 
 
 class PerformanceResponse(BaseModel):

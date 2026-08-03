@@ -133,6 +133,8 @@ h1 em { color: var(--green); font-weight: 500; }
 .result-badge.lost { color: var(--red); background: #f5e5e3; }
 .signal-badge.won { color: var(--green); background: #dff0df; }
 .signal-badge.lost { color: var(--red); background: #f5e5e3; }
+.signal-badge.high-confidence { box-shadow: inset 0 0 0 1px currentColor; }
+.confidence-tier-heading { margin-top: 34px; }
 .game-card.pick-correct { box-shadow: inset 3px 0 0 #4f9b69; }
 .game-card.pick-incorrect { box-shadow: inset 3px 0 0 #b9584e; }
 .empty-board { min-height: 300px; display: grid; place-items: center; align-content: center; text-align: center; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,.16); border-radius: 4px 18px 4px 4px; }

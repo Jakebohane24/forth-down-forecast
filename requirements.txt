@@ -1,4 +1,6 @@
 fastapi==0.141.1
+appdirs==1.4.4
+fastparquet==2024.11.0
 httpx==0.28.1
 joblib==1.4.2
 nfl-data-py==0.3.3

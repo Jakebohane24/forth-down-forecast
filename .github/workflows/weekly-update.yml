@@ -27,7 +27,10 @@ jobs:
           cache: pip
 
       - name: Install Python dependencies
-        run: pip install -r requirements.txt
+        run: |
+          grep -v '^nfl-data-py' requirements.txt > /tmp/requirements-github.txt
+          pip install -r /tmp/requirements-github.txt
+          pip install --no-deps nfl-data-py==0.3.3
 
       - name: Download production model
         run: |

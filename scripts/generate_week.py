@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -11,7 +12,7 @@ from api.ingest import (
     persist_predictions,
     unlocked_predictions,
 )
-from src.market import StaticMarketDataProvider
+from src.market import StaticMarketDataProvider, TheOddsApiProvider
 from src.pregame import build_pregame_features
 from src.prediction import WeeklyPredictor
 from src.schedule import nflverse_week
@@ -27,6 +28,7 @@ def main() -> None:
     parser.add_argument("season", type=int)
     parser.add_argument("week", type=int)
     parser.add_argument("--market-csv", type=Path)
+    parser.add_argument("--odds-api-key", default=os.getenv("ODDS_API_KEY"))
     parser.add_argument(
         "--model",
         type=Path,
@@ -57,11 +59,12 @@ def main() -> None:
     if features.empty:
         raise RuntimeError("No games have enough current-season history")
 
-    provider = (
-        StaticMarketDataProvider.from_csv(args.market_csv)
-        if args.market_csv
-        else None
-    )
+    if args.market_csv:
+        provider = StaticMarketDataProvider.from_csv(args.market_csv)
+    elif args.odds_api_key:
+        provider = TheOddsApiProvider(args.odds_api_key)
+    else:
+        provider = None
     predictions = WeeklyPredictor(model).predict(
         features,
         market_provider=provider,

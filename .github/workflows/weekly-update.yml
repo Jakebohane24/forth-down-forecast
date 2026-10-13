@@ -1,0 +1,46 @@
+name: Weekly forecast update
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 16:00 UTC Tuesday is 9:00 AM Pacific during daylight time and
+    # 8:00 AM Pacific during standard time.
+    - cron: "0 16 * * 2"
+
+permissions:
+  contents: read
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      DEPLOY_DATABASE_URL: ${{ secrets.DEPLOY_DATABASE_URL }}
+      ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+      MODEL_ARTIFACT_URL: ${{ secrets.MODEL_ARTIFACT_URL }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Download production model
+        run: |
+          test -n "$MODEL_ARTIFACT_URL" || { echo "MODEL_ARTIFACT_URL is not configured"; exit 1; }
+          mkdir -p artifacts/models
+          curl --fail --location --retry 3 "$MODEL_ARTIFACT_URL" -o /tmp/production-model.tar.gz
+          tar -xzf /tmp/production-model.tar.gz -C artifacts/models
+          test -f artifacts/models/production/models.joblib
+          test -f artifacts/models/production/metadata.json
+
+      - name: Generate and publish weekly predictions
+        run: >-
+          python scripts/weekly_local_update.py
+          --skip-weather
+          --database-url "$DEPLOY_DATABASE_URL"
+          --odds-api-key "$ODDS_API_KEY"

@@ -80,7 +80,33 @@ https://fourth-down-forecast.vercel.app
 Vercel redeploys the interface after pushes to the connected production
 branch. Render does the same for the API.
 
-## 4. Production data updates
+## 4. Automatic production data updates
+
+The repository includes a GitHub Actions workflow at
+`.github/workflows/weekly-update.yml`. It runs every Tuesday and can also be
+started manually from the Actions tab. The workflow downloads the current
+data, retrieves the production model, fetches live odds, generates the next
+eligible week, and writes the results to Neon.
+
+Add these three repository secrets under **Settings → Secrets and variables →
+Actions**:
+
+```text
+DEPLOY_DATABASE_URL   Neon connection string
+ODDS_API_KEY          The Odds API key
+MODEL_ARTIFACT_URL    HTTPS URL for a tar.gz containing production/models.joblib and production/metadata.json
+```
+
+The model archive is kept outside Git because the model is a generated binary.
+For example, upload `artifacts/models/production` as a release asset or to a
+private object storage bucket, then set `MODEL_ARTIFACT_URL` to its download
+URL. Do not put database URLs or API keys in the repository.
+
+The scheduled workflow is free on GitHub-hosted runners for a public
+repository. Neon, the odds provider, and any object storage remain separate
+services with their own limits or pricing.
+
+## 5. Production data updates
 
 The persistent target for every update command is the same Neon connection
 string:

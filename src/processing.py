@@ -33,9 +33,14 @@ def data_collection_to_sql(seasons=range(2015, 2026), db_path=None):
 
     staging_table = f"{RAW_PLAYS_TABLE}_staging"
     with get_db_connection(db_path) as conn:
+        # The derived views reference nfl_data_1. Remove them before replacing
+        # the raw table, then build_features recreates them in dependency order.
+        for view_number in range(8, 1, -1):
+            _drop_object(conn, f"nfl_data_{view_number}")
         df.to_sql(staging_table, conn, if_exists="replace", index=False)
         conn.execute(f'DROP TABLE IF EXISTS "{RAW_PLAYS_TABLE}"')
         conn.execute(f'ALTER TABLE "{staging_table}" RENAME TO "{RAW_PLAYS_TABLE}"')
+        conn.commit()
 
 
 def get_db_connection(db_path=None, *, read_only=False):

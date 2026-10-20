@@ -649,14 +649,14 @@ export default async function Home({
           <Link href="/methodology">Methodology</Link>
           <a href={`${API_URL}/docs`} target="_blank" rel="noreferrer">API ↗</a>
         </nav>
-        <span className="model-status"><i /> Model online</span>
+        <span className="model-status"><i /> API status</span>
       </header>
 
       <main>
         <section className="hero">
           <div className="hero-copy">
             <span className="overline">NFL prediction intelligence</span>
-            <h1>See the game before <em>kickoff.</em></h1>
+            <h1>NFL game predictions</h1>
             <p>
               Data-driven score forecasts built from play-level efficiency,
               matchup context, and a rigorously backtested two-stage model.
@@ -787,19 +787,7 @@ export default async function Home({
           )}
         </section>
 
-        <section className="trust-strip">
-          <div>
-            <span className="overline">Built for accountability</span>
-            <h2>Every prediction. Frozen before kickoff.</h2>
-          </div>
-          <p>
-            Each weekly forecast is stored with its model version, generation
-            time, and available market price. Picks lock one hour before each
-            game&apos;s kickoff, creating an auditable prospective record
-            instead of rewriting history.
-          </p>
-          <Link href="/methodology">Explore the model <span>→</span></Link>
-        </section>
+
       </main>
 
       <footer>

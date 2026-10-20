@@ -127,18 +127,13 @@ export default async function Methodology() {
           <Link className="active" href="/methodology">Methodology</Link>
           <a href={`${API_URL}/docs`} target="_blank" rel="noreferrer">API ↗</a>
         </nav>
-        <span className="model-status"><i /> Model online</span>
+        <span className="model-status"><i /> API status</span>
       </header>
 
       <main className="method-page">
         <section className="method-hero">
-          <span className="overline">Open methodology</span>
-          <h1>A model you can <em>inspect.</em></h1>
-          <p>
-            The forecast uses two modeling stages, chronological tuning, and
-            season-by-season evaluation. Favorable and unfavorable results are
-            published together.
-          </p>
+          <span className="overline">Methodology</span>
+          <h1>How the forecast works</h1>
         </section>
 
         <section className="metric-row">
@@ -150,7 +145,7 @@ export default async function Methodology() {
 
         <section className="model-flow">
           <div className="section-heading">
-            <div><span className="overline">How it works</span><h2>From plays to points</h2></div>
+            <div><span className="overline">Forecast process</span><h2>From game data to score forecast</h2></div>
           </div>
           <div className="flow-grid">
             <article><b>01</b><h3>Pregame context</h3><p>Five-game rolling efficiency, volume, personnel entropy, opponent strength, and market context.</p></article>
@@ -164,7 +159,7 @@ export default async function Methodology() {
           <div className="section-heading">
             <div>
               <span className="overline">Feature engineering</span>
-              <h2>What the model sees</h2>
+              <h2>Model inputs</h2>
             </div>
           </div>
           <p className="section-intro">
@@ -200,10 +195,10 @@ export default async function Methodology() {
           <div className="technical-note">
             <strong>Why predictions begin in Week 6</strong>
             <p>
-              Version 1 requires five completed current-season games for both
-              teams. It does not silently carry prior-season form across roster
-              and coaching changes. An offseason-carryover approach would be a
-              separate model requiring its own backtest.
+              The model requires five previous games in the same season for
+              both teams. Previous-season games are not included because teams,
+              rosters, and strategies can change substantially during the
+              offseason.
             </p>
           </div>
           <div className="technical-note">
@@ -222,7 +217,7 @@ export default async function Methodology() {
           <div className="section-heading">
             <div>
               <span className="overline">Model architecture</span>
-              <h2>Two stages, one score forecast</h2>
+              <h2>Two stage score forecast</h2>
             </div>
           </div>
           <div className="detail-columns">
@@ -235,10 +230,10 @@ export default async function Methodology() {
                 plays, and defensive pressure rate.
               </p>
               <p>
-                Stage-one training predictions are generated out of fold using
-                five-fold shuffled K-fold stacking. A row is never predicted by
-                a model fitted on that same row, although a fold can use games
-                that occurred later in the training period.
+                Stage-one training predictions are generated with five-fold
+                shuffled K-fold stacking. A row is never predicted by a model
+                fitted on that same row, although the model can use games that
+                occurred later than the training game being predicted.
               </p>
             </article>
             <article>
@@ -252,7 +247,7 @@ export default async function Methodology() {
               <p>
                 The outputs are expected home and away offensive points. The
                 displayed predicted score is produced from the subsequent
-                simulation rather than copied from a sportsbook line.
+                simulation.
               </p>
             </article>
           </div>
@@ -260,15 +255,16 @@ export default async function Methodology() {
 
         <section className="technical-section training-panel">
           <div>
-            <span className="overline">Training discipline</span>
+            <span className="overline">Training and evaluation</span>
             <h2>How parameters are selected</h2>
           </div>
           <div className="training-list">
             <article>
               <strong>Chronological tuning</strong>
               <p>
-                Hyperparameters are selected with TimeSeriesSplit so tuning
-                folds train on earlier games and validate on later games.
+                XGBoost hyperparameters are selected with TimeSeriesSplit so
+                tuning folds train on earlier games and validate on later
+                games.
               </p>
             </article>
             <article>
@@ -282,9 +278,14 @@ export default async function Methodology() {
             <article>
               <strong>Production refit</strong>
               <p>
-                After model choices were frozen, the production artifact was
-                refitted on every completed season from 2018–2025. The next
-                genuinely prospective evaluation period is 2026.
+                We fit four separate backtest models for the 2022–2025
+                seasons. For each model, the seasons before its evaluation year
+                were used for training and that evaluation year was held out
+                for validation. After the model structure, hyperparameters,
+                and features were finalized, the production model was refit
+                using all completed games from
+                2018–2025. The 2026 season is the first genuinely prospective
+                test period.
               </p>
             </article>
           </div>
@@ -304,7 +305,7 @@ export default async function Methodology() {
           </p>
           <div className="split-grid">
             <article>
-              <span className="detail-number">Stage-one stacking</span>
+              <span className="detail-number">Creating stage-two inputs</span>
               <h3>Shuffled K-fold</h3>
               <p>
                 Stage two must learn from stage-one estimates created without
@@ -345,11 +346,10 @@ export default async function Methodology() {
               splits while leaving the outer seasonal tests untouched. The
               chronological version produced 64.13% winner accuracy and 2.00%
               ROI under the confidence-only research rule; K-fold produced
-              65.05% and 3.90%. Because every reported season remained
-              completely outside its model’s training data, this is evidence
-              of better independent-season performance, not proof that the
-              internal leakage is harmless. The limitation is disclosed and
-              the 2026 predictions remain the prospective test.
+              65.05% and 3.90%. This provides some evidence that the benefit of
+              using more training data in K-fold outweighs the drawback of
+              temporal information leakage. The 2026 predictions remain the
+              prospective test.
             </p>
           </div>
         </section>
@@ -363,20 +363,23 @@ export default async function Methodology() {
           </div>
           <div className="simulation-copy">
             <p>
-              Expected offensive points are converted into touchdown and
-              field-goal scoring rates. Ten thousand seeded Poisson simulations
-              are run for each matchup, including a small non-offensive
-              touchdown component. Median simulated scores become the displayed
-              forecast. When a simulation ends level, half a win is allocated
-              to each team to approximate an unresolved overtime outcome rather
-              than incorrectly crediting either side with every simulated tie.
+              Expected offensive points are split into scoring components: 78%
+              is assigned to offensive touchdowns and 22% to field goals. The
+              two point amounts are divided by 7 and 3 to create expected
+              touchdown and field-goal counts. Those expected counts are used
+              as the Poisson distribution rates, or lambda values, for ten
+              thousand seeded simulations of each matchup, along with a
+              small non-offensive touchdown component. Median simulated scores
+              become the displayed forecast. When a simulation ends level, half
+              a win is allocated to each team to approximate an unresolved
+              overtime outcome.
             </p>
             <p>
               “Model confidence” is the share of simulations won by the
               predicted team after that split-tie adjustment. The model pick is
-              based on the full joint simulation distribution, while the two
-              displayed scores are separate medians; in a small number of games,
-              those summaries can point in opposite directions. Confidence is
+              based on this confidence value, while the two displayed scores
+              are separate medians; a team can have a higher median score and
+              a lower confidence value. Confidence is
               useful for ranking conviction, but it has
               not been proven to be a perfectly calibrated probability. That
               is why the site does not describe a 65% confidence value as a
@@ -485,69 +488,6 @@ export default async function Methodology() {
           </p>
         </section>
 
-        <section className="technical-section decision-section">
-          <div className="section-heading">
-            <div>
-              <span className="overline">Product decisions</span>
-              <h2>What did not make the cut</h2>
-            </div>
-          </div>
-          <div className="decision-grid">
-            <article>
-              <span>Removed</span>
-              <h3>Spread indicator</h3>
-              <p>
-                The four-point spread rule looked promising in 2024–2025 but
-                returned −5.43% across the full five-season rolling backtest.
-                It is preserved in research and excluded from the product.
-              </p>
-            </article>
-            <article>
-              <span>Not promoted</span>
-              <h3>Totals indicator</h3>
-              <p>
-                Every predeclared totals threshold lost during 2022–2023
-                development. A six-point pocket worked later, but failed the
-                stability requirement and was not added to the interface.
-              </p>
-            </article>
-            <article>
-              <span>Removed</span>
-              <h3>Wind feature</h3>
-              <p>
-                Removing wind slightly improved margin MAE while preserving
-                65.05% winner accuracy across the 2022–2025 rolling tests.
-                Stadium weather remains visible as context, but it is excluded
-                from the model because historical final wind and a live
-                pregame forecast are not equivalent inputs.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section className="technical-section production-signal">
-          <div className="section-heading">
-            <div>
-              <span className="overline">Included in the product</span>
-              <h2>Experimental production signal</h2>
-            </div>
-          </div>
-          <article>
-            <span>Officially tracked</span>
-            <h3>Moneyline signal</h3>
-            <p>
-              A predicted winner is flagged only at 60% model confidence
-              or higher and a selected-team moneyline of −300 or better. The
-              signal is displayed in the live product and its picks lock one
-              hour before kickoff. The public 2022–2025 showcase returned
-              +3.99% across 174 signals. Signals at 65% or higher receive a
-              high-confidence label, allowing the two confidence bands to be
-              monitored without changing the official wager rule. Both
-              conditions were selected retrospectively and must prove
-              themselves prospectively in 2026.
-            </p>
-          </article>
-        </section>
 
         <section className="limitations">
           <span className="overline">Read before interpreting</span>
@@ -555,9 +495,7 @@ export default async function Methodology() {
           <ul>
             <li>Injuries and confirmed quarterback availability are not explicit model inputs.</li>
             <li>Historical betting comparisons use closing lines; a live prediction may capture a different price.</li>
-            <li>Kickoff weather is a forecast rather than a guaranteed field-level measurement, and retractable-roof decisions may not be public when a prediction locks.</li>
             <li>NFL seasons are small samples, and a few underdog outcomes can materially change signal ROI.</li>
-            <li>The public 2022–2025 aggregate excludes the smaller 2021 training window; that result remains in the repository.</li>
             <li>Historical performance, including profitable periods, does not guarantee future returns.</li>
           </ul>
         </section>

@@ -45,6 +45,5 @@ jobs:
       - name: Generate and publish weekly predictions
         run: >-
           python scripts/weekly_local_update.py
-          --skip-weather
           --database-url "$DEPLOY_DATABASE_URL"
           --odds-api-key "$ODDS_API_KEY"

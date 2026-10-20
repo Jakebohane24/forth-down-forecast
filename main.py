@@ -19,4 +19,4 @@ if __name__ == "__main__":
     model.train()
     evaluate_model(model, "val")
     # model.get_feature_importances(stage=1)
-    model.get_feature_importances(stage=2)
+    #model.get_feature_importances(stage=2)

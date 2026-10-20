@@ -245,7 +245,7 @@ def enrich_schedule_with_weather(
     for _, game in enriched.iterrows():
         try:
             forecasts.append(provider.forecast(game))
-        except ValueError as error:
+        except (ValueError, httpx.HTTPError) as error:
             # Weather is display-only. A missing neutral-site coordinate must
             # not prevent the weekly prediction job from completing.
             skipped_games.append(f"{game['game_id']}: {error}")

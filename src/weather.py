@@ -211,7 +211,20 @@ def enrich_schedule_with_weather(
     """Return a copy with leakage-safe model wind plus auditable conditions."""
     provider = provider or OpenMeteoWeatherProvider()
     enriched = schedule.copy()
-    forecasts = [provider.forecast(game) for _, game in enriched.iterrows()]
+    forecasts = []
+    skipped_games = []
+    for _, game in enriched.iterrows():
+        try:
+            forecasts.append(provider.forecast(game))
+        except ValueError as error:
+            # Weather is display-only. A missing neutral-site coordinate must
+            # not prevent the weekly prediction job from completing.
+            skipped_games.append(f"{game['game_id']}: {error}")
+    if skipped_games:
+        print(
+            "Weather unavailable for " + "; ".join(skipped_games),
+            flush=True,
+        )
     wind_by_game = {forecast.game_id: forecast.model_wind_mph for forecast in forecasts}
     enriched["game_wind"] = enriched["game_id"].map(wind_by_game)
     return enriched, forecasts

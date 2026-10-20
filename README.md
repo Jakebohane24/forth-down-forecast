@@ -1,8 +1,21 @@
 # Fourth Down Forecast
 
-An end-to-end NFL forecasting product that turns play-level data into
-versioned weekly predictions through a two-stage XGBoost model, a FastAPI
-service, PostgreSQL persistence, and a Next.js/TypeScript interface.
+An end-to-end NFL score forecasting system. It turns play-by-play and pregame
+market data into versioned weekly predictions through a two-stage XGBoost
+model, seeded score simulations, a FastAPI service, and a Next.js interface.
+
+The project is designed to answer two practical questions: how accurately can
+the model forecast a game before kickoff, and how does that performance hold up
+when the model is evaluated on a future season?
+
+## Start here
+
+- Run the forecast locally with the commands in [Local development](#local-development).
+- Read [Model policy](#model-policy) for the feature and evaluation design.
+- See the committed files in `reports/` for rolling backtests and production
+  model metadata.
+- See [DEPLOYMENT.md](DEPLOYMENT.md) for the deployed API and web application
+  setup.
 
 > The betting indicators are experimental analysis, not financial advice.
 

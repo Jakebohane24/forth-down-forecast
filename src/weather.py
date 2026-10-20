@@ -255,5 +255,8 @@ def enrich_schedule_with_weather(
             flush=True,
         )
     wind_by_game = {forecast.game_id: forecast.model_wind_mph for forecast in forecasts}
-    enriched["game_wind"] = enriched["game_id"].map(wind_by_game)
+    # The production model does not use wind, but the shared feature builder
+    # still requires a complete column. Missing display weather therefore uses
+    # the existing no-wind fallback rather than blocking predictions.
+    enriched["game_wind"] = enriched["game_id"].map(wind_by_game).fillna(0.0)
     return enriched, forecasts

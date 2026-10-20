@@ -61,6 +61,33 @@ TEAM_VENUES: dict[str, Venue] = {
     "WAS": Venue("Northwest Stadium", 38.9076, -76.8645, "outdoor"),
 }
 
+# Explicit locations for international and other neutral-site games. These
+# cannot use the home-team lookup because the listed home team is only the
+# schedule's possession convention, not the stadium location.
+NEUTRAL_VENUES: dict[str, Venue] = {
+    "Melbourne Cricket Ground": Venue(
+        "Melbourne Cricket Ground", -37.8179, 144.9834, "outdoor", "AU"
+    ),
+    "Maracana Stadium": Venue(
+        "Maracana Stadium", -22.9121, -43.2302, "outdoor", "BR"
+    ),
+    "Tottenham Hotspur Stadium": Venue(
+        "Tottenham Hotspur Stadium", 51.6043, -0.0664, "outdoor", "GB"
+    ),
+    "Wembley Stadium": Venue(
+        "Wembley Stadium", 51.5560, -0.2795, "outdoor", "GB"
+    ),
+    "Allianz Arena": Venue(
+        "Allianz Arena", 48.2188, 11.6247, "outdoor", "DE"
+    ),
+    "Estadio Azteca": Venue(
+        "Estadio Azteca", 19.4030, -99.0940, "outdoor", "MX"
+    ),
+    "Estadio BBVA": Venue(
+        "Estadio BBVA", 25.6692, -100.2440, "outdoor", "MX"
+    ),
+}
+
 
 @dataclass(frozen=True)
 class WeatherForecast:
@@ -141,7 +168,9 @@ class OpenMeteoWeatherProvider:
                 f"{game['game_id']} is neutral-site; stadium coordinates are required"
             )
 
-        venue = TEAM_VENUES.get(str(game["home_team"]))
+        stadium_name = str(game.get("stadium", "")).strip()
+        venue = NEUTRAL_VENUES.get(stadium_name) if neutral else None
+        venue = venue or TEAM_VENUES.get(str(game["home_team"]))
         if venue is None and not has_override:
             raise ValueError(f"No stadium coordinates configured for {game['home_team']}")
         latitude = float(game["stadium_latitude"]) if has_override else venue.latitude
